@@ -1,4 +1,4 @@
-const CACHE = 'wxcalc-v15.1';
+const CACHE = 'wxcalc-v15.2';
 const ASSETS = [
   './', './index.html',
   './icon-180.png', './icon-192.png', './icon-512.png', './icon-1024.png',
@@ -6,6 +6,9 @@ const ASSETS = [
   './assets/bg_clean.jpg',
   './assets/seg_vortex.webp', './assets/seg_boss.webp',
   './assets/seg_tablets.webp', './assets/seg_warrior.webp',
+  './assets/logo_wxsj.webp', './assets/logo_13.webp', './assets/logo_sszj.webp',
+  './assets/kpi1.webp', './assets/kpi2.webp', './assets/kpi3.webp',
+  './assets/kpi4.webp', './assets/kpi5.webp', './assets/kpi6.webp',
   './assets/frame_stone.webp', './assets/runner.png'
 ];
 
