@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#060b18">
-<title>无限升级 · 轮回计算器 v13.0「誓灭之境」 v15.4</title>
+<title>无限升级 · 轮回计算器 v13.0「誓灭之境」 v15.5</title>
 <link rel="icon" href="icon-192.png">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
@@ -1259,11 +1259,11 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
     <div class="doc" id="bossList" style="display:none"></div>
     <details><summary>计算说明</summary><div class="doc">
       <h4>等级与神力</h4><p>神力 = 等级³，等级 = ∛神力。三次方是核心：等级 +21% ≈ 神力 +78.6%。</p>
-      <h4>属性所需神力（三次曲线）</h4><p>单个属性从「原值」升到「目标」：<code>1.2e10 × ( S(目标/2) − S(原值/2) )</code>，<code>S(x)=x(x+1)(2x+1)/6</code>。目标等级 = 五项成本合计开立方取整。</p>
-      <h4>未来 24 小时收益（闭式）</h4><p><code>R = 单位/1000 × 经验收益 × 0.95 × 1440 × 倍率</code>；<code>新等级 = (等级^3.8 + R)^(1/3.8)</code>；<code>未来24h = 新等级³ − 等级³</code>。</p>
+      <h4>属性所需神力（三次曲线）</h4><p>单个属性从「原值」升到「目标」：<code>1.2e10 × ( S(目标/2) − S(原值/2) )</code>，<code>S(x)=x(x+1)(2x+1)/6</code>。目标等级 = 五项成本合计开立方向下取整 + 1。</p>
+      <h4>未来 24 小时收益（闭式）</h4><p><code>R = 单位/1000 × 经验收益 × (3.8/4) × 1440 × 倍率</code>；<code>新等级 = (等级^3.8 + R)^(1/3.8)</code>；<code>未来24h = 新等级³ − 等级³</code>。</p>
       <h4>转生后经验修正</h4><p><code>当前经验修正% × (经验目标+100)/(经验原值+100)</code>；基准常数 +100 为线性同乘区。</p>
       <h4>转生判定（计算2.0）</h4><p>转生后收益 ≈ 当前平均 × (1 + 经验增长 + 输出增长/经输比)；<code>未来24h > 转生后收益 → 不推荐转生</code>，否则推荐转生；<b>刚轮回不足 1 天默认不推荐转生</b>，1-2 天仍判不准。</p>
-      <h4>经验</h4><p><code>XP = 1.05 × (M^3.8 − N^3.8)</code>；时间 = XP ÷ (经验收益×单位/1000×1440×倍率)。</p>
+      <h4>经验</h4><p><code>XP = (4/3.8) × (M^3.8 − N^3.8)</code>；时间 = XP ÷ (经验收益×单位/1000×1440×倍率)。</p>
       <h4>趋势角标（↓ 建议转生）</h4><p>连续 3 天自动记录日收益，若本日增量比前一日下降 ≥20%，右上角出现「↓ 建议转生」；点角标可看近 3 天收益与增量对比。</p>
       <h4>圣法点 / 奥法</h4><p>圣法点 1-85（13.0 上限 85；9.0 为 60，11.0/12.0 为 70）；奥法 1-14 阶单瓶能量逐阶提升。</p>
     </div></details>
@@ -1654,8 +1654,8 @@ function solveAttackByBudget(P,R){
 function compute(){
   var level=Math.max(state.curLevel,0),P=Math.pow(level,3);
   var U=UNIT_MAP[state.unit]||1e21,kUnit=U/1000;
-  var rate=kUnit*state.expRate*0.95*1440*state.xMult;
-  var newLevel=Math.pow(Math.pow(level,3.8)+rate,1/3.8);
+  var rate=kUnit*state.expRate*(3.8/4)*1440*state.xMult;
+  var newLevel=Math.floor(Math.pow(Math.pow(level,3.8)+rate,1/3.8));
   var daily=Math.pow(newLevel,3)-P;
   function S(x){return x*(x+1)*(2*x+1)/6;}
   var costs=state.stats.map(function(st){
@@ -1664,7 +1664,7 @@ function compute(){
     return 1.2e10*(S(t0/2)-S(o0/2));
   });
   var total=Math.max(0,costs.reduce(function(a,b){return a+b;},0));
-  var targetLevel=Math.round(cbrt(total)),targetPower=Math.pow(targetLevel,3);
+  var targetLevel=Math.floor(cbrt(total))+1,targetPower=Math.pow(targetLevel,3);
   var pwrProg=(targetPower>0)?Math.min(Math.max(P/targetPower,0),1):0;
   var rebirth=new Date(state.rebirth);
   if(!(rebirth instanceof Date)||isNaN(rebirth.getTime()))rebirth=new Date();
@@ -2179,7 +2179,7 @@ function renderArc(){
 function renderXp(){
   var N=state.curLevel,M=state.xM,E=state.expRate,U=UNIT_MAP[state.unit],o=el('xOut');
   if(M<=N){o.textContent='目标等级需大于当前等级。';return;}
-  var xp=1.05*(Math.pow(M,3.8)-Math.pow(N,3.8));
+  var xp=(4/3.8)*(Math.pow(M,3.8)-Math.pow(N,3.8));
   var perMin=E*(U/1000);
   var days=xp/(perMin*1440*state.xMult);
   o.innerHTML='经验 = <b style="color:var(--gold-pale)">'+shortNum(xp,2)+'</b>（原始值）<br>按 '+shortNum(perMin,2)+'/分 ×'+state.xMult+' → 约 <b style="color:var(--gold-pale)">'+fmtDur(days)+'</b>（'+days.toFixed(2)+' 天）';
@@ -2438,7 +2438,7 @@ function buildThemeChips(){
 function targetLevelOf(stats){
   function S(x){return x*(x+1)*(2*x+1)/6;}
   var total=stats.reduce(function(a,s){return a+1.2e10*(S(s.target/2)-S(s.old/2));},0);
-  return Math.round(cbrt(Math.max(0,total)));
+  return Math.floor(cbrt(Math.max(0,total)))+1;
 }
 function buildRoles(){
   var _ar=activeRole();
@@ -2827,7 +2827,7 @@ init();
 <script>
 if ('serviceWorker' in navigator && (location.protocol === 'http:' || location.protocol === 'https:')) {
   window.addEventListener('load', function () {
-    navigator.serviceWorker.register('sw.js?v=15.4').then(function (reg) {
+    navigator.serviceWorker.register('sw.js?v=15.5').then(function (reg) {
       reg.update().catch(function () {});
     }).catch(function () {});
   });
