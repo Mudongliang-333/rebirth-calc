@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#060b18">
-<title>无限升级 · 轮回计算器 v13.0「誓灭之境」 v15.7</title>
+<title>无限升级 · 轮回计算器 v13.0「誓灭之境」 v15.8</title>
 <link rel="icon" href="icon-192.png">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
@@ -1594,8 +1594,25 @@ function fmtPlain(v,digits){
 function autoNum(v){if(!isFinite(v))return'—';return Math.abs(v-Math.round(v))<1e-9?fmtPlain(v):fmtPlain(v,2);}
 function pct(x){if(!isFinite(x))return'—';var v=x*100;return(v>0?'+':'')+v.toFixed(2)+'%';}
 function powLabel(v){return'1e'+Math.round(Math.log10(v));}
-function powUnit(){var f=UNIT_MAP[state.unit]||1e24;f=f/1e6;for(var i=0;i<UNITS.length;i++){if(UNITS[i][1]===f)return UNITS[i][0];}return 'AA';}
+function powUnit(){var idx=-1;for(var i=0;i<UNITS.length;i++){if(UNITS[i][0]===state.unit){idx=i;break;}}if(idx<0)idx=UNITS.length-2;idx=Math.max(0,idx-2);return UNITS[idx][0];}
 function powShort(v){if(!isFinite(v))return'—';var u=powUnit(),f=UNIT_MAP[u];return (v/f).toFixed(2)+' '+u;}
+/* 神力消耗：分段二次曲线（对齐 AAA 神力表 A 列 2~200000，27 段）
+   B(加成A) = coef * (A/2)^2，累计 C(A)=ΣB；单项消耗 = (C(T)-C(O)) * 1e12 */
+var COST_BANDS=[[2,1e-7],[22,3e-7],[42,5e-7],[62,8e-7],[82,1.2e-6],[102,1.5e-6],[122,2e-6],[142,3.5e-6],[162,8e-6],[182,1.25e-5],[202,2e-5],[222,3e-5],[242,5e-5],[262,7.5e-5],[282,1.2e-4],[302,2.5e-4],[322,4.5e-4],[342,7.5e-4],[362,1e-3],[382,1.25e-3],[402,1.5e-3],[422,2e-3],[442,3e-3],[462,5e-3],[482,6e-3],[502,8e-3],[540,0.012]];
+function _Ss(x){return x*(x+1)*(2*x+1)/6;}
+function cumCost(A){
+  if(!(A>=2)) return 0;
+  A=Math.floor(A/2)*2;
+  var total=0;
+  for(var i=0;i<COST_BANDS.length;i++){
+    var st=COST_BANDS[i][0], co=COST_BANDS[i][1];
+    var nxt=(i+1<COST_BANDS.length)?COST_BANDS[i+1][0]:(A+2);
+    var v0=Math.max(st,2), v1=Math.min(nxt-2,A);
+    if(v1>=v0) total += co*(_Ss(v1/2)-_Ss(v0/2-1));
+  }
+  return total;
+}
+function attrCost(o,t){ return (cumCost(t)-cumCost(o))*1e12; }
 
 /* ================= 核心计算 ================= */
 function byKey(k){for(var i=0;i<state.stats.length;i++)if(state.stats[i].key===k)return state.stats[i];return null;}
@@ -1618,17 +1635,17 @@ function ratioFor(){
   return fallbackRatio();
 }
 function invStatTarget(oldV, wantCost){
-  function S(x){return x*(x+1)*(2*x+1)/6;}
-  var base=1.2e10*S(oldV/2);
-  var need=(wantCost+base)/1.2e10;      /* 需要的 S(目标/2) */
-  if(!(need>0)) return oldV;
-  var y=Math.cbrt(need*3);
-  var lo=0,hi=Math.max(1,y*3);
-  for(var i=0;i<90;i++){
+  /* 由预算反推目标值：二分 C(目标) = C(原值) + wantCost/1e12 */
+  if(!(wantCost>0)) return oldV;
+  var need=cumCost(oldV) + wantCost/1e12;
+  var lo=Math.max(oldV,2), hi=Math.max(oldV+2, 200);
+  var g=0;
+  while(cumCost(hi)<need && g++<80) hi*=1.6;
+  for(var i=0;i<100;i++){
     var mid=(lo+hi)/2;
-    if(S(mid)<need) lo=mid; else hi=mid;
+    if(cumCost(mid)<need) lo=mid; else hi=mid;
   }
-  return Math.round((lo+hi));
+  return Math.round((lo+hi)/2/2)*2;
 }
 /* 给定总神力预算 P，在「经验=攻击×R、加成=攻击×1.25、暴击=攻击、生命不动」下求攻击值 */
 function solveAttackByBudget(P,R){
@@ -1636,10 +1653,10 @@ function solveAttackByBudget(P,R){
   var idx={}; state.stats.forEach(function(x,i){idx[x.key]=i;});
   var E=state.stats[idx.exp], A=state.stats[idx.atk],
       P2=state.stats[idx.phys], C=state.stats[idx.crit], H=state.stats[idx.hp];
-  var lifeCost=1.2e10*(S(H.target/2)-S(H.old/2));
+  var lifeCost=attrCost(H.old,H.target);
   var budget=Math.max(0,P)-lifeCost;
   if(!(budget>0)) return null;
-  function cost(o,t){ return 1.2e10*(S(t/2)-S(o/2)); }
+  function cost(o,t){ return attrCost(o,t); }
   function need(Av){
     return cost(E.old, Av*R) + cost(A.old, Av)
          + cost(P2.old, Av) + cost(C.old, Av);
@@ -1664,7 +1681,7 @@ function compute(){
     var m=1.25;
     /* 物法行输入的是「攻击等价」值（显示时再 ×1.25），成本直接用输入值 */
     var t0=st.target, o0=st.old;
-    return 1.2e10*(S(t0/2)-S(o0/2));
+    return attrCost(o0,t0);
   });
   var total=Math.max(0,costs.reduce(function(a,b){return a+b;},0));
   var targetLevel=Math.round(cbrt(total)),targetPower=Math.pow(targetLevel,3);
@@ -2440,7 +2457,7 @@ function buildThemeChips(){
 /* ================= 角色 ================= */
 function targetLevelOf(stats){
   function S(x){return x*(x+1)*(2*x+1)/6;}
-  var total=stats.reduce(function(a,s){return a+1.2e10*(S(s.target/2)-S(s.old/2));},0);
+  var total=stats.reduce(function(a,s){return a+attrCost(s.old,s.target);},0);
   return Math.round(cbrt(Math.max(0,total)));
 }
 function buildRoles(){
@@ -2830,7 +2847,7 @@ init();
 <script>
 if ('serviceWorker' in navigator && (location.protocol === 'http:' || location.protocol === 'https:')) {
   window.addEventListener('load', function () {
-    navigator.serviceWorker.register('sw.js?v=15.7').then(function (reg) {
+    navigator.serviceWorker.register('sw.js?v=15.8').then(function (reg) {
       reg.update().catch(function () {});
     }).catch(function () {});
   });
