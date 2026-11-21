@@ -2510,11 +2510,23 @@ function openSheet(sheet,mask,open){sheet.classList.toggle('show',open);mask.cla
 
 /* ================= 页签 / 弹层 ================= */
 function initTabs(){
+  var lastMain='overview';                 /* 最近一次的主页签（总览/参数） */
+  function showTab(p){
+    document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('on');});
+    document.querySelectorAll('.panel').forEach(function(pn){pn.classList.remove('on');});
+    var tb=document.querySelector('.tab[data-p="'+p+'"]');
+    if(tb) tb.classList.add('on');
+    var pn=el('p-'+p); if(pn) pn.classList.add('on');
+  }
   el('tabs').addEventListener('click',function(e){
     var b=e.target.closest('.tab');if(!b)return;
-    document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('on');});
-    document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('on');});
-    b.classList.add('on');el('p-'+b.dataset.p).classList.add('on');
+    var p=b.dataset.p;
+    var isActive=b.classList.contains('on');
+    if(isActive && (p==='query'||p==='doc')){   /* 再点一次 = 关闭，回到主页签 */
+      showTab(lastMain); return;
+    }
+    if(p==='overview'||p==='xp') lastMain=p;    /* 记忆主页签 */
+    showTab(p);
   });
 }
 function initSheets(){
