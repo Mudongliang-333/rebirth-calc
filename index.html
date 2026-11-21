@@ -2510,7 +2510,6 @@ function openSheet(sheet,mask,open){sheet.classList.toggle('show',open);mask.cla
 
 /* ================= 页签 / 弹层 ================= */
 function initTabs(){
-  var lastMain='overview';                 /* 最近一次的主页签（总览/参数） */
   function showTab(p){
     document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('on');});
     document.querySelectorAll('.panel').forEach(function(pn){pn.classList.remove('on');});
@@ -2518,14 +2517,14 @@ function initTabs(){
     if(tb) tb.classList.add('on');
     var pn=el('p-'+p); if(pn) pn.classList.add('on');
   }
+  /* 统一规则：总览不可关闭；本行其它标签页（含以后新增的）
+     点击已选中的自己 = 关闭，回到总览 */
   el('tabs').addEventListener('click',function(e){
     var b=e.target.closest('.tab');if(!b)return;
     var p=b.dataset.p;
+    if(!p) return;
     var isActive=b.classList.contains('on');
-    if(isActive && (p==='query'||p==='doc')){   /* 再点一次 = 关闭，回到主页签 */
-      showTab(lastMain); return;
-    }
-    if(p==='overview'||p==='xp') lastMain=p;    /* 记忆主页签 */
+    if(isActive && p!=='overview'){ showTab('overview'); return; }
     showTab(p);
   });
 }
