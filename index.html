@@ -53,6 +53,7 @@ body{min-height:100vh;min-height:100dvh;overflow-x:hidden;-webkit-tap-highlight-
   border-bottom:1px solid var(--line)}
 .top-row{display:flex;align-items:center;justify-content:space-between;position:relative;min-height:34px}
 .top-icons{display:flex;align-items:center;gap:8px;margin-left:auto}
+.top-icons .rolebtn{padding:5px 8px;font-size:11.5px;max-width:96px}
 .brand-mid .mini-col{display:flex;flex-direction:column;align-items:center;gap:1px;justify-content:flex-end}
 .brand-mid{display:flex;align-items:flex-end;gap:7px;white-space:nowrap;margin:0 auto;flex:none;
   align-self:flex-end;padding-bottom:0}
@@ -1050,7 +1051,6 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
 
 <div class="top">
   <div class="top-row">
-    <button class="rolebtn" id="btnRoles" type="button"><span class="nm" id="roleName">切换</span><span class="arw">▾</span></button>
     <div class="t1-col">
       <div class="t1">轮回计算器</div>
       <div class="t1-sub"><span class="beta-tag">BETA</span><span class="badge" id="unitTag">BB</span><span class="badge" id="verTag">v0.15.8</span></div>
@@ -1063,6 +1063,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
       </div>
     </div>
     <div class="top-icons">
+    <button class="rolebtn" id="btnRoles" type="button"><span class="nm" id="roleName">切换</span><span class="arw">▾</span></button>
     <button class="gear" id="btnSettings" type="button" aria-label="设置">
       <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"/></svg>
     </button>
