@@ -2510,21 +2510,33 @@ function openSheet(sheet,mask,open){sheet.classList.toggle('show',open);mask.cla
 
 /* ================= 页签 / 弹层 ================= */
 function initTabs(){
-  function showTab(p){
+  var cur='overview', hist=[];              /* hist = 打开前的界面栈 */
+  function render(p){
     document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('on');});
     document.querySelectorAll('.panel').forEach(function(pn){pn.classList.remove('on');});
     var tb=document.querySelector('.tab[data-p="'+p+'"]');
     if(tb) tb.classList.add('on');
     var pn=el('p-'+p); if(pn) pn.classList.add('on');
   }
+  function showTab(p){                       /* 切换并记录来源 */
+    if(p!==cur){ hist.push(cur); }
+    cur=p; render(p);
+  }
   /* 统一规则：总览不可关闭；本行其它标签页（含以后新增的）
-     点击已选中的自己 = 关闭，回到总览 */
+     点击已选中的自己 = 关闭，回到「打开它之前的界面」 */
   el('tabs').addEventListener('click',function(e){
     var b=e.target.closest('.tab');if(!b)return;
-    var p=b.dataset.p;
-    if(!p) return;
+    var p=b.dataset.p; if(!p) return;
     var isActive=b.classList.contains('on');
-    if(isActive && p!=='overview'){ showTab('overview'); return; }
+    if(isActive && p!=='overview'){
+      var back='overview', g=0;
+      while(hist.length && g++<50){
+        var t=hist.pop();
+        if(t && t!==p){ back=t; break; }
+      }
+      cur=back; render(back);
+      return;
+    }
     showTab(p);
   });
 }
