@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#060b18">
-<title>无限升级 · 轮回计算器 v13.0「誓灭之境」 v15.6</title>
+<title>无限升级 · 轮回计算器 v13.0「誓灭之境」 v15.7</title>
 <link rel="icon" href="icon-192.png">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
@@ -1259,7 +1259,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
     <div class="doc" id="bossList" style="display:none"></div>
     <details><summary>计算说明</summary><div class="doc">
       <h4>等级与神力</h4><p>神力 = (等级/10)³，等级 = 10·∛神力。三次方是核心：等级 +21% ≈ 神力 +78.6%。</p>
-      <h4>属性所需神力（三次曲线）</h4><p>单个属性从「原值」升到「目标」：<code>1.2e10 × ( S(目标/2) − S(原值/2) )</code>，<code>S(x)=x(x+1)(2x+1)/6</code>。目标等级 = 五项成本合计开立方取整 + 1。</p>
+      <h4>属性所需神力（三次曲线）</h4><p>单个属性从「原值」升到「目标」：<code>1.2e10 × ( S(目标/2) − S(原值/2) )</code>，<code>S(x)=x(x+1)(2x+1)/6</code>。目标等级 = 五项成本合计开立方取整。</p>
       <h4>未来 24 小时收益（闭式）</h4><p><code>R = 单位/1000 × 经验收益 × (3.8/4) × 1440 × 倍率</code>；<code>新等级 = (等级^3.8 + R)^(1/3.8)</code>；<code>未来24h = 新等级³ − 等级³</code>。</p>
       <h4>转生后经验修正</h4><p><code>当前经验修正% × (经验目标+100)/(经验原值+100)</code>；基准常数 +100 为线性同乘区。</p>
       <h4>转生判定（计算2.0）</h4><p>转生后收益 ≈ 当前平均 × (1 + 经验增长 + 输出增长/经输比)；<code>未来24h > 转生后收益 → 不推荐转生</code>，否则推荐转生；<b>刚轮回不足 1 天默认不推荐转生</b>，1-2 天仍判不准。</p>
@@ -1594,6 +1594,8 @@ function fmtPlain(v,digits){
 function autoNum(v){if(!isFinite(v))return'—';return Math.abs(v-Math.round(v))<1e-9?fmtPlain(v):fmtPlain(v,2);}
 function pct(x){if(!isFinite(x))return'—';var v=x*100;return(v>0?'+':'')+v.toFixed(2)+'%';}
 function powLabel(v){return'1e'+Math.round(Math.log10(v));}
+function powUnit(){var f=UNIT_MAP[state.unit]||1e24;f=f/1e6;for(var i=0;i<UNITS.length;i++){if(UNITS[i][1]===f)return UNITS[i][0];}return 'AA';}
+function powShort(v){if(!isFinite(v))return'—';var u=powUnit(),f=UNIT_MAP[u];return (v/f).toFixed(2)+' '+u;}
 
 /* ================= 核心计算 ================= */
 function byKey(k){for(var i=0;i<state.stats.length;i++)if(state.stats[i].key===k)return state.stats[i];return null;}
@@ -1655,7 +1657,7 @@ function compute(){
   var level=Math.max(state.curLevel,0),P=Math.pow(level,3);
   var U=UNIT_MAP[state.unit]||1e21,kUnit=U/1000;
   var rate=kUnit*state.expRate*(3.8/4)*1440*state.xMult;
-  var newLevel=Math.floor(Math.pow(Math.pow(level,3.8)+rate,1/3.8));
+  var newLevel=Math.pow(Math.pow(level,3.8)+rate,1/3.8);
   var daily=Math.pow(newLevel,3)-P;
   function S(x){return x*(x+1)*(2*x+1)/6;}
   var costs=state.stats.map(function(st){
@@ -1665,7 +1667,7 @@ function compute(){
     return 1.2e10*(S(t0/2)-S(o0/2));
   });
   var total=Math.max(0,costs.reduce(function(a,b){return a+b;},0));
-  var targetLevel=Math.round(cbrt(total))+1,targetPower=Math.pow(targetLevel,3);
+  var targetLevel=Math.round(cbrt(total)),targetPower=Math.pow(targetLevel,3);
   var pwrProg=(targetPower>0)?Math.min(Math.max(P/targetPower,0),1):0;
   var rebirth=new Date(state.rebirth);
   if(!(rebirth instanceof Date)||isNaN(rebirth.getTime()))rebirth=new Date();
@@ -2060,18 +2062,18 @@ function renderOverview(){
   var deltaMs=Date.now()-r.rebirth.getTime();
   el('rebirthHint').textContent=deltaMs>=0?('距现在 '+fmtElapsed(deltaMs)+' · 修改后立即重算'):('该时间在未来 '+fmtElapsed(-deltaMs));
   el('curLv').textContent=fmtPlain(state.curLevel);
-  el('curPw').textContent='神力 '+shortNum(r.P);
+  el('curPw').textContent='神力 '+powShort(r.P);
   el('tgtLv').textContent=(r.total>0? fmtPlain(r.targetLevel) : '—');
   /* 参数页「目标等级」与总览保持一致：由属性合计神力反推 */
   if(state.mode!=='level' && isFinite(r.targetLevel)&&r.targetLevel>0&&state.xM!==r.targetLevel){
     state.xM=r.targetLevel;
     var _xm=el('xM'); if(_xm&&document.activeElement!==_xm) _xm.value=r.targetLevel;
   }
-  el('tgtPw').textContent='神力 '+shortNum(r.targetPower);
-  if(isFinite(r.avg)){var _a=shortNum(r.avg,3).split(' ');el('avgGain').textContent=_a[0];el('avgGain').style.fontSize='';el('avgGain').style.transform='';el('avgGainU').textContent=(_a[1]||state.unit)+' / 天';}else{el('avgGain').textContent='1.2 小时后显示';el('avgGain').style.fontSize='14px';el('avgGain').style.textAlign='center';el('avgGain').style.transform='translateY(5px)';el('avgGainU').textContent='';}
-  var _d=shortNum(r.daily,3).split(' ');el('dayGain').textContent=_d[0];el('dayGainU').textContent=(_d[1]||state.unit)+' / 天';
-  el('totalPower').textContent=shortNum(r.total);
-  el('totalPowerS').textContent='剩余 '+shortNum(r.remainPower);
+  el('tgtPw').textContent='神力 '+powShort(r.targetPower);
+  if(isFinite(r.avg)){el('avgGain').textContent=(r.avg/UNIT_MAP[powUnit()]).toFixed(2);el('avgGain').style.fontSize='';el('avgGain').style.transform='';el('avgGainU').textContent=powUnit()+' / 天';}else{el('avgGain').textContent='1.2 小时后显示';el('avgGain').style.fontSize='14px';el('avgGain').style.textAlign='center';el('avgGain').style.transform='translateY(5px)';el('avgGainU').textContent='';}
+  el('dayGain').textContent=(r.daily/UNIT_MAP[powUnit()]).toFixed(2);el('dayGainU').textContent=powUnit()+' / 天';
+  el('totalPower').textContent=powShort(r.total);
+  el('totalPowerS').textContent='剩余 '+powShort(r.remainPower);
   state.stats.forEach(function(st,i){
     var g=el('gain'+i),v=r.growth[i];
     g.textContent=isFinite(v)?pct(v):'—';
@@ -2439,7 +2441,7 @@ function buildThemeChips(){
 function targetLevelOf(stats){
   function S(x){return x*(x+1)*(2*x+1)/6;}
   var total=stats.reduce(function(a,s){return a+1.2e10*(S(s.target/2)-S(s.old/2));},0);
-  return Math.round(cbrt(Math.max(0,total)))+1;
+  return Math.round(cbrt(Math.max(0,total)));
 }
 function buildRoles(){
   var _ar=activeRole();
@@ -2792,7 +2794,7 @@ function init(){
     lines.push('目标等级 '+fmtPlain(r.targetLevel)+'（神力 '+shortNum(r.targetPower)+'）');
     lines.push('已用 '+fmtElapsed(Date.now()-r.rebirth.getTime())+' · 预计总用时 '+fmtDur(r.totalDays)+' · 预计完成 '+fmtDate(new Date(r.rebirth.getTime()+r.totalDays*86400000)));
     lines.push('当前平均收益 '+shortNum(r.avg)+'/天 · 未来24小时 '+shortNum(r.daily)+'/天');
-    lines.push('合计所需神力 '+shortNum(r.total)+'（剩余 '+shortNum(r.remainPower)+'）');
+    lines.push('合计所需神力 '+powShort(r.total)+'（剩余 '+powShort(r.remainPower)+'）');
     lines.push('转生后经验修正缩放 ×'+(r.expMult||0).toFixed(4));
     var gs=state.stats.map(function(st,i){return st.name+pct(r.growth[i]);}).join('  ');
     lines.push('属性增长：'+gs);
@@ -2828,7 +2830,7 @@ init();
 <script>
 if ('serviceWorker' in navigator && (location.protocol === 'http:' || location.protocol === 'https:')) {
   window.addEventListener('load', function () {
-    navigator.serviceWorker.register('sw.js?v=15.6').then(function (reg) {
+    navigator.serviceWorker.register('sw.js?v=15.7').then(function (reg) {
       reg.update().catch(function () {});
     }).catch(function () {});
   });
