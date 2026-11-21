@@ -62,8 +62,9 @@ body{min-height:100vh;min-height:100dvh;overflow-x:hidden;-webkit-tap-highlight-
 .brand-logo{height:34px;width:auto;filter:drop-shadow(0 2px 6px rgba(0,0,0,.55))}
 /* 第二行已合并到第一行 */
 .t1-col{display:flex;flex-direction:column;justify-content:flex-end;gap:2px;margin-left:8px;white-space:nowrap}
-.top-row .t1{font-size:11.5px;line-height:1.1;white-space:nowrap}
-.t1-sub{display:flex;align-items:center;gap:4px}
+.top-row .t1{font-size:11.5px;line-height:1.1;white-space:nowrap;display:flex;align-items:center;gap:5px}
+.top-row .t1 .beta-tag{flex:none}
+.t1-sub{display:flex;align-items:center;gap:10px}
 .t1-sub .beta-tag{flex:none;font-size:8px;padding:1px 4px;border-radius:4px}
 .t1-sub .badge{flex:none;font-size:8px;padding:0 4px}
 .brand-side .t2{display:flex;align-items:center;gap:5px;margin-top:3px;letter-spacing:0}
@@ -1055,8 +1056,8 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
 <div class="top">
   <div class="top-row">
     <div class="t1-col">
-      <div class="t1">轮回计算器</div>
-      <div class="t1-sub"><span class="beta-tag">BETA</span><span class="badge" id="unitTag">BB</span><span class="badge" id="verTag">v0.15.8</span></div>
+      <div class="t1">轮回计算器 <span class="beta-tag">BETA</span></div>
+      <div class="t1-sub"><span class="badge" id="unitTag">BB</span><span class="badge" id="verTag">v0.15.8</span></div>
     </div>
     <div class="brand-mid">
       <img class="brand-logo" src="assets/logo_wxsj.webp" alt="无限升级">
