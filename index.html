@@ -2509,7 +2509,17 @@ window.__roleBridge={
 function openSheet(sheet,mask,open){sheet.classList.toggle('show',open);mask.classList.toggle('show',open);}
 
 /* ================= 页签 / 弹层 ================= */
+/* 让标签栏粘在顶栏下边，不留缝隙 */
+function syncStickyTabs(){
+  var top=document.querySelector('.top'), tabs=document.getElementById('tabs');
+  if(!top||!tabs) return;
+  var h=Math.round(top.getBoundingClientRect().height);
+  tabs.style.top=h+'px';
+}
 function initTabs(){
+  syncStickyTabs();
+  window.addEventListener('resize',syncStickyTabs);
+  window.addEventListener('orientationchange',function(){setTimeout(syncStickyTabs,120);});
   var cur='overview', hist=[];              /* hist = 打开前的界面栈 */
   function render(p){
     document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('on');});
