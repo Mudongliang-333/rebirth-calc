@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#060b18">
-<title>无限升级 · 轮回计算器 v13.0「誓灭之境」 v15.8</title>
+<title>无限升级 · 轮回计算器 v13.0「誓灭之境」 v0.15.8</title>
 <link rel="icon" href="icon-192.png">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
@@ -1053,7 +1053,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
     <button class="rolebtn" id="btnRoles" type="button"><span class="nm" id="roleName">切换</span><span class="arw">▾</span></button>
     <div class="t1-col">
       <div class="t1">轮回计算器</div>
-      <div class="t1-sub"><span class="beta-tag">BETA</span><span class="badge" id="unitTag">BB</span></div>
+      <div class="t1-sub"><span class="beta-tag">BETA</span><span class="badge" id="unitTag">BB</span><span class="badge" id="verTag">v0.15.8</span></div>
     </div>
     <div class="brand-mid">
       <img class="brand-logo" src="assets/logo_wxsj.webp" alt="无限升级">
@@ -2847,7 +2847,7 @@ init();
 <script>
 if ('serviceWorker' in navigator && (location.protocol === 'http:' || location.protocol === 'https:')) {
   window.addEventListener('load', function () {
-    navigator.serviceWorker.register('sw.js?v=15.8').then(function (reg) {
+    navigator.serviceWorker.register('sw.js?v=0.15.8').then(function (reg) {
       reg.update().catch(function () {});
     }).catch(function () {});
   });
