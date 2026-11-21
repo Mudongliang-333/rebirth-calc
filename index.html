@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#060b18">
-<title>无限升级 · 轮回计算器 v13.0「誓灭之境」 v0.16.3</title>
+<title>无限升级 · 轮回计算器 v13.0「誓灭之境」 v0.16.4</title>
 <link rel="icon" href="icon-192.png">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
@@ -1075,7 +1075,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
   <div class="top-row">
     <div class="t1-col">
       <div class="t1">轮回计算器</div>
-      <div class="t1-sub"><span class="badge" id="unitTag">BB</span><span class="badge" id="verTag">v0.16.3</span><span class="beta-tag">BETA</span></div>
+      <div class="t1-sub"><span class="badge" id="unitTag">BB</span><span class="badge" id="verTag">v0.16.4</span><span class="beta-tag">BETA</span></div>
     </div>
     <div class="brand-mid">
       <img class="brand-logo" src="assets/logo_wxsj.webp" alt="无限升级">
@@ -1467,7 +1467,7 @@ var UNITS=CONST.UNITS=[['K',1e6],['M',1e9],['B',1e12],['T',1e15],['AA',1e18],['B
 var UNIT_MAP={};UNITS.forEach(function(u){UNIT_MAP[u[0]]=u[1];});
 
 var HOLY=[[1,5],[2,17],[3,37],[4,53],[5,88],[6,118],[7,145],[8,170],[9,194],[10,216],
-[11,238],[12,259],[13,280],[14,299],[15,319],[16,374],[17,427],[18,477],[19,525],[20,572],
+[11,238],[12,269],[13,280],[14,299],[15,319],[16,374],[17,427],[18,477],[19,525],[20,572],
 [21,617],[22,675],[23,731],[24,786],[25,839],[26,891],[27,942],[28,991],[29,1040],[30,1088],
 [31,1135],[32,1181],[33,1227],[34,1272],[35,1765],[36,1849],[37,1934],[38,2021],[39,2110],[40,2200],
 [41,2291],[42,2384],[43,2479],[44,2574],[45,2672],[46,2770],[47,2870],[48,2972],[49,3075],[50,3179],
@@ -2927,7 +2927,7 @@ init();
 <script>
 if ('serviceWorker' in navigator && (location.protocol === 'http:' || location.protocol === 'https:')) {
   window.addEventListener('load', function () {
-    navigator.serviceWorker.register('sw.js?v=0.16.3').then(function (reg) {
+    navigator.serviceWorker.register('sw.js?v=0.16.4').then(function (reg) {
       reg.update().catch(function () {});
     }).catch(function () {});
   });
