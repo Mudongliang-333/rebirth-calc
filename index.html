@@ -50,7 +50,7 @@ body{min-height:100vh;min-height:100dvh;overflow-x:hidden;-webkit-tap-highlight-
   padding:calc(10px + env(safe-area-inset-top)) 14px 0;
   background:rgba(8,10,16,var(--ui-a));
   -webkit-backdrop-filter:blur(18px) saturate(130%);backdrop-filter:blur(18px) saturate(130%);
-  border-bottom:1px solid var(--line)}
+  border-bottom:0}
 .top-row{display:flex;align-items:center;justify-content:space-between;position:relative;min-height:34px}
 .top-icons{display:flex;align-items:center;gap:8px;margin-left:auto}
 .top-icons .rolebtn{width:32px;height:32px;padding:0;max-width:none;display:grid;place-items:center;border-radius:10px}
@@ -94,7 +94,7 @@ body{min-height:100vh;min-height:100dvh;overflow-x:hidden;-webkit-tap-highlight-
 
 /* ===== 页签 ===== */
 .tabs{position:sticky;top:calc(47px + env(safe-area-inset-top));z-index:39;display:flex;gap:4px;padding:8px 12px 6px;overflow-x:auto;scrollbar-width:none;
-  background:rgba(8,10,16,.88);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  background:rgba(8,10,16,var(--ui-a));-webkit-backdrop-filter:blur(18px) saturate(130%);backdrop-filter:blur(18px) saturate(130%);border-bottom:1px solid var(--line)}
 .tabs::-webkit-scrollbar{display:none}
 .tab{flex:0 0 auto;font-size:12px;color:var(--muted);padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.02);cursor:pointer;letter-spacing:.5px;transition:all .18s;white-space:nowrap}
 .tab.on{color:#1a150a;background:linear-gradient(180deg,var(--gold-l),var(--gold-pale));border-color:var(--line2);font-weight:700;box-shadow:0 3px 14px rgba(232,200,97,.25)}
