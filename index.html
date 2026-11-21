@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#060b18">
-<title>无限升级 · 轮回计算器 v13.0「誓灭之境」 v0.16.6</title>
+<title>无限升级 · 轮回计算器 v13.0「誓灭之境」 v0.16.8</title>
 <link rel="icon" href="icon-192.png">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
@@ -64,7 +64,7 @@ body{min-height:100vh;min-height:100dvh;overflow-x:hidden;-webkit-tap-highlight-
 .brand-logo{height:34px;width:auto;filter:drop-shadow(0 2px 6px rgba(0,0,0,.55))}
 /* 第二行已合并到第一行 */
 .t1-col{display:flex;flex-direction:column;justify-content:flex-end;align-items:center;text-align:center;gap:3px;margin-left:8px;white-space:nowrap}
-.top-row .t1{font-size:11.5px;line-height:1.1;white-space:nowrap;display:flex;align-items:center;gap:5px}
+.top-row .t1{font-size:13px;line-height:12.65px;white-space:nowrap;display:flex;align-items:center;gap:5px}
 .top-row .t1 .beta-tag{flex:none;font-size:8px;padding:1px 4px;border-radius:4px;margin-left:0}
 .t1-sub{display:flex;align-items:center;justify-content:center;gap:6px}
 .t1-sub .beta-tag{flex:none;font-size:8px;padding:1px 4px;border-radius:4px}
@@ -75,7 +75,7 @@ body{min-height:100vh;min-height:100dvh;overflow-x:hidden;-webkit-tap-highlight-
 .mini-logo.lsz{height:11px}
 @media (min-width:520px){
   .brand-logo{height:28px}
-  .top-row .t1{font-size:12.5px}
+  .top-row .t1{font-size:15px;line-height:13.75px}
   .mini-logo.l13{height:15px}
   .mini-logo.lsz{height:12.5px}
 }
@@ -231,8 +231,10 @@ select{-webkit-appearance:none;appearance:none;background-image:linear-gradient(
 .boss-row{display:flex;align-items:center;gap:6px;font-size:10px;color:#c9bda4;padding:2px 0}
 .boss-row.ok{color:#9fd6a8}
 .b-mark{width:14px}
-.b-nm{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.b-req{color:#8d7f6a;font-size:9.5px}
+.b-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}
+.b-nm{white-space:normal;line-height:1.35;word-break:break-all;font-size:10px}
+.b-req{display:block;text-align:left;color:#8d7f6a;font-size:9.5px;line-height:1.4}
+.b-req .b-hp{display:block;color:#e8bb5e;font-size:9.5px;line-height:1.4;word-break:break-all}
 .boss-src{margin-top:8px;font-size:11px;color:#e8bb5e;font-weight:700}
 .mini{padding:4px 10px;border-radius:999px;border:1px solid var(--line2);background:rgba(232,200,97,.12);color:var(--gold-soft);font-size:11px;font-weight:600;cursor:pointer;white-space:nowrap;line-height:1.3}
 .mini:active{filter:brightness(1.25)}
@@ -365,8 +367,10 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
 .boss-row{display:flex;align-items:center;gap:6px;font-size:10px;color:#c9bda4;padding:2px 0}
 .boss-row.ok{color:#9fd6a8}
 .b-mark{width:14px}
-.b-nm{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.b-req{color:#8d7f6a;font-size:9.5px}
+.b-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}
+.b-nm{white-space:normal;line-height:1.35;word-break:break-all;font-size:10px}
+.b-req{display:block;text-align:left;color:#8d7f6a;font-size:9.5px;line-height:1.4}
+.b-req .b-hp{display:block;color:#e8bb5e;font-size:9.5px;line-height:1.4;word-break:break-all}
 .boss-src{margin-top:8px;font-size:11px;color:#e8bb5e;font-weight:700}
 .mini{padding:3px 9px;font-size:10.5px}
 
@@ -471,8 +475,10 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
 .boss-row{display:flex;align-items:center;gap:6px;font-size:10px;color:#c9bda4;padding:2px 0}
 .boss-row.ok{color:#9fd6a8}
 .b-mark{width:14px}
-.b-nm{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.b-req{color:#8d7f6a;font-size:9.5px}
+.b-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}
+.b-nm{white-space:normal;line-height:1.35;word-break:break-all;font-size:10px}
+.b-req{display:block;text-align:left;color:#8d7f6a;font-size:9.5px;line-height:1.4}
+.b-req .b-hp{display:block;color:#e8bb5e;font-size:9.5px;line-height:1.4;word-break:break-all}
 .boss-src{margin-top:8px;font-size:11px;color:#e8bb5e;font-weight:700}
 .mini{padding:6px 16px;font-size:12.5px;font-weight:700;line-height:1.35;flex:0 0 auto;border-radius:12px;
   background:transparent!important;color:rgba(232,187,94,.72)!important;border:1px solid rgba(232,187,94,.26)!important;
@@ -785,16 +791,16 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
 .ocr-hint{margin:-2px 0 8px;padding:6px 9px;border-radius:8px;font-size:10px;line-height:1.5;color:#e3d6b6;
   background:rgba(232,187,94,.10);border:1px solid rgba(232,187,94,.28)}
 .ocr-hint b{color:#ffcf6a}
-.ocr-row{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px dashed rgba(255,255,255,.07)}
+.ocr-row{display:flex;align-items:center;gap:6px;padding:5px 0;border-bottom:1px dashed rgba(255,255,255,.07)}
 .ocr-row:last-of-type{border-bottom:0}
 .ocr-row .cb{width:16px;height:16px;flex:0 0 16px;accent-color:#e8bb5e;cursor:pointer}
-.ocr-row .nm{flex:0 0 118px;font-size:11px;color:#efe6d0;letter-spacing:.3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ocr-row .nm{flex:1 1 auto;width:auto;min-width:56px;font-size:11px;color:#efe6d0;letter-spacing:.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ocr-row.ocr-warn{border:1px solid rgba(232,90,72,.65)!important;background:rgba(232,90,72,.10)!important;
   box-shadow:0 0 10px rgba(232,90,72,.28)!important}
 .ocr-row.ocr-warn .nm{color:#ff9b8a!important}
-.ocr-row .val{flex:0 0 23%;width:23%;min-width:0;margin-left:auto;padding:5px 8px;font-size:12.5px;text-align:right;border-radius:7px;
+.ocr-row .val{flex:0 0 110px;width:110px;min-width:0;margin-left:0;padding:5px 7px;font-size:12.5px;text-align:center;border-radius:7px;
   background:rgba(0,0,0,.28);border:1px solid rgba(232,187,94,.28);color:var(--gold-l);font-variant-numeric:tabular-nums}
-.ocr-row .u{flex:0 0 auto;font-size:10.5px;color:#b7ab92}
+.ocr-row .u{flex:0 0 20px;width:20px;text-align:left;overflow:hidden;font-size:10.5px;color:#b7ab92}
 #ocrModal{width:min(92vw,382px)!important}
 .ocr-note{font-size:10.5px;color:#e0a35a;padding:6px 2px 2px;border-top:1px dashed rgba(255,255,255,.08);margin-top:4px}
 #rbModal{background-color:#1a1128}
@@ -806,104 +812,104 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
 .ocr-acts .btn{flex:0 0 auto;min-width:52%;padding:9px 16px;font-size:12px}
 
 /* ===== BOSS 推荐区（三块石板：门槛表 / 提示卡片 / 当前属性） ===== */
-#bossPanel .bxplate{display:flex;flex-direction:column;border:12px solid transparent;
+.bxscope .bxplate{display:flex;flex-direction:column;border:12px solid transparent;
   border-image:url("assets/frame_stone.webp") 90 / 12px stretch;background:rgba(10,8,18,.42);
   padding:7px 11px 8px;margin:0 0 6px}
-#bossPanel .bxcap{display:inline-block;align-self:flex-start;margin:-8px 0 7px -11px;padding:3px 11px 2px;
+.bxscope .bxcap{display:inline-block;align-self:flex-start;margin:-8px 0 7px -11px;padding:3px 11px 2px;
   border:1px solid rgba(232,187,94,.5);border-top:0;border-left:0;border-radius:0 0 9px 0;
   background:rgba(232,187,94,.16);font-size:12px;letter-spacing:1px;color:#f3d27a;font-weight:700}
-#bossPanel .bxgrp{display:flex;align-items:center;gap:6px;font-size:15px;font-weight:700;
+.bxscope .bxgrp{display:flex;align-items:center;gap:6px;font-size:15px;font-weight:700;
   color:#e8bb5e;padding:2px 0;cursor:pointer;user-select:none}
-#bossPanel .bxgrp.done{color:#5fd0e6}
-#bossPanel .bxgrp .caret{width:12px;display:inline-block}
-#bossPanel .bxgrp .cnt{margin-left:auto;font-size:10px;color:#8d7f6a;font-weight:400}
-#bossPanel .bxbody{display:none}
-#bossPanel .bxrow{display:flex;align-items:center;gap:6px;font-size:14px;color:#c9bda4;
+.bxscope .bxgrp.done{color:#5fd0e6}
+.bxscope .bxgrp .caret{width:12px;display:inline-block}
+.bxscope .bxgrp .cnt{margin-left:auto;font-size:10px;color:#8d7f6a;font-weight:400}
+.bxscope .bxbody{display:none}
+.bxscope .bxrow{display:flex;align-items:center;gap:6px;font-size:14px;color:#c9bda4;
   padding:4px 0;border-bottom:1px dashed rgba(232,187,94,.12)}
-#bossPanel .bxrow.ok{color:#9fd6a8}
-#bossPanel .bmark{width:13px;font-size:9px;flex:none}
-#bossPanel .bnm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-#bossPanel .breq{font-size:12px;color:#8d7f6a;flex:none}
-#bossPanel .bxhd{font-size:11.5px;color:#e8bb5e;font-weight:700;letter-spacing:.4px}
-#bossPanel .bxname{font-size:15px;color:#f3e8cf;font-weight:800;margin:5px 0 7px;line-height:1.3}
-#bossPanel .reqgrid{display:grid;grid-template-columns:1fr 1fr;gap:6px 2px}
-#bossPanel .bxcell{display:grid;grid-template-columns:70px 1fr;align-items:baseline;white-space:nowrap}
-#bossPanel .bxlb{font-size:13px;color:#c9bda4;text-align:right;padding-right:7px}
-#bossPanel .bxvl{font-size:13px;font-weight:700;color:#e9dfc8;font-variant-numeric:tabular-nums}
-#bossPanel .bxvl.bad{color:#e05548}
-#bossPanel .bxlim{font-size:13px;color:#5fd0e6;font-weight:700;margin-top:7px;letter-spacing:.3px}
-#bossPanel .bxnext{font-size:13px;color:#9fd6a8;margin-top:7px;line-height:1.45}
-#bossPanel .bxbar{display:flex;align-items:center;gap:7px;margin:6px 0}
-#bossPanel .bxdot{width:7px;height:7px;border-radius:50%;flex:none}
-#bossPanel .bxflab{font-size:12px;color:#b7a986;width:28px;flex:none}
-#bossPanel .bxtrack{position:relative;flex:1;height:8px;border-radius:4px;background:rgba(255,255,255,.07);overflow:hidden}
-#bossPanel .bxfill{position:absolute;left:0;top:0;bottom:0;border-radius:4px}
-#bossPanel .bxshine{position:absolute;top:0;bottom:0;width:55%;opacity:0;
+.bxscope .bxrow.ok{color:#9fd6a8}
+.bxscope .bmark{width:13px;font-size:9px;flex:none}
+.bxscope .bnm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bxscope .breq{font-size:12px;color:#8d7f6a;flex:none}
+.bxscope .bxhd{font-size:11.5px;color:#e8bb5e;font-weight:700;letter-spacing:.4px}
+.bxscope .bxname{font-size:15px;color:#f3e8cf;font-weight:800;margin:5px 0 7px;line-height:1.3}
+.bxscope .reqgrid{display:grid;grid-template-columns:1fr 1fr;gap:6px 2px}
+.bxscope .bxcell{display:grid;grid-template-columns:70px 1fr;align-items:baseline;white-space:nowrap}
+.bxscope .bxlb{font-size:13px;color:#c9bda4;text-align:right;padding-right:7px}
+.bxscope .bxvl{font-size:13px;font-weight:700;color:#e9dfc8;font-variant-numeric:tabular-nums}
+.bxscope .bxvl.bad{color:#e05548}
+.bxscope .bxlim{font-size:13px;color:#5fd0e6;font-weight:700;margin-top:7px;letter-spacing:.3px}
+.bxscope .bxnext{font-size:13px;color:#9fd6a8;margin-top:7px;line-height:1.45}
+.bxscope .bxbar{display:flex;align-items:center;gap:7px;margin:6px 0}
+.bxscope .bxdot{width:7px;height:7px;border-radius:50%;flex:none}
+.bxscope .bxflab{font-size:12px;color:#b7a986;width:28px;flex:none}
+.bxscope .bxtrack{position:relative;flex:1;height:8px;border-radius:4px;background:rgba(255,255,255,.07);overflow:hidden}
+.bxscope .bxfill{position:absolute;left:0;top:0;bottom:0;border-radius:4px}
+.bxscope .bxshine{position:absolute;top:0;bottom:0;width:55%;opacity:0;
   background:linear-gradient(90deg,transparent,rgba(255,255,255,.75),transparent);transform:translateX(-130%)}
-#bossPanel .bxrise{position:absolute;inset:0;opacity:0;
+.bxscope .bxrise{position:absolute;inset:0;opacity:0;
   background:linear-gradient(0deg,rgba(255,255,255,.4),rgba(255,255,255,0) 65%)}
-#bossPanel .bxtrk.on .bxshine{opacity:1;animation:bxsweep 2s linear forwards}
-#bossPanel .bxtrk.on .bxrise{opacity:1;animation:bxrise 2s ease-in-out 1}
-#bossPanel .bxtrk.hit .bxfil{animation:bxhit 1s ease-out 1}
+.bxscope .bxtrk.on .bxshine{opacity:1;animation:bxsweep 2s linear forwards}
+.bxscope .bxtrk.on .bxrise{opacity:1;animation:bxrise 2s ease-in-out 1}
+.bxscope .bxtrk.hit .bxfil{animation:bxhit 1s ease-out 1}
 @keyframes bxsweep{0%{transform:translateX(-130%)}100%{transform:translateX(300%)}}
 @keyframes bxrise{0%{opacity:.10;transform:translateY(4px)}50%{opacity:.55;transform:translateY(-2px)}100%{opacity:.10;transform:translateY(4px)}}
 @keyframes bxhit{0%,100%{box-shadow:0 0 6px var(--c);filter:brightness(1)}
   50%{box-shadow:0 0 18px var(--c),0 0 30px -6px var(--c);filter:brightness(1.35)}}
-#bossPanel .bxval{font-size:12px;font-weight:700;color:#e9dfc8;width:56px;text-align:right;flex:none;font-variant-numeric:tabular-nums}
+.bxscope .bxval{font-size:12px;font-weight:700;color:#e9dfc8;width:56px;text-align:right;flex:none;font-variant-numeric:tabular-nums}
 
 /* 蒙版 + 模拟属性滑块 */
-#bossPanel .bxplate{background:rgba(9,7,16,.88)!important;backdrop-filter:blur(2px)}
-#bossPanel .bxsld{margin:6px 0}
-#bossPanel .bxsld .bxlab{display:flex;align-items:center;gap:6px;font-size:12px;color:#b7a986;margin-bottom:3px}
-#bossPanel .bxdot2{width:7px;height:7px;border-radius:50%;flex:none}
-#bossPanel .bxnum{margin-left:auto;width:68px;height:23px;padding:0 2px;text-align:center;border-radius:6px;
+.bxscope .bxplate{background:rgba(9,7,16,.88)!important;backdrop-filter:blur(2px)}
+.bxscope .bxsld{margin:6px 0}
+.bxscope .bxsld .bxlab{display:flex;align-items:center;gap:6px;font-size:12px;color:#b7a986;margin-bottom:3px}
+.bxscope .bxdot2{width:7px;height:7px;border-radius:50%;flex:none}
+.bxscope .bxnum{margin-left:auto;width:68px;height:23px;padding:0 2px;text-align:center;border-radius:6px;
   background:rgba(232,187,94,.08);border:1px solid rgba(232,187,94,.22);color:#f3e8cf;
   font:800 12.5px/21px -apple-system,"PingFang SC",sans-serif;letter-spacing:.3px;outline:none}
-#bossPanel .bxnum:focus{border-color:#e8bb5e;background:rgba(232,187,94,.14)}
-#bossPanel .bxtrk{position:relative;height:8px;border-radius:4px;background:rgba(255,255,255,.07);margin-top:2px}
-#bossPanel .bxfil{position:absolute;left:0;top:0;bottom:0;border-radius:4px;overflow:hidden}
-#bossPanel .bxsld input[type=range]{-webkit-appearance:none;appearance:none;position:absolute;left:0;top:0;
+.bxscope .bxnum:focus{border-color:#e8bb5e;background:rgba(232,187,94,.14)}
+.bxscope .bxtrk{position:relative;height:8px;border-radius:4px;background:rgba(255,255,255,.07);margin-top:2px}
+.bxscope .bxfil{position:absolute;left:0;top:0;bottom:0;border-radius:4px;overflow:hidden}
+.bxscope .bxsld input[type=range]{-webkit-appearance:none;appearance:none;position:absolute;left:0;top:0;
   width:100%;height:8px;margin:0;padding:0;border:0;background:transparent;outline:none;box-shadow:none}
-#bossPanel .bxsld input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:15px;height:15px;
+.bxscope .bxsld input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:15px;height:15px;
   margin-top:-3.5px;border-radius:50%;background:var(--c);box-shadow:0 0 10px var(--c);
   border:2px solid rgba(0,0,0,.35);cursor:pointer;box-sizing:border-box}
-#bossPanel .bxsld input[type=range]::-webkit-slider-runnable-track{
+.bxscope .bxsld input[type=range]::-webkit-slider-runnable-track{
   background:transparent!important;height:8px!important;border:0!important;
   border-radius:0!important;box-shadow:none!important}
-#bossPanel .bxsld input[type=range]::-moz-range-track{
+.bxscope .bxsld input[type=range]::-moz-range-track{
   background:transparent!important;height:8px!important;border:0!important}
-#bossPanel .bxsld input[type=range]::-moz-range-thumb{margin-top:0!important}
-#bossPanel .bxsld input[type=range]::-moz-range-thumb{width:13px;height:13px;border-radius:50%;background:var(--c);
+.bxscope .bxsld input[type=range]::-moz-range-thumb{margin-top:0!important}
+.bxscope .bxsld input[type=range]::-moz-range-thumb{width:13px;height:13px;border-radius:50%;background:var(--c);
   box-shadow:0 0 10px var(--c);border:2px solid rgba(0,0,0,.35);cursor:pointer}
-#bossPanel .bxreset{margin-top:8px;width:100%;padding:6px;border-radius:8px;cursor:pointer;
+.bxscope .bxreset{margin-top:8px;width:100%;padding:6px;border-radius:8px;cursor:pointer;
   background:rgba(232,187,94,.12);border:1px solid rgba(232,187,94,.3);color:#e8bb5e;font-size:12px;font-weight:700}
 
 /* ====== 与单页面设计稿对齐（最终覆盖） ====== */
-#bossPanel .bxplate{border-width:12px!important;border-image:url("assets/frame_stone.webp") 90 / 12px stretch!important;
+.bxscope .bxplate{border-width:12px!important;border-image:url("assets/frame_stone.webp") 90 / 12px stretch!important;
   padding:8px 11px 8px!important;margin:0 0 6px!important;background:rgba(10,8,18,.72)!important;
   backdrop-filter:blur(2px)}
-#bossPanel .bxcap{font-size:13.5px!important;padding:3px 11px 2px!important;margin:-8px 0 6px -11px!important}
-#bossPanel .bxgrp{font-size:15px!important;padding:1px 0!important;margin:0!important}
-#bossPanel .bxgrp .cnt{font-size:10px!important}
-#bossPanel .bxrow{font-size:17px!important;padding:4px 0!important}
-#bossPanel .bxrow .bnm{font-size:17px!important}
-#bossPanel .bxrow .breq{font-size:13px!important}
-#bossPanel .bmark{font-size:9px!important;width:13px!important}
-#bossPanel .bxhd{font-size:11.5px!important}
-#bossPanel .bxname{font-size:15px!important;font-weight:800!important;color:#fff!important}
-#bossPanel .bxcell{grid-template-columns:78px 1fr!important}
-#bossPanel .bxlb{font-size:15px!important;color:#c9bda4!important}
-#bossPanel .bxvl{font-size:15px!important;color:#e9dfc8!important;font-weight:700!important}
-#bossPanel .bxlim{font-size:15px!important;color:#5fd0e6!important;margin-top:7px!important}
-#bossPanel .bxnext{font-size:15px!important;color:#9fd6a8!important;margin-top:7px!important}
-#bossPanel .bxlab{font-size:11px!important;color:#b7a986!important}
-#bossPanel .bxsld{margin:8px 0!important}
-#bossPanel .bxnum{width:70px!important;height:24px!important;font-size:13px!important;line-height:22px!important}
-#bossPanel .bxtrk{height:8px!important;border-radius:4px!important}
-#bossPanel .bxcaprow{display:flex;align-items:center;gap:10px;align-self:flex-start;
+.bxscope .bxcap{font-size:13.5px!important;padding:3px 11px 2px!important;margin:-8px 0 6px -11px!important}
+.bxscope .bxgrp{font-size:15px!important;padding:1px 0!important;margin:0!important}
+.bxscope .bxgrp .cnt{font-size:10px!important}
+.bxscope .bxrow{font-size:17px!important;padding:4px 0!important}
+.bxscope .bxrow .bnm{font-size:17px!important}
+.bxscope .bxrow .breq{font-size:13px!important}
+.bxscope .bmark{font-size:9px!important;width:13px!important}
+.bxscope .bxhd{font-size:11.5px!important}
+.bxscope .bxname{font-size:15px!important;font-weight:800!important;color:#fff!important}
+.bxscope .bxcell{grid-template-columns:78px 1fr!important}
+.bxscope .bxlb{font-size:15px!important;color:#c9bda4!important}
+.bxscope .bxvl{font-size:15px!important;color:#e9dfc8!important;font-weight:700!important}
+.bxscope .bxlim{font-size:15px!important;color:#5fd0e6!important;margin-top:7px!important}
+.bxscope .bxnext{font-size:15px!important;color:#9fd6a8!important;margin-top:7px!important}
+.bxscope .bxlab{font-size:11px!important;color:#b7a986!important}
+.bxscope .bxsld{margin:8px 0!important}
+.bxscope .bxnum{width:70px!important;height:24px!important;font-size:13px!important;line-height:22px!important}
+.bxscope .bxtrk{height:8px!important;border-radius:4px!important}
+.bxscope .bxcaprow{display:flex;align-items:center;gap:10px;align-self:flex-start;
   margin:-8px 0 6px -11px;flex-wrap:wrap}
-#bossPanel .bxcaprow .bxcap{margin:0;align-self:auto}
-#bossPanel .bxcaprow .bxhd{font-size:15px!important;font-weight:700;letter-spacing:.4px}
+.bxscope .bxcaprow .bxcap{margin:0;align-self:auto}
+.bxscope .bxcaprow .bxhd{font-size:15px!important;font-weight:700;letter-spacing:.4px}
 #p-query .sec:after{content:"";order:2;flex:1;height:1px;margin:0 8px;
   background:linear-gradient(90deg,var(--line2),transparent)}
 #p-query .sec .bxfoot{order:3;margin-left:0;padding:3px 10px;border-radius:999px;white-space:nowrap;
@@ -912,15 +918,15 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
   border:1px solid rgba(232,187,94,.45);
   text-shadow:0 0 8px rgba(232,187,94,.5)}
 #p-query .sec .bxfoot b{color:#ffe9b0;font-weight:800;font-size:1.5em;line-height:1;vertical-align:-.06em}
-#bossPanel{font-size:14px;line-height:21px}
-#bossPanel .bxsld{margin:3px 0!important}
-#bossPanel .bxlab{margin-bottom:3px!important}
-#bossPanel .bxreset{display:block;margin:4px auto 0!important;padding:2px 8px!important;
+.bxscope{font-size:14px;line-height:21px}
+.bxscope .bxsld{margin:3px 0!important}
+.bxscope .bxlab{margin-bottom:3px!important}
+.bxscope .bxreset{display:block;margin:4px auto 0!important;padding:2px 8px!important;
   background:none!important;border:0!important;color:#8d7f6a!important;font-size:11px!important;
   text-decoration:underline;cursor:pointer;width:auto!important}
-#bossPanel .bxgrp{padding:2px 0!important}
-#bossPanel .bxwalker{position:relative;height:30px;margin-top:4px;margin-bottom:-10px;overflow:hidden}
-#bossPanel .bxwalker img{position:absolute;left:8px;bottom:0;width:26px;height:26px;image-rendering:pixelated;
+.bxscope .bxgrp{padding:2px 0!important}
+.bxscope .bxwalker{position:relative;height:30px;margin-top:4px;margin-bottom:-10px;overflow:hidden}
+.bxscope .bxwalker img{position:absolute;left:8px;bottom:0;width:26px;height:26px;image-rendering:pixelated;
   animation:bxwalk 17.5s linear infinite, bxhop .46s steps(2,end) infinite alternate;
   filter:drop-shadow(0 4px 6px rgba(0,0,0,.6))}
 @keyframes bxwalk{0%{left:-30px}100%{left:100%}}
@@ -948,26 +954,26 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
 #p-query .qsec>.sec:first-child{margin-top:2px}
 
 /* ===== 数据查询 · BOSS 子页：单屏紧凑 ===== */
-#p-query #bossPanel .bxplate{border-width:10px!important;
+#p-query .bxscope .bxplate{border-width:10px!important;
   border-image:url("assets/frame_stone.webp") 90 / 10px stretch!important;
   padding:6px 9px 6px!important;margin:0 0 5px!important}
-#p-query #bossPanel .bxcap{font-size:12px!important;padding:2px 10px 1px!important;margin:-6px 0 5px -9px!important}
-#p-query #bossPanel .bxgrp{font-size:14px!important;padding:0!important}
-#p-query #bossPanel .bxrow{font-size:15px!important;padding:2px 0!important}
-#p-query #bossPanel .bxrow .bnm{font-size:15px!important}
-#p-query #bossPanel .bxrow .breq{font-size:12px!important}
-#p-query #bossPanel .bxhd{font-size:13px!important}
-#p-query #bossPanel .bxname{font-size:14px!important;margin:3px 0 5px!important}
-#p-query #bossPanel .bxcell{grid-template-columns:70px 1fr!important}
-#p-query #bossPanel .bxlb,#p-query #bossPanel .bxvl{font-size:13px!important}
-#p-query #bossPanel .bxlim,#p-query #bossPanel .bxnext{font-size:13px!important;margin-top:4px!important}
-#p-query #bossPanel .reqgrid{gap:4px 2px!important}
-#p-query #bossPanel .bxsld{margin:2px 0!important}
-#p-query #bossPanel .bxlab{font-size:10.5px!important;margin-bottom:2px!important}
-#p-query #bossPanel .bxtrk{height:6px!important}
-#p-query #bossPanel .bxnum{height:22px!important;line-height:20px!important;width:64px!important;font-size:12px!important}
-#p-query #bossPanel .bxwalker{height:20px!important;margin-top:2px!important;margin-bottom:-6px!important}
-#p-query #bossPanel .bxwalker img{width:20px!important;height:20px!important}
+#p-query .bxscope .bxcap{font-size:12px!important;padding:2px 10px 1px!important;margin:-6px 0 5px -9px!important}
+#p-query .bxscope .bxgrp{font-size:14px!important;padding:0!important}
+#p-query .bxscope .bxrow{font-size:15px!important;padding:2px 0!important}
+#p-query .bxscope .bxrow .bnm{font-size:15px!important}
+#p-query .bxscope .bxrow .breq{font-size:12px!important}
+#p-query .bxscope .bxhd{font-size:13px!important}
+#p-query .bxscope .bxname{font-size:14px!important;margin:3px 0 5px!important}
+#p-query .bxscope .bxcell{grid-template-columns:70px 1fr!important}
+#p-query .bxscope .bxlb,#p-query .bxscope .bxvl{font-size:13px!important}
+#p-query .bxscope .bxlim,#p-query .bxscope .bxnext{font-size:13px!important;margin-top:4px!important}
+#p-query .bxscope .reqgrid{gap:4px 2px!important}
+#p-query .bxscope .bxsld{margin:2px 0!important}
+#p-query .bxscope .bxlab{font-size:10.5px!important;margin-bottom:2px!important}
+#p-query .bxscope .bxtrk{height:6px!important}
+#p-query .bxscope .bxnum{height:22px!important;line-height:20px!important;width:64px!important;font-size:12px!important}
+#p-query .bxscope .bxwalker{height:20px!important;margin-top:2px!important;margin-bottom:-6px!important}
+#p-query .bxscope .bxwalker img{width:20px!important;height:20px!important}
 #p-query .qsec>*:first-child{margin-top:0}
 
 /* ===== 模式说明弹窗：石板边框 + 淡紫背景 ===== */
@@ -1008,7 +1014,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
 /* 窄屏适配：头部元素等比缩小，避免溢出 */
 @media (max-width:430px){
   .top-row{gap:4px}
-  .top-row .t1{font-size:9.5px}
+  .top-row .t1{font-size:11.5px;line-height:10.45px}
   .t1-col{margin-left:4px}
   .t1-sub .beta-tag{font-size:4.5px;padding:0 2px;border-radius:3px}
   .top-row .t1 .beta-tag{font-size:4.5px;padding:0 2px;border-radius:3px;letter-spacing:0}
@@ -1057,9 +1063,9 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
 }
 
 /* BOSS 子页：胶囊行与内边距对齐（避免外溢） */
-#p-query #bossPanel .bxcaprow{margin:-15px 0 6px -18px!important;max-width:100%}
-#p-query #bossPanel .bxplate>.bxcap{margin:-15px 0 6px -18px!important}
-#p-query #bossPanel .bxcaprow .bxcap{margin:0!important}
+#p-query .bxscope .bxcaprow{margin:-15px 0 6px -18px!important;max-width:100%}
+#p-query .bxscope .bxplate>.bxcap{margin:-15px 0 6px -18px!important}
+#p-query .bxscope .bxcaprow .bxcap{margin:0!important}
 
 /* ===== 游戏攻略介绍（作用域 #sp-guide，避免污染主样式） ===== */
 #sp-guide{
@@ -1133,6 +1139,15 @@ table{width:100%;border-collapse:collapse;font-size:11.5px;margin-top:6px}
 #sp-guide{scroll-behavior:smooth}
 #sp-guide .blk{display:none}
 #sp-guide .blk.on{display:block}
+/* 资料库搜索栏 */
+#sp-guide .libsearch{margin-left:auto;width:110px;min-width:110px;max-width:110px;height:24px;
+  font-size:10.5px;letter-spacing:0;padding:0 9px;border-radius:999px;outline:none;
+  border:1px solid rgba(232,187,94,.35);background:rgba(255,255,255,.05);color:#f0e7bd;
+  font-family:inherit;font-weight:400;-webkit-appearance:none;appearance:none}
+#sp-guide .libsearch::placeholder{color:#8a8070;font-size:10px}
+#sp-guide .libsearch:focus{border-color:rgba(232,187,94,.7);background:rgba(232,187,94,.10)}
+#sp-guide .libsearch::-webkit-search-cancel-button{-webkit-appearance:none}
+#sp-guide .libsearchn{font-size:9.5px;letter-spacing:0;color:#8a8070;font-weight:400;flex:0 0 auto}
 #sp-guide .subsec{margin:16px 2px 8px;padding:6px 10px;border-radius:9px;font-size:11px;font-weight:700;letter-spacing:1.5px;
   color:var(--gold-l);border:1px solid rgba(232,187,94,.28);background:rgba(232,187,94,.08)}
 #sp-guide .terms{display:flex;flex-wrap:wrap;gap:6px}
@@ -1221,6 +1236,18 @@ table{width:100%;border-collapse:collapse;font-size:11.5px;margin-top:6px}
 #sp-guide .gbody th{white-space:nowrap}
 #sp-guide .gbody td:first-child{white-space:nowrap}
 
+/* ===== 资料库：竖屏完整显示（表格自适应换行，所有列都能看到） ===== */
+#sp-guide table{width:100%;table-layout:auto}
+#sp-guide .gbody th,#sp-guide .gbody td{white-space:normal!important;word-break:break-word;overflow-wrap:anywhere;vertical-align:top}
+#sp-guide .gbody{overflow-wrap:anywhere}
+#sp-guide .gbody .note,#sp-guide .gbody li,#sp-guide .gbody p{overflow-wrap:anywhere}
+@media (max-width:430px){
+  #sp-guide th,#sp-guide td{padding:4px 4px;font-size:10px;line-height:1.45}
+  #sp-guide table{font-size:10px}
+  #sp-guide details table{padding:0 4px 6px}
+  #sp-guide .gbody .tocitem{font-size:10px;padding:3px 6px}
+}
+
 /* ===== 来源胶囊 · 固定模板（标准化）=====
    用法：<span class="bxfoot">数据来源：<b>名字A　名字B</b></span>
    前缀可选：数据来源 / 数据整理 / 资料来源（样式相同）
@@ -1307,12 +1334,24 @@ table{width:100%;border-collapse:collapse;font-size:11.5px;margin-top:6px}
   background:rgba(232,187,94,.05);border:1px dashed rgba(232,187,94,.18);letter-spacing:.1px}
 #sp-str .cout b{color:#ffe9b0;font-size:12.5px;font-weight:800;letter-spacing:.2px}
 #sp-str .cout .k{color:#8a8070}
+/* 撰写转换计算器 */
+#sp-str .crow select{flex:1;min-width:0;height:30px;background:rgba(255,255,255,.045);
+  border:1px solid rgba(232,187,94,.22);border-radius:7px;color:#f0e7bd;font-size:12px;padding:0 6px;outline:none}
+#sp-str .cwsec{font-size:10.5px;color:#e8bb5e;font-weight:700;margin:7px 0 3px;letter-spacing:.2px}
+#sp-str .cwtable{display:flex;flex-direction:column;gap:1px;margin:2px 0 2px}
+#sp-str .cwr{display:grid;grid-template-columns:38px 1fr 1fr 1fr;gap:4px;font-size:10.5px;color:#cfc4a8;
+  padding:2px 4px;border-radius:4px;font-variant-numeric:tabular-nums}
+#sp-str .cwr span:nth-child(n+2){text-align:right}
+#sp-str .cwr.cwh{color:#8a8070;font-size:10px;border-bottom:1px solid rgba(232,187,94,.15)}
+#sp-str .cwr.cwbest{background:rgba(232,187,94,.14);color:#ffe9b0;font-weight:700}
+#sp-str .cwsum{font-size:10.5px;color:#cfc4a8;line-height:1.7;margin-top:4px}
+#sp-str .cwsum b{color:#ffe9b0;font-size:12px;font-weight:800}
 
 #sp-str .strgrid{display:grid;grid-template-columns:1fr;gap:0}
 #sp-str .strgrid>.scard{margin-top:9px}
 #sp-str .strgrid>.scard:first-child{margin-top:2px}
 @media (min-width:640px){
-  #sp-str .strgrid{grid-template-columns:1fr 1fr;gap:10px;align-items:start}
+  #sp-str .strgrid{grid-template-columns:1fr;gap:10px;align-items:start}
   #sp-str .strgrid>.scard{margin-top:2px}
 }
 
@@ -1368,22 +1407,41 @@ table{width:100%;border-collapse:collapse;font-size:11.5px;margin-top:6px}
 #pdCard .pdt .hint{font-size:9.5px;color:#8f8674;letter-spacing:0;font-weight:400}
 
 /* BOSS 页：简单推荐一行 */
-#bossPanel .bxrec{margin-top:7px;padding:6px 9px;border-radius:8px;font-size:13px;line-height:1.6;
+.bxscope .bxrec{margin-top:7px;padding:6px 9px;border-radius:8px;font-size:13px;line-height:1.6;
   color:#e9dfc8;background:rgba(232,187,94,.08);border:1px solid rgba(232,187,94,.22)}
-#bossPanel .bxrec b{color:#ffe9b0}
+.bxscope .bxrec b{color:#ffe9b0}
 
 /* BOSS 页：血量显示 */
-#bossPanel .bxhp{margin-top:4px;font-size:13px;color:#ffd479;letter-spacing:.3px}
-#bossPanel .breq{font-size:11px!important;line-height:1.5}
+.bxscope .bxhp{margin-top:4px;font-size:13px;color:#ffd479;letter-spacing:.3px}
+.bxscope .breq{font-size:11px!important;line-height:1.5}
 
 /* BOSS 页：13.0 血量板块 */
-#bossPanel .bx13{display:flex;flex-direction:column;gap:2px}
-#bossPanel .bx13row{display:flex;align-items:baseline;gap:7px;font-size:12px;line-height:1.7;
+.bxscope .bx13{display:flex;flex-direction:column;gap:2px}
+.bxscope .bx13row{display:flex;align-items:baseline;gap:7px;font-size:12px;line-height:1.7;
   padding:3px 2px;border-bottom:1px solid rgba(232,187,94,.08)}
-#bossPanel .bx13row .k{flex:0 0 22px;color:#8d7f6a;font-size:10.5px;text-align:right}
-#bossPanel .bx13row .nm{flex:1 1 auto;color:#e9dfc8;min-width:0}
-#bossPanel .bx13row .hp{flex:0 0 auto;color:#ffd479;font-weight:700;font-size:11.5px;text-align:right}
-#bossPanel .bx13tip{margin-top:6px;font-size:10px;line-height:1.6;color:#8d7f6a}
+.bxscope .bx13row .k{flex:0 0 22px;color:#8d7f6a;font-size:10.5px;text-align:right}
+.bxscope .bx13row .nm{flex:1 1 auto;color:#e9dfc8;min-width:0}
+.bxscope .bx13row .hp{flex:0 0 auto;color:#ffd479;font-weight:700;font-size:11.5px;text-align:right}
+.bxscope .bx13row.ok .nm,.bxscope .bx13row.ok .hp{color:#5fd0e6!important}
+.bxscope .bx13row.ok{background:rgba(95,208,230,.07);border-radius:5px}
+.bxscope .bxtags{display:inline-flex;gap:3px;margin-left:5px;vertical-align:middle}
+.bxscope .bxsec{display:flex;align-items:center;gap:6px;font-size:10.5px;font-weight:700;color:#8d7f6a;margin:8px 0 3px;letter-spacing:.4px}
+.bxscope .bxsec:before{content:'';width:3px;height:10px;border-radius:2px;background:rgba(232,187,94,.55)}
+.bxscope .bxseccnt{font-weight:400}
+.bxscope .bxtag{font-size:9px;line-height:1.5;padding:0 5px;border-radius:999px;border:1px solid rgba(232,187,94,.45);background:rgba(232,187,94,.14);color:#f3d27a;font-weight:600}
+.bxscope .bx13tip{margin-top:6px;font-size:10px;line-height:1.6;color:#8d7f6a}
+.bxscope .bx13req{font-size:10.5px;line-height:1.5;color:#8d7f6a;text-align:left;padding:0 2px 4px;margin-top:-2px}
+.bxscope .bx13req b{color:#e8bb5e;font-weight:600}
+.bxstabs{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 8px}
+.bxstab{padding:5px 11px;border-radius:999px;border:1px solid rgba(232,187,94,.35);background:rgba(232,187,94,.08);color:#c9bda4;font-size:12px;font-weight:600;cursor:pointer}
+.bxstab.on{background:rgba(232,187,94,.24);border-color:rgba(232,187,94,.75);color:#f3d27a}
+.bxsp{display:flex;flex-direction:column;gap:6px}
+.bxscope .bxsub{color:#8d7f6a;font-size:10.5px}
+
+/* ===== 效果关闭模式（fx-off）===== */
+html.fx-off *,html.fx-off *::before,html.fx-off *::after{
+  animation:none!important;transition:none!important}
+html.fx-off .block-layer img.blk{will-change:auto}
 </style>
 </head>
 <body>
@@ -1399,7 +1457,7 @@ table{width:100%;border-collapse:collapse;font-size:11.5px;margin-top:6px}
   <div class="top-row">
     <div class="t1-col">
       <div class="t1">轮回计算器</div>
-      <div class="t1-sub"><span class="badge" id="unitTag">BB</span><span class="badge" id="verTag">v0.16.6</span><span class="beta-tag">BETA</span></div>
+      <div class="t1-sub"><span class="badge" id="unitTag">BB</span><span class="badge" id="verTag">v0.16.8</span><span class="beta-tag">BETA</span></div>
     </div>
     <div class="brand-mid">
       <img class="brand-logo" src="assets/logo_wxsj.webp" alt="无限升级">
@@ -1421,7 +1479,7 @@ table{width:100%;border-collapse:collapse;font-size:11.5px;margin-top:6px}
   <button class="tab on" data-p="overview">总览</button>
   <button class="tab" data-p="xp">面板</button>
   <div class="brand-roles" id="brandRoles"></div>
-  <button class="tab" data-p="query">数据查询</button>
+  <button class="tab" data-p="query">攻略</button>
 </div>
 
 <div class="wrap">
@@ -1633,8 +1691,17 @@ table{width:100%;border-collapse:collapse;font-size:11.5px;margin-top:6px}
 
     <div class="subpanel" id="sp-boss">
       <div class="qsec">
-        <div class="sec">可挑战 BOSS <span class="bxfoot">数据来源：<b>乖埿　木东</b></span></div>
-        <div id="bossPanel"></div>
+        <div class="sec">BOSS 推荐 <span class="bxfoot">数据来源：<b>乖埿　木东</b></span></div>
+        <div class="bxstabs" id="bossTabs">
+          <button class="bxstab on" data-bt="reco" type="button">推荐</button>
+          <button class="bxstab" data-hide="1" data-bt="v12" type="button">12 虚空之路</button>
+          <button class="bxstab" data-hide="1" data-bt="v13" type="button">13 誓灭之境</button>
+          <button class="bxstab" data-hide="1" data-bt="all" type="button">全部 BOSS</button>
+        </div>
+        <div id="bossPanel" class="bxscope"></div>
+        <div id="bossV12" class="bxsp bxscope" data-hide="1" style="display:none"></div>
+        <div id="bossV13" class="bxsp bxscope" data-hide="1" style="display:none"></div>
+        <div id="bossAll" class="bxsp bxscope" data-hide="1" style="display:none"></div>
       </div>
     </div>
 
@@ -1653,7 +1720,26 @@ table{width:100%;border-collapse:collapse;font-size:11.5px;margin-top:6px}
                 <div id="abOut" class="cout"></div>
               </div>
             </div>
-            <div class="scard">
+            <div class="scard" id="cwCard">
+              <div class="strh">撰写转换 · 暴怒 ↔ 攻速之力</div>
+              <div class="note">撰写天赋书<b>第二条词缀</b>：每交换 1 次 = 暴怒 −10、攻速 +7.5（反向则暴怒 +10、攻速 −7.5）。选职业后属性名自动切换。</div>
+              <div class="calc">
+                <div class="crow"><span class="cl">职业</span>
+                  <select id="cwJob">
+                    <option value="war">战士（物理）</option>
+                    <option value="mag">法师（法术）</option>
+                  </select>
+                </div>
+                <div class="crow"><span class="cl" id="cwLstr">物理强度</span><input id="cwStr" inputmode="decimal" placeholder="面板物理强度" autocomplete="off"></div>
+                <div class="crow"><span class="cl" id="cwLcrit">物理暴击伤害</span><input id="cwCrit" inputmode="decimal" placeholder="面板暴击伤害" autocomplete="off"></div>
+                <div class="crow"><span class="cl" id="cwLrage">物理暴怒%</span><input id="cwRage" inputmode="decimal" placeholder="如 120" autocomplete="off"></div>
+                <div class="crow"><span class="cl" id="cwLspd">攻速之力%</span><input id="cwSpd" inputmode="decimal" placeholder="如 80" autocomplete="off"></div>
+                <button id="cwGo" class="cbtn" type="button">计算转换</button>
+                <div id="cwOut" class="cout"></div>
+              </div>
+            </div>
+            <!-- 临时隐藏：属性 → 强度贡献（需要恢复时删除 style="display:none"） -->
+            <div class="scard" id="scPropStr" style="display:none">
               <div class="strh">属性 → 强度贡献</div>
               <div class="note">每 5 点属性 1 档（向下取整），贡献按档数平方增长，最终乘强度系数。</div>
               <div class="calc">
@@ -1682,7 +1768,7 @@ table{width:100%;border-collapse:collapse;font-size:11.5px;margin-top:6px}
     <div class="anchor on" data-b="base">公共基础</div>
     <div class="anchor" data-b="mage">法师</div>
     <div class="anchor" data-b="war">战士</div>
-    <div class="anchor" data-b="data">资料库</div>
+    <div class="anchor" data-hide="1" data-b="data">资料库</div>
   </div>
 
 <div class="blk on" id="blk-base">
@@ -2141,12 +2227,12 @@ table{width:100%;border-collapse:collapse;font-size:11.5px;margin-top:6px}
     </details>
   </div>
 
-<div class="blk" id="blk-data">
-<div class="sec">资料库
+<div class="blk" id="blk-data" data-hide="1">
+<div class="sec">资料库<input id="libSearch" class="libsearch" type="search" placeholder="搜资料库" autocomplete="off" enterkeyhint="search"><span id="libSearchN" class="libsearchn"></span>
   </div>
     <details class="blktoc">
   <summary class="bt-head"><i>目</i><span class="bt-name">目录</span></summary>
-  <div class="bt-grid">    <a class="bti" href="#toc-29"><i>开</i>系统开放条件</a>    <a class="bti" href="#toc-15"><i>轮</i>10 天轮回节奏（20 钥匙 ≈ 10 天）</a>    <a class="bti" href="#toc-18"><i>元</i>进阶次元开放条件</a>    <a class="bti" href="#toc-36"><i>次</i>次元与塔门槛</a>    <a class="bti" href="#toc-11"><i>概</i>核心概念速查（42 条）</a>    <a class="bti" href="#toc-30"><i>数</i>游戏表数据：成长 / 觉醒 / 守护者难度</a>    <a class="bti" href="#toc-34"><i>数</i>星级 / 匠魂 / 生命乘区</a>    <a class="bti" href="#toc-35"><i>职</i>职业 / 觉醒 / 属性官方定义</a>    <a class="bti" href="#toc-31"><i>套</i>进阶传承套</a>    <a class="bti" href="#toc-14"><i>表</i>进阶内容资料库（点开查看）</a>    <a class="bti" href="#toc-16"><i>表</i>资料库（第二批 · 点开查看）</a>    <a class="bti" href="#toc-32"><i>数</i>灵体 / 符文 / 封印 / 升格</a>    <a class="bti" href="#toc-37"><i>小</i>天赋套装 / 符文套装 / 装饰</a>    <a class="bti" href="#toc-13"><i>守</i>守护者三塔（每次转生重置 10 次）</a>    <a class="bti" href="#toc-19"><i>本</i>副本最低三维 / 经验参考</a>    <a class="bti" href="#toc-17"><i>12</i>12.0 新内容图鉴（点开查看）</a>    <a class="bti" href="#toc-33"><i>数</i>兑换商店 / 天赋属性表</a>    <a class="bti" href="#toc-45"><i>面</i>进度参考面板（玩家实测）</a>    <a class="bti" href="#toc-46"><i>11</i>11.0 新挑战副本数值</a>    <a class="bti" href="#toc-47"><i>称</i>称号体系（奥法称号 + 通用称号）</a>    <a class="bti" href="#toc-48"><i>皮</i>皮肤属性与 11.0 套装</a>    <a class="bti" href="#toc-49"><i>10</i>10.0 远古套装详情 + 职业套对照</a>    <a class="bti" href="#toc-50"><i>日</i>每日玩法定式 + 装备打造顺序</a>    <a class="bti" href="#toc-51"><i>史</i>历史版本要点（8.0 ~ 10.0，作对照）</a>    <a class="bti" href="#toc-38"><i>13</i>13.0 新增内容（誓灭之境）</a>    <a class="bti" href="#toc-39"><i>13</i>13.0 装备 · 御灵补充（战士攻略）</a>  <a class="bti" href="#toc-52"><i>符</i>符文盘 · 负向毕业方案</a>  <a class="bti" href="#toc-53"><i>面</i>我的面板 · 举例</a>  </div>
+  <div class="bt-grid">    <a class="bti" href="#toc-29"><i>开</i>系统开放条件</a><a class="bti" href="#toc-53"><i>面</i>我的面板 · 举例</a>    <a class="bti" href="#toc-15"><i>轮</i>10 天轮回节奏（20 钥匙 ≈ 10 天）</a>    <a class="bti" href="#toc-18"><i>元</i>进阶次元开放条件</a>    <a class="bti" href="#toc-36"><i>次</i>次元与塔门槛</a>    <a class="bti" href="#toc-11"><i>概</i>核心概念速查（42 条）</a>    <a class="bti" href="#toc-30"><i>数</i>游戏表数据：成长 / 觉醒 / 守护者难度</a>    <a class="bti" href="#toc-34"><i>数</i>星级 / 匠魂 / 生命乘区</a>    <a class="bti" href="#toc-35"><i>职</i>职业 / 觉醒 / 属性官方定义</a>    <a class="bti" href="#toc-31"><i>套</i>进阶传承套</a>    <a class="bti" href="#toc-14"><i>表</i>进阶内容资料库（点开查看）</a>    <a class="bti" href="#toc-16"><i>表</i>资料库（第二批 · 点开查看）</a>    <a class="bti" href="#toc-32"><i>数</i>灵体 / 符文 / 封印 / 升格</a>        <a class="bti" href="#toc-13"><i>守</i>守护者三塔（每次转生重置 10 次）</a>    <a class="bti" href="#toc-19"><i>本</i>副本最低三维 / 经验参考</a>    <a class="bti" href="#toc-17"><i>12</i>12.0 新内容图鉴（点开查看）</a>        <a class="bti" href="#toc-45"><i>面</i>进度参考面板（玩家实测）</a>    <a class="bti" href="#toc-46"><i>11</i>11.0 新挑战副本数值</a>    <a class="bti" href="#toc-47"><i>称</i>称号体系（奥法称号 + 通用称号）</a>    <a class="bti" href="#toc-48"><i>皮</i>皮肤属性与 11.0 套装</a>    <a class="bti" href="#toc-49"><i>10</i>10.0 远古套装详情 + 职业套对照</a>    <a class="bti" href="#toc-50"><i>日</i>每日玩法定式 + 装备打造顺序</a>    <a class="bti" href="#toc-51"><i>史</i>历史版本要点（8.0 ~ 10.0，作对照）</a>    <a class="bti" href="#toc-38"><i>13</i>13.0 新增内容（誓灭之境）</a>    <a class="bti" href="#toc-39"><i>13</i>13.0 装备 · 御灵补充（战士攻略）</a>  <a class="bti" href="#toc-52"><i>符</i>符文盘 · 负向毕业方案</a>    </div>
 </details>
     <details class="card gcard" id="toc-29">
       <summary><h4><i>开</i>系统开放条件</h4></summary>
@@ -2174,7 +2260,7 @@ table{width:100%;border-collapse:collapse;font-size:11.5px;margin-top:6px}
       <tr><td>等级 80000</td><td>巨蛇海妖</td><td>传说击败巨蛇可洞悉【匠魂】的秘密</td></tr>
       <tr><td>等级 80000</td><td>死灵法师</td><td>死灵法师上携带者【魔物进化】的关键信息</td></tr>
       <tr><td>等级 80000</td><td>下界守卫者</td><td></td></tr>
-      <tr><td>等级 250000</td><td>虚空蚀界</td><td>完成异界网道挑战x30次后解锁,通往虚空之路</td></tr>
+      <tr><td>等级 250000</td><td>虚空蚀界</td><td>虚空潜质任务：打 1 次异界网道即可解锁，通往虚空之路</td></tr>
       <tr><td>等级 300000</td><td>创世系统</td><td>收集散落的【创世之力】,获得神之力</td></tr>
       <tr><td>等级 300000</td><td>创世老大</td><td>击败观测者,并从他的身上汲取【创世之力】</td></tr>
       <tr><td>等级 300000</td><td>权威者</td><td>是时候调查创世之初混乱的起点了,设法获得【光环】</td></tr>
@@ -2184,6 +2270,13 @@ table{width:100%;border-collapse:collapse;font-size:11.5px;margin-top:6px}
       <tr><td>龙塔 150000 层</td><td>黑塔君主</td><td>古老的黑塔中蕴藏着精血力量的中的秘密,挑战150000层锁龙塔后解锁</td></tr>
       <tr><td>功能解锁</td><td>守护者试炼</td><td>尘封的守护者重新苏醒，向所有勇者开启古老试炼。</td></tr>
     </table></div>
+    </details>
+    <details class="card gcard" id="toc-53">
+      <summary><h4><i>面</i>我的面板 · 举例</h4></summary>
+      <div class="gbody">
+        <div id="pdMirror" class="note">在「面板 → 面板数据」填写后，这里会自动显示你最近一次填写的数据。</div>
+        <div class="note" style="color:#8f8674">仅作个人数据示例存档，不参与任何攻略数值推导。</div>
+      </div>
     </details>
 <details class="card gcard" id="toc-15">
       <summary><h4><i>轮</i>10 天轮回节奏（20 钥匙 ≈ 10 天）</h4></summary>
@@ -2336,30 +2429,7 @@ table{width:100%;border-collapse:collapse;font-size:11.5px;margin-top:6px}
 <details class="card gcard" id="toc-30">
       <summary><h4><i>数</i>游戏表数据：成长 / 觉醒 / 守护者难度</h4></summary>
       <div class="gbody">
-    <details><summary>英雄成长曲线（20 段）</summary>
-    <table><tr><th>起始等级</th><th>生命倍率</th><th>伤害倍率</th></tr>
-      <tr><td>0</td><td>2.4</td><td>1.7</td></tr>
-      <tr><td>60000</td><td>2.52</td><td>1.81</td></tr>
-      <tr><td>94000</td><td>2.64</td><td>1.82</td></tr>
-      <tr><td>123000</td><td>2.75</td><td>1.83</td></tr>
-      <tr><td>171000</td><td>2.84</td><td>1.84</td></tr>
-      <tr><td>213000</td><td>2.91</td><td>1.85</td></tr>
-      <tr><td>250000</td><td>2.98</td><td>1.86</td></tr>
-      <tr><td>334000</td><td>3.13</td><td>1.87</td></tr>
-      <tr><td>407000</td><td>3.25</td><td>1.88</td></tr>
-      <tr><td>473000</td><td>3.3</td><td>1.89</td></tr>
-      <tr><td>535000</td><td>3.37</td><td>1.9</td></tr>
-      <tr><td>594000</td><td>3.45</td><td>1.91</td></tr>
-      <tr><td>702000</td><td>3.62</td><td>1.92</td></tr>
-      <tr><td>802000</td><td>3.78</td><td>1.93</td></tr>
-      <tr><td>1500000</td><td>3.85</td><td>1.95</td></tr>
-      <tr><td>2000000</td><td>3.91</td><td>1.97</td></tr>
-      <tr><td>2500000</td><td>3.93</td><td>1.99</td></tr>
-      <tr><td>3500000</td><td>3.98</td><td>2.01</td></tr>
-      <tr><td>5500000</td><td>3.99</td><td>2.03</td></tr>
-      <tr><td>9000000</td><td>4.01</td><td>2.05</td></tr>
-    </table>
-    </details>
+    
     <details><summary>觉醒成长奖励（59 条）</summary>
     <table><tr><th>觉醒点</th><th>职业</th><th>类型</th><th>奖励</th><th>数量</th></tr>
       <tr><td>1</td><td>神圣骑士</td><td>属性</td><td>神圣</td><td>5000</td></tr>
@@ -2590,22 +2660,7 @@ table{width:100%;border-collapse:collapse;font-size:11.5px;margin-top:6px}
       <tr><td>115</td><td>5730000</td><td>14200</td><td>主属性+3500</td><td>2580000</td><td>402500</td></tr>
     </table>
     </details>
-    <details><summary>守护者难度分段（12 段）</summary>
-    <table><tr><th>守护者</th><th>阶段</th><th>总倍率</th><th>难度起</th><th>难度止</th><th>等级gap</th><th>神力间隔</th></tr>
-      <tr><td>烬瞳试炼II</td><td>1</td><td>0.02</td><td>1</td><td>50</td><td>90000</td><td>200</td></tr>
-      <tr><td>烬瞳试炼III</td><td>2</td><td>0.04</td><td>51</td><td>100</td><td>170000</td><td>350</td></tr>
-      <tr><td>烬瞳试炼III</td><td>3</td><td>0.06</td><td>101</td><td>150</td><td>190000</td><td>550</td></tr>
-      <tr><td>烬瞳试炼III</td><td>4</td><td>0.08</td><td>151</td><td>225</td><td>260000</td><td>700</td></tr>
-      <tr><td>空境试炼II</td><td>1</td><td>0.02</td><td>1</td><td>50</td><td>70000</td><td>200</td></tr>
-      <tr><td>空境试炼III</td><td>2</td><td>0.04</td><td>51</td><td>100</td><td>120000</td><td>300</td></tr>
-      <tr><td>空境试炼III</td><td>3</td><td>0.06</td><td>101</td><td>150</td><td>150000</td><td>500</td></tr>
-      <tr><td>空境试炼III</td><td>4</td><td>0.08</td><td>151</td><td>225</td><td>220000</td><td>600</td></tr>
-      <tr><td>永夜试炼II</td><td>1</td><td>0.02</td><td>1</td><td>50</td><td>70000</td><td>200</td></tr>
-      <tr><td>永夜试炼III</td><td>2</td><td>0.04</td><td>51</td><td>100</td><td>105000</td><td>250</td></tr>
-      <tr><td>永夜试炼III</td><td>3</td><td>0.06</td><td>101</td><td>150</td><td>135000</td><td>350</td></tr>
-      <tr><td>永夜试炼III</td><td>3</td><td>0.06</td><td>151</td><td>225</td><td>180000</td><td>500</td></tr>
-    </table>
-    </details></div>
+    </div>
     </details>
 <details class="card gcard" id="toc-34">
       <summary><h4><i>数</i>星级 / 匠魂 / 生命乘区</h4></summary>
@@ -2657,19 +2712,7 @@ table{width:100%;border-collapse:collapse;font-size:11.5px;margin-top:6px}
       <tr><td>24</td><td>14.0</td><td>满级</td><td>824</td></tr>
     </table>
     </details>
-    <details><summary>生命乘区结构</summary>
-    <table><tr><th>组成</th><th>内容</th></tr>
-      <tr><td>基础生命</td><td>等级成长</td></tr>
-      <tr><td>固定生命</td><td>体力+装备生命+魔物装备+血书生命值</td></tr>
-      <tr><td>百分比生命</td><td>神力面板生命%+宝石生命%+血书生命加成%</td></tr>
-      <tr><td>最终生命</td><td>(基础+固定)×(1+百分比)</td></tr>
-      <tr><td>主号健康</td><td>122%</td></tr>
-      <tr><td>主号宝石生命</td><td>599%</td></tr>
-      <tr><td>主号书生命</td><td>4.10AA</td></tr>
-      <tr><td>主号装备生命</td><td>82.89T/85.62T</td></tr>
-      <tr><td>主号精血/体力</td><td>135/138,200</td></tr>
-    </table>
-    </details>
+    
     <div class="note">装备星级：武器增幅 3/7/13/20/28%，其他部位 10/28/52/80/112%；材料 44~396。生命 = (基础+固定)×(1+百分比)。</div></div>
     </details>
 <details class="card gcard" id="toc-35">
@@ -2898,50 +2941,7 @@ table{width:100%;border-collapse:collapse;font-size:11.5px;margin-top:6px}
       <tr><td>永愿巫后</td><td>永恒星空之力</td><td>12.0新套装</td></tr>
     </table>
     </details>
-    <details><summary>御灵等级（40 级）</summary>
-    <table><tr><th>等级</th><th>法术%</th><th>物理%</th><th>升下级消耗</th></tr>
-      <tr><td>1</td><td>1.0</td><td>1.0</td><td>5</td></tr>
-      <tr><td>2</td><td>2.8</td><td>2.8</td><td>10</td></tr>
-      <tr><td>3</td><td>5.2</td><td>5.2</td><td>25</td></tr>
-      <tr><td>4</td><td>8.0</td><td>8.0</td><td>40</td></tr>
-      <tr><td>5</td><td>11.2</td><td>11.2</td><td>60</td></tr>
-      <tr><td>6</td><td>14.7</td><td>14.7</td><td>80</td></tr>
-      <tr><td>7</td><td>18.5</td><td>18.5</td><td>100</td></tr>
-      <tr><td>8</td><td>22.6</td><td>22.6</td><td>125</td></tr>
-      <tr><td>9</td><td>27.0</td><td>27.0</td><td>150</td></tr>
-      <tr><td>10</td><td>31.6</td><td>31.6</td><td>175</td></tr>
-      <tr><td>11</td><td>36.5</td><td>36.5</td><td>205</td></tr>
-      <tr><td>12</td><td>41.6</td><td>41.6</td><td>235</td></tr>
-      <tr><td>13</td><td>46.9</td><td>46.9</td><td>265</td></tr>
-      <tr><td>14</td><td>52.4</td><td>52.4</td><td>295</td></tr>
-      <tr><td>15</td><td>58.1</td><td>58.1</td><td>330</td></tr>
-      <tr><td>16</td><td>64.0</td><td>64.0</td><td>365</td></tr>
-      <tr><td>17</td><td>70.1</td><td>70.1</td><td>400</td></tr>
-      <tr><td>18</td><td>76.4</td><td>76.4</td><td>440</td></tr>
-      <tr><td>19</td><td>82.8</td><td>82.8</td><td>475</td></tr>
-      <tr><td>20</td><td>89.4</td><td>89.4</td><td>515</td></tr>
-      <tr><td>21</td><td>96.2</td><td>96.2</td><td>560</td></tr>
-      <tr><td>22</td><td>103.2</td><td>103.2</td><td>600</td></tr>
-      <tr><td>23</td><td>110.3</td><td>110.3</td><td>645</td></tr>
-      <tr><td>24</td><td>117.6</td><td>117.6</td><td>685</td></tr>
-      <tr><td>25</td><td>125.0</td><td>125.0</td><td>735</td></tr>
-      <tr><td>26</td><td>132.6</td><td>132.6</td><td>780</td></tr>
-      <tr><td>27</td><td>140.3</td><td>140.3</td><td>830</td></tr>
-      <tr><td>28</td><td>148.2</td><td>148.2</td><td>875</td></tr>
-      <tr><td>29</td><td>156.2</td><td>156.2</td><td>930</td></tr>
-      <tr><td>30</td><td>164.3</td><td>164.3</td><td>980</td></tr>
-      <tr><td>31</td><td>172.6</td><td>172.6</td><td>1035</td></tr>
-      <tr><td>32</td><td>181.0</td><td>181.0</td><td>1085</td></tr>
-      <tr><td>33</td><td>189.6</td><td>189.6</td><td>1145</td></tr>
-      <tr><td>34</td><td>198.3</td><td>198.3</td><td>1200</td></tr>
-      <tr><td>35</td><td>207.1</td><td>207.1</td><td>1260</td></tr>
-      <tr><td>36</td><td>216.0</td><td>216.0</td><td>1315</td></tr>
-      <tr><td>37</td><td>225.1</td><td>225.1</td><td>1380</td></tr>
-      <tr><td>38</td><td>234.2</td><td>234.2</td><td>1440</td></tr>
-      <tr><td>39</td><td>243.6</td><td>243.6</td><td>1505</td></tr>
-      <tr><td>40</td><td>253.0</td><td>253.0</td><td>满级</td></tr>
-    </table>
-    </details>
+    
 
 
     <details><summary>精血强度来源（12 条）</summary>
@@ -2960,27 +2960,7 @@ table{width:100%;border-collapse:collapse;font-size:11.5px;margin-top:6px}
       <tr><td>12</td><td>龙血来源</td><td>恶魔塔</td><td>1层=1000精血</td></tr>
     </table>
     </details>
-    <details><summary>宝石等级 1~17（系数/增量/合成量/效率）</summary>
-    <table><tr><th>等级</th><th>系数%</th><th>增量%</th><th>需 1 级宝石</th><th>效率</th></tr>
-      <tr><td>1</td><td>1</td><td></td><td>1</td><td>1.00</td></tr>
-      <tr><td>2</td><td>4</td><td>3</td><td>3</td><td>1.33</td></tr>
-      <tr><td>3</td><td>9</td><td>5</td><td>9</td><td>1.00</td></tr>
-      <tr><td>4</td><td>16</td><td>7</td><td>27</td><td>0.59</td></tr>
-      <tr><td>5</td><td>25</td><td>9</td><td>81</td><td>0.31</td></tr>
-      <tr><td>6</td><td>36</td><td>11</td><td>243</td><td>0.15</td></tr>
-      <tr><td>7</td><td>59</td><td>23</td><td>729</td><td>0.08</td></tr>
-      <tr><td>8</td><td>78</td><td>19</td><td>2187</td><td>0.04</td></tr>
-      <tr><td>9</td><td>100</td><td>22</td><td>6561</td><td>0.02</td></tr>
-      <tr><td>10</td><td>125</td><td>25</td><td>19683</td><td>0.01</td></tr>
-      <tr><td>11</td><td>195</td><td>70</td><td>59049</td><td>0.00</td></tr>
-      <tr><td>12</td><td>236</td><td>41</td><td>177147</td><td>0.00</td></tr>
-      <tr><td>13</td><td>282</td><td>46</td><td>531441</td><td>0.00</td></tr>
-      <tr><td>14</td><td>332</td><td>50</td><td>1594323</td><td>0.00</td></tr>
-      <tr><td>15</td><td>386</td><td>54</td><td>4782969</td><td>0.00</td></tr>
-      <tr><td>16</td><td>445</td><td>59</td><td>14348907</td><td>0.00</td></tr>
-      <tr><td>17</td><td>509</td><td>64</td><td>43046721</td><td>0.00</td></tr>
-    </table>
-    </details>
+    
     <details><summary>BOSS 难度血量（97 条）</summary>
     <table><tr><th>BOSS</th><th>难度</th><th>血量</th><th>掉落量</th><th>版本</th></tr>
       <tr><td>巨蛇海妖</td><td>F</td><td>129.7CC</td><td>x1</td><td>10.0</td></tr>
@@ -3088,34 +3068,7 @@ X</td><td>11.9GG</td><td>x10</td><td>10.0</td></tr>
 <details class="card gcard" id="toc-32">
       <summary><h4><i>数</i>灵体 / 符文 / 封印 / 升格</h4></summary>
       <div class="gbody">
-    <details><summary>灵体（24 种 · 每级 0.01）</summary>
-    <table><tr><th>灵体</th><th>效果</th><th>每级数值</th><th>等级上限</th></tr>
-      <tr><td>坚韧之灵</td><td>防御加成</td><td>0.01</td><td>40</td></tr>
-      <tr><td>狂热之灵</td><td>攻击加成</td><td>0.01</td><td>40</td></tr>
-      <tr><td>博爱之灵</td><td>健康加成</td><td>0.01</td><td>40</td></tr>
-      <tr><td>爆裂之灵</td><td>暴击伤害</td><td>0.25</td><td>40</td></tr>
-      <tr><td>秘术之灵</td><td>技能暴击伤害</td><td>0.25</td><td>40</td></tr>
-      <tr><td>金阳之灵</td><td>技能加成</td><td>0.01</td><td>40</td></tr>
-      <tr><td>暗月之灵</td><td>普攻加成</td><td>0.01</td><td>40</td></tr>
-      <tr><td>迅捷之灵</td><td>攻击速度</td><td>0.15</td><td>40</td></tr>
-      <tr><td>脉冲之灵</td><td>技能冷却缩短</td><td>0.15</td><td>40</td></tr>
-      <tr><td>狂暴之灵</td><td>物理强度</td><td>0.09</td><td>40</td></tr>
-      <tr><td>低语之灵</td><td>法术强度</td><td>0.09</td><td>40</td></tr>
-      <tr><td>神圣宝石</td><td>防御加成</td><td>0.01</td><td></td></tr>
-      <tr><td>嗜血宝石</td><td>攻击加成</td><td>0.005</td><td></td></tr>
-      <tr><td>健康宝石</td><td>健康加成</td><td>0.01</td><td></td></tr>
-      <tr><td>狂暴宝石</td><td>暴击伤害</td><td>0.05</td><td></td></tr>
-      <tr><td>灵能宝石</td><td>技能暴击伤害</td><td>0.05</td><td></td></tr>
-      <tr><td>学习宝石</td><td>经验加成</td><td>0.01</td><td></td></tr>
-      <tr><td>贪婪宝石</td><td>金币加成</td><td>0.01</td><td></td></tr>
-      <tr><td>法力宝石</td><td>技能加成</td><td>0.01</td><td></td></tr>
-      <tr><td>力量宝石</td><td>普攻加成</td><td>0.01</td><td></td></tr>
-      <tr><td>迅捷宝石</td><td>攻击速度</td><td>0.02</td><td></td></tr>
-      <tr><td>释放宝石</td><td>技能冷却缩短</td><td>0.02</td><td></td></tr>
-      <tr><td>荆棘宝石</td><td>反震伤害</td><td>0.025</td><td></td></tr>
-      <tr><td>充能宝石</td><td>释放速度</td><td>0.005</td><td></td></tr>
-    </table>
-    </details>
+    
     <details><summary>符文（125 个 · 稀有度1：17、稀有度2：14、稀有度3：18、稀有度4：22、稀有度5：24、稀有度?：30）</summary>
     <table><tr><th>符文</th><th>稀有度</th><th>效果</th><th>数值</th><th>倾向</th></tr>
       <tr><td>生命手册</td><td>1</td><td>健康加成</td><td>5.00%</td><td>光明</td></tr>
@@ -3245,34 +3198,7 @@ X</td><td>11.9GG</td><td>x10</td><td>10.0</td></tr>
       <tr><td>rune_shengming_1</td><td>1</td><td>生命值</td><td>50000.00%</td><td></td></tr>
     </table>
     </details>
-    <details><summary>宠物封印权重（24 条）</summary>
-    <table><tr><th>序号</th><th>效果</th><th>权重</th></tr>
-      <tr><td>1</td><td>金光加成</td><td>100</td></tr>
-      <tr><td>2</td><td>龙卷风加成</td><td>50</td></tr>
-      <tr><td>3</td><td>天星地爆加成</td><td>50</td></tr>
-      <tr><td>4</td><td>天雷术加成</td><td>100</td></tr>
-      <tr><td>5</td><td>火球雨加成</td><td>100</td></tr>
-      <tr><td>6</td><td>齐射加成</td><td>100</td></tr>
-      <tr><td>7</td><td>魔法弹加成</td><td>50</td></tr>
-      <tr><td>8</td><td>旋风镖加成</td><td>100</td></tr>
-      <tr><td>9</td><td>力量加成</td><td>100</td></tr>
-      <tr><td>10</td><td>智力加成</td><td>100</td></tr>
-      <tr><td>11</td><td>体力加成</td><td>100</td></tr>
-      <tr><td>12</td><td>敏捷加成</td><td>100</td></tr>
-      <tr><td>13</td><td>神圣加成</td><td>100</td></tr>
-      <tr><td>14</td><td>技能强度</td><td>100</td></tr>
-      <tr><td>15</td><td>普攻强度</td><td>100</td></tr>
-      <tr><td>16</td><td>技能加成</td><td>50</td></tr>
-      <tr><td>17</td><td>普攻加成</td><td>50</td></tr>
-      <tr><td>18</td><td>技能暴击伤害</td><td>100</td></tr>
-      <tr><td>19</td><td>防御力</td><td>100</td></tr>
-      <tr><td>20</td><td>驭宠加成</td><td>70</td></tr>
-      <tr><td>21</td><td>攻速之力</td><td>100</td></tr>
-      <tr><td>22</td><td>冷缩之力</td><td>100</td></tr>
-      <tr><td>23</td><td>物理技能加成</td><td>50</td></tr>
-      <tr><td>24</td><td>法术技能加成</td><td>50</td></tr>
-    </table>
-    </details>
+    
     <details><summary>宠物升格（12 阶）</summary>
     <table><tr><th>名称</th><th>稀有度</th><th>属性修正</th></tr>
       <tr><td>不朽丰碑I​</td><td>4</td><td>魔物物理成长+0.02；魔物法术成长+0.02</td></tr>
@@ -3290,50 +3216,7 @@ X</td><td>11.9GG</td><td>x10</td><td>10.0</td></tr>
     </table>
     </details></div>
     </details>
-<details class="card gcard" id="toc-37">
-      <summary><h4><i>小</i>天赋套装 / 符文套装 / 装饰</h4></summary>
-      <div class="gbody">
-    <details open><summary>天赋套装（14 个）</summary>
-    <table><tr><th>天赋套装</th><th>强化概率</th><th>满级步数</th><th>效果</th></tr>
-      <tr><td>混沌生物进化论</td><td>0.03</td><td>4</td><td>普攻加成、普攻强度、必杀率</td></tr>
-      <tr><td>命运的重构</td><td>0.03</td><td>4</td><td>技能加成、技能强度、释放速度</td></tr>
-      <tr><td>神性觉醒第九章</td><td>0.03</td><td>2</td><td>主属性加成、技能投射物</td></tr>
-      <tr><td>灰烬纪元</td><td>0.03</td><td>2</td><td>主属性加成、普攻投射物</td></tr>
-      <tr><td>大魔导师的陨落</td><td>0.045</td><td>5</td><td>主属性加成、主属性攻击增加、经验加成</td></tr>
-      <tr><td>虚空污染</td><td>0.03</td><td>2</td><td>经验加成、攻击加成</td></tr>
-      <tr><td>帝国残卷·二</td><td>0.06</td><td>4</td><td>神圣加成、经验加成、普攻加成、神圣骑士技能加成</td></tr>
-      <tr><td> 先知预言：血月篇章</td><td>0.06</td><td>4</td><td>体力加成、经验加成、技能加成、禁忌血法技能加成</td></tr>
-      <tr><td>诸神的低语</td><td>0.06</td><td>4</td><td>力量加成、经验加成、普攻加成、诅咒剑士技能加成</td></tr>
-      <tr><td>猎魔之术</td><td>0.06</td><td>4</td><td>敏捷加成、经验加成、普攻加成、灵魂猎手技能加成</td></tr>
-      <tr><td>死灵法师的笔记</td><td>0.06</td><td>4</td><td>智力加成、经验加成、技能加成、冥界术士技能加成</td></tr>
-      <tr><td>灵魂结构详解</td><td>0.06</td><td>4</td><td>神圣加成、经验加成、技能加成、祝圣教士技能加成</td></tr>
-      <tr><td>剑术精要秘卷</td><td>0.06</td><td>4</td><td>体力加成、经验加成、普攻加成、嗜血狂战技能加成</td></tr>
-      <tr><td>符文注能</td><td>0.06</td><td>4</td><td>力量加成、经验加成、技能加成、秘术巫师技能加成</td></tr>
-    </table>
-    </details>
-    <details><summary>符文套装（2 个）</summary>
-    <table><tr><th>符文套装</th><th>需求件数</th><th>效果</th></tr>
-      <tr><td>战魂</td><td>2</td><td>攻击加成（穿戴2件战魂符文激活）</td></tr>
-      <tr><td>生息</td><td>2</td><td>生命加成（穿戴2件生息符文激活）</td></tr>
-    </table>
-    </details>
-    <details><summary>装饰解锁（12 个）</summary>
-    <table><tr><th>装饰</th><th>解锁类型</th></tr>
-      <tr><td>岩魔</td><td>次元关卡</td></tr>
-      <tr><td>秘境守卫</td><td>秘境</td></tr>
-      <tr><td>天界能量</td><td>英雄连续挑战</td></tr>
-      <tr><td>史莱姆</td><td>次元关卡</td></tr>
-      <tr><td>乌鸦</td><td>道具使用</td></tr>
-      <tr><td>火精灵</td><td>次数</td></tr>
-      <tr><td>冰精灵</td><td>次数</td></tr>
-      <tr><td>木精灵</td><td>次数</td></tr>
-      <tr><td>鳄守卫</td><td>次数</td></tr>
-      <tr><td>火炬</td><td>次数</td></tr>
-      <tr><td>战旗</td><td>次数</td></tr>
-      <tr><td>异能之井</td><td>次数</td></tr>
-    </table>
-    </details></div>
-    </details>
+
 <details class="card gcard" id="toc-13">
       <summary><h4><i>守</i>守护者三塔（每次转生重置 10 次）</h4></summary>
       <div class="gbody">
@@ -3389,7 +3272,7 @@ X</td><td>11.9GG</td><td>x10</td><td>10.0</td></tr>
       <div class="gbody">
     <table>
       <tr><th>副本</th><th>难度 · 三维 / 经验</th></tr>
-      <tr><td>一星<br><span class="tag">火之灵·诅咒巨像·猪人之王·炎魔龙</span></td>
+      <tr><td>一星<br><span class="tag">火之灵·诅咒巨像<br>猪人之王·炎魔龙</span></td>
           <td>SS 580 / 710+　SSS 730 / 900+　X 950 / 1150+</td></tr>
       <tr><td>二星<br><span class="tag">死亡骑士</span></td>
           <td>A 600 / 730+　S 750 / 930+　SS 1000 / 1260+　SSS 1050 / 1350+　X 1075 / 1450+</td></tr>
@@ -3407,7 +3290,7 @@ X</td><td>11.9GG</td><td>x10</td><td>10.0</td></tr>
       <tr><td>神域守卫</td><td>1·1300/1650+　2·1700/2160+　3·2000/2500+</td></tr>
       <tr><td>至尊法师</td><td>1·1700/2200+　2·2150/2660+　3·2370/2900+</td></tr>
     </table>
-    <div class="note">数值为「三维 + / 经验 +」，摘自法师攻略正文；SS/SSS/X 部分为公式推算，仅供参考。打卡拉萨斯需备 3 本生命天赋书、乌诺托斯需 2 本，橙色满级。</div>
+    <div class="note">数值为「三维 + / 经验 +」，摘自法师攻略正文；SS/SSS/X 部分为参考推算，仅供参考。打卡拉萨斯需备 3 本生命天赋书、乌诺托斯需 2 本，橙色满级。</div>
     <details><summary>副本血量表（按难度，共 108 条）</summary>
     <table><tr><th>副本</th><th>难度 · 血量</th></tr>
       <tr><td>巨蛇海妖</td><td><b>F</b> 129.7CC　<b>E</b> 116.3DD　<b>D</b> 3.5EE　<b>C</b> 271.2EE　<b>B</b> 3.1FF　<b>A</b> 18.7FF　<b>S</b> 296.1FF　<b>SS</b> 3.9GG　<b>SSS</b> 7.1GG　<b>X</b> 11.9GG</td></tr>
@@ -3506,7 +3389,7 @@ X</td><td>11.9GG</td><td>x10</td><td>10.0</td></tr>
     </details>
     <details><summary>虚空蚀界 1~23 层·完整（23 层）</summary>
     <table><tr><th>层</th><th>名称</th><th>开启条件</th><th>一阶段</th><th>二阶段</th><th>三阶段</th><th>掉落</th></tr>
-      <tr><td>1</td><td>遁入梦魇</td><td>异界网道打30次</td><td>5814.1DD</td><td>17.44EE</td><td></td><td></td></tr>
+      <tr><td>1</td><td>遁入梦魇</td><td>异界网道打 1 次即可解锁</td><td>5814.1DD</td><td>17.44EE</td><td></td><td></td></tr>
       <tr><td>2</td><td>旧世看守者</td><td>乌诺托斯进度1</td><td>164.95EE</td><td></td><td></td><td>庇护法典×1；橙色秘法自选×1</td></tr>
       <tr><td>3</td><td>走进深处</td><td></td><td>740.13FF</td><td></td><td></td><td>炼狱之心×2；橙色秘法自选×1</td></tr>
       <tr><td>4</td><td>监牢的入口</td><td></td><td>12.6GG</td><td></td><td></td><td>寂静湮灭之种×1</td></tr>
@@ -3532,137 +3415,7 @@ X</td><td>11.9GG</td><td>x10</td><td>10.0</td></tr>
     </table>
     </details></div>
     </details>
-<details class="card gcard" id="toc-33">
-      <summary><h4><i>数</i>兑换商店 / 天赋属性表</h4></summary>
-      <div class="gbody">
-    <details><summary>兑换 / 商店物品（89 个启用项）</summary>
-    <table><tr><th>物品</th><th>价格</th><th>货币</th><th>等级需求</th><th>每日上限</th><th>系统</th></tr>
-      <tr><td>双倍药水</td><td>15</td><td>灵界精魄</td><td>0</td><td>-1</td><td>普通</td></tr>
-      <tr><td>锻玉</td><td>2</td><td>秘法奥义</td><td>0</td><td>-1</td><td>普通</td></tr>
-      <tr><td>圣玉</td><td>6</td><td>铸造宝石</td><td>0</td><td>-1</td><td>普通</td></tr>
-      <tr><td>圣水</td><td>4</td><td>神圣精华</td><td>0</td><td>-1</td><td>普通</td></tr>
-      <tr><td>幻晶</td><td>3</td><td>神圣精华</td><td>0</td><td>-1</td><td>普通</td></tr>
-      <tr><td>神魂</td><td>6</td><td>神圣精华</td><td>0</td><td>-1</td><td>普通</td></tr>
-      <tr><td>御灵瓮</td><td>2</td><td>御器残片</td><td>0</td><td>-1</td><td>普通</td></tr>
-      <tr><td>茹毛饮血</td><td>3888</td><td>深海结晶</td><td>1000</td><td>-1</td><td>英雄</td></tr>
-      <tr><td>恶灵附身</td><td>3888</td><td>不灭之火</td><td>1000</td><td>-1</td><td>英雄</td></tr>
-      <tr><td>魔物果实</td><td>20</td><td>远古之痕</td><td>1000</td><td>20</td><td>套装</td></tr>
-      <tr><td>奥法能量瓶</td><td>100</td><td>远古之痕</td><td>5000</td><td>1</td><td>套装</td></tr>
-      <tr><td>圣源晶石</td><td>5</td><td>远古之痕</td><td>100</td><td>-1</td><td>套装</td></tr>
-      <tr><td>改名卡</td><td>2888</td><td>远古之痕</td><td>20000</td><td>-1</td><td>套装</td></tr>
-      <tr><td>还原露</td><td>20</td><td>远古之痕</td><td>5000</td><td>-1</td><td>套装</td></tr>
-      <tr><td>猩红遗物袋</td><td>33</td><td>远古之痕</td><td>0</td><td>3</td><td>套装</td></tr>
-      <tr><td>圣水</td><td>20</td><td>锻玉</td><td>100</td><td>-1</td><td>普通</td></tr>
-      <tr><td>魔物果实袋(大)</td><td>120</td><td>神圣精华</td><td>0</td><td>-1</td><td>普通</td></tr>
-      <tr><td>陨星碎片</td><td>2</td><td>神像碎片</td><td>35000</td><td>-1</td><td>英雄</td></tr>
-      <tr><td>烈火晶石</td><td>1</td><td>王冠碎片</td><td>35000</td><td>-1</td><td>英雄</td></tr>
-      <tr><td>死灵之钥匙</td><td>100</td><td>神圣精华</td><td>0</td><td>-1</td><td>钥匙</td></tr>
-      <tr><td>下界之钥匙</td><td>100</td><td>神圣精华</td><td>0</td><td>-1</td><td>钥匙</td></tr>
-      <tr><td>海洋之钥匙</td><td>100</td><td>神圣精华</td><td>0</td><td>-1</td><td>钥匙</td></tr>
-      <tr><td>突破次元</td><td>300</td><td>神圣精华</td><td>0</td><td>-1</td><td>时装</td></tr>
-      <tr><td>神圣启灵</td><td>300</td><td>神圣精华</td><td>0</td><td>-1</td><td>时装</td></tr>
-      <tr><td>死亡之歌</td><td>300</td><td>神圣精华</td><td>0</td><td>-1</td><td>时装</td></tr>
-      <tr><td>魔物器具</td><td>24</td><td>魔器碎片</td><td>2000</td><td>-1</td><td>普通</td></tr>
-      <tr><td>灵智晶体</td><td>40</td><td>智慧结晶</td><td>2000</td><td>-1</td><td>普通</td></tr>
-      <tr><td>幽魂之钥匙</td><td>100</td><td>神圣精华</td><td>0</td><td>-1</td><td>钥匙</td></tr>
-      <tr><td>奥能气息</td><td>1</td><td>战甲碎片</td><td>35000</td><td>-1</td><td>英雄</td></tr>
-      <tr><td>转换宝石</td><td>100</td><td>神圣精华</td><td>0</td><td>-1</td><td>普通</td></tr>
-      <tr><td>学习药水</td><td>2</td><td>劫掠药水</td><td>1000</td><td>-1</td><td>普通</td></tr>
-      <tr><td>箭在弦上</td><td>400</td><td>神圣精华</td><td>10000</td><td>-1</td><td>时装</td></tr>
-      <tr><td>神光剑气</td><td>400</td><td>神圣精华</td><td>10000</td><td>-1</td><td>时装</td></tr>
-      <tr><td>地狱烈火</td><td>400</td><td>神圣精华</td><td>10000</td><td>-1</td><td>时装</td></tr>
-      <tr><td>冰炎灼伤</td><td>400</td><td>神圣精华</td><td>10000</td><td>-1</td><td>时装</td></tr>
-      <tr><td>劫掠药水</td><td>2</td><td>学习药水</td><td>1000</td><td>-1</td><td>普通</td></tr>
-      <tr><td>暴戾之泣遗物袋</td><td>33</td><td>远古之痕</td><td>0</td><td>3</td><td>套装</td></tr>
-      <tr><td>审判殿堂遗物袋</td><td>33</td><td>远古之痕</td><td>0</td><td>3</td><td>套装</td></tr>
-      <tr><td>奇异魔方</td><td>300</td><td>神圣精华</td><td>0</td><td>-1</td><td>时装</td></tr>
-      <tr><td>守护之光环(魔法)</td><td>10</td><td>创世符咒</td><td>300000</td><td>-1</td><td>英雄</td></tr>
-      <tr><td>烈焰涅槃光环(物理)</td><td>10</td><td>创世符咒</td><td>300000</td><td>-1</td><td>英雄</td></tr>
-      <tr><td>权威之钥匙</td><td>100</td><td>神圣精华</td><td>0</td><td>-1</td><td>钥匙</td></tr>
-      <tr><td>魔龙之钥匙</td><td>100</td><td>神圣精华</td><td>0</td><td>-1</td><td>钥匙</td></tr>
-      <tr><td>腐蚀钥匙</td><td>100</td><td>神圣精华</td><td>0</td><td>-1</td><td>钥匙</td></tr>
-      <tr><td>共鸣石</td><td>100</td><td>神圣精华</td><td>10000</td><td>-1</td><td>普通</td></tr>
-      <tr><td>诅咒之钥匙</td><td>100</td><td>神圣精华</td><td>0</td><td>-1</td><td>钥匙</td></tr>
-      <tr><td>创世时空之镜</td><td>180</td><td>圣权之息</td><td>300000</td><td>-1</td><td>英雄</td></tr>
-      <tr><td>失控之钥匙</td><td>100</td><td>神圣精华</td><td>0</td><td>-1</td><td>钥匙</td></tr>
-      <tr><td>劫历之钥匙</td><td>100</td><td>神圣精华</td><td>0</td><td>-1</td><td>钥匙</td></tr>
-      <tr><td>神隐遗物袋(自选)</td><td>99</td><td>远古之痕</td><td>20000</td><td>-1</td><td>套装</td></tr>
-      <tr><td>兰德森遗物袋(自选)</td><td>99</td><td>远古之痕</td><td>20000</td><td>-1</td><td>套装</td></tr>
-      <tr><td>猩红遗物袋(自选)</td><td>99</td><td>远古之痕</td><td>20000</td><td>-1</td><td>套装</td></tr>
-      <tr><td>加里遗物袋(自选)</td><td>99</td><td>远古之痕</td><td>20000</td><td>-1</td><td>套装</td></tr>
-      <tr><td>教皇遗物袋(自选)</td><td>99</td><td>远古之痕</td><td>20000</td><td>-1</td><td>套装</td></tr>
-      <tr><td>哈迪斯遗物袋(自选)</td><td>99</td><td>远古之痕</td><td>20000</td><td>-1</td><td>套装</td></tr>
-      <tr><td>暴戾之泣遗物袋(自选)</td><td>99</td><td>远古之痕</td><td>20000</td><td>-1</td><td>套装</td></tr>
-      <tr><td>审判殿堂遗物袋(自选)</td><td>99</td><td>远古之痕</td><td>20000</td><td>-1</td><td>套装</td></tr>
-      <tr><td>神经接口</td><td>300</td><td>神圣精华</td><td>0</td><td>-1</td><td>时装</td></tr>
-      <tr><td>锈蚀废土</td><td>300</td><td>神圣精华</td><td>0</td><td>-1</td><td>时装</td></tr>
-      <tr><td>萨麦尔遗物</td><td>60</td><td>炼狱遗物碎片</td><td>40000</td><td>1</td><td>套装</td></tr>
-      <tr><td>熵烬遗物</td><td>60</td><td>炼狱遗物碎片</td><td>40000</td><td>1</td><td>套装</td></tr>
-      <tr><td>重现之遗物</td><td>65</td><td>先辈记忆碎片</td><td>80000</td><td>1</td><td>套装</td></tr>
-      <tr><td>剑术摘要遗物</td><td>65</td><td>先辈记忆碎片</td><td>80000</td><td>1</td><td>套装</td></tr>
-      <tr><td>暗红遗物</td><td>65</td><td>先辈记忆碎片</td><td>80000</td><td>1</td><td>套装</td></tr>
-      <tr><td>凯兰尔遗物</td><td>65</td><td>先辈记忆碎片</td><td>80000</td><td>1</td><td>套装</td></tr>
-      <tr><td>铭文遗物</td><td>65</td><td>先辈记忆碎片</td><td>80000</td><td>1</td><td>套装</td></tr>
-      <tr><td>诡计遗物</td><td>65</td><td>先辈记忆碎片</td><td>80000</td><td>1</td><td>套装</td></tr>
-      <tr><td>终焉遗物</td><td>65</td><td>先辈记忆碎片</td><td>80000</td><td>1</td><td>套装</td></tr>
-      <tr><td>神谕遗物</td><td>65</td><td>先辈记忆碎片</td><td>80000</td><td>1</td><td>套装</td></tr>
-      <tr><td>泰坦遗物</td><td>1</td><td>神域符文</td><td>350000</td><td>2</td><td>套装</td></tr>
-      <tr><td>太阳遗物</td><td>1</td><td>神域符文</td><td>350000</td><td>2</td><td>套装</td></tr>
-      <tr><td>神域卷轴</td><td>100</td><td>神圣精华</td><td>500000</td><td>-1</td><td>钥匙</td></tr>
-      <tr><td>挑战者信函</td><td>100</td><td>神圣精华</td><td>750000</td><td>-1</td><td>钥匙</td></tr>
-      <tr><td>阿瑞斯遗物</td><td>249</td><td>远古之痕</td><td>20000</td><td>-1</td><td>套装</td></tr>
-      <tr><td>天空之神遗物</td><td>249</td><td>远古之痕</td><td>20000</td><td>-1</td><td>套装</td></tr>
-      <tr><td>阿瑞斯遗物</td><td>3</td><td>诸神之怒碎片</td><td>20000</td><td>3</td><td>套装</td></tr>
-      <tr><td>天空之神遗物</td><td>3</td><td>黄金遗迹碎片</td><td>20000</td><td>3</td><td>套装</td></tr>
-      <tr><td>诸神之怒碎片</td><td>2</td><td>黄金遗迹碎片</td><td>20000</td><td>3</td><td>套装</td></tr>
-      <tr><td>黄金遗迹碎片</td><td>2</td><td>诸神之怒碎片</td><td>20000</td><td>3</td><td>套装</td></tr>
-      <tr><td>魂渊遗物</td><td>60</td><td>封印之血</td><td>40000</td><td>1</td><td>套装</td></tr>
-      <tr><td>冰狱遗物</td><td>60</td><td>封印之血</td><td>40000</td><td>1</td><td>套装</td></tr>
-      <tr><td>奇幻之窗</td><td>300</td><td>神圣精华</td><td>0</td><td>-1</td><td>时装</td></tr>
-      <tr><td>深渊之底遗物</td><td>30</td><td>深渊结晶碎片</td><td>500000</td><td>1</td><td>套装</td></tr>
-      <tr><td>星辰之瓶</td><td>100</td><td>神圣精华</td><td>300000</td><td>2</td><td>钥匙</td></tr>
-      <tr><td>星辰之瓶</td><td>150</td><td>星辰粉末</td><td>300000</td><td>-1</td><td>钥匙</td></tr>
-      <tr><td>地底战令</td><td>150</td><td>地底世界结晶</td><td>300000</td><td>-1</td><td>钥匙</td></tr>
-      <tr><td>地底战令</td><td>100</td><td>神圣精华</td><td>300000</td><td>2</td><td>钥匙</td></tr>
-      <tr><td>重塑魔物之卵</td><td>2</td><td>魔物之灵</td><td>5000</td><td>1</td><td>普通</td></tr>
-      <tr><td>魔能纪元</td><td>300</td><td>神圣精华</td><td>0</td><td>-1</td><td>时装</td></tr>
-    </table>
-    </details>
-    <div class="note">启用兑换项 <b>89</b> 个，涉及 <b>28 种货币</b>；最常用：神圣精华（32 项）、远古之痕（18 项）、先辈记忆碎片（8 项）。等级门槛从 100 级一直到 75 万级；系统分布：套装 37 / 普通 16 / 钥匙 16 / 时装 12 / 英雄 8。</div>
-    <details><summary>天赋属性类型（29 种）</summary>
-    <table><tr><th>天赋</th><th>类别</th></tr>
-      <tr><td>力量加成</td><td>属性加成</td></tr>
-      <tr><td>敏捷加成</td><td>属性加成</td></tr>
-      <tr><td>神圣加成</td><td>属性加成</td></tr>
-      <tr><td>体力加成</td><td>属性加成</td></tr>
-      <tr><td>智力加成</td><td>属性加成</td></tr>
-      <tr><td>武器增幅</td><td>增幅加成</td></tr>
-      <tr><td>头部增幅</td><td>增幅加成</td></tr>
-      <tr><td>胸部增幅</td><td>增幅加成</td></tr>
-      <tr><td>腿部增幅</td><td>增幅加成</td></tr>
-      <tr><td>戒指增幅</td><td>增幅加成</td></tr>
-      <tr><td>项链增幅</td><td>增幅加成</td></tr>
-      <tr><td>手镯增幅</td><td>增幅加成</td></tr>
-      <tr><td>护腕增幅</td><td>增幅加成</td></tr>
-      <tr><td>神圣攻击增加</td><td>属性攻击</td></tr>
-      <tr><td>力量攻击增加</td><td>属性攻击</td></tr>
-      <tr><td>敏捷攻击增加</td><td>属性攻击</td></tr>
-      <tr><td>体力攻击增加</td><td>属性攻击</td></tr>
-      <tr><td>智力攻击增加</td><td>属性攻击</td></tr>
-      <tr><td>技能暴怒</td><td>暴怒</td></tr>
-      <tr><td>普攻暴怒</td><td>暴怒</td></tr>
-      <tr><td>普攻加成</td><td>加成</td></tr>
-      <tr><td>技能加成</td><td>加成</td></tr>
-      <tr><td>神圣</td><td>属性点</td></tr>
-      <tr><td>力量</td><td>属性点</td></tr>
-      <tr><td>敏捷</td><td>属性点</td></tr>
-      <tr><td>体力</td><td>属性点</td></tr>
-      <tr><td>智力</td><td>属性点</td></tr>
-      <tr><td>一阶觉醒技能</td><td>技能加成</td></tr>
-      <tr><td>二阶觉醒技能</td><td>技能加成</td></tr>
-    </table>
-    </details></div>
-    </details>
+
 <details class="card gcard" id="toc-45">
       <summary><h4><i>面</i>进度参考面板（玩家实测）</h4></summary>
       <div class="gbody">
@@ -3900,20 +3653,7 @@ X</td><td>11.9GG</td><td>x10</td><td>10.0</td></tr>
       <li><b>道具存留</b>：神圣/传说/闪耀战利品、双倍药水（不领）、远古遗物、灵魂罐/瓶；<b>奥法能量瓶存到 5 阶</b></li>
     </ul>
     </details>
-    <details><summary>等级开放节点（10.0 版·与 游戏 有出入）</summary>
-    <table>
-      <tr><th>等级</th><th>10.0 图鉴写的开放内容</th><th>游戏数据（12.0）</th></tr>
-      <tr><td>25</td><td>转生 / 战团 / 遗迹</td><td>传话 / 成就</td></tr>
-      <tr><td>100</td><td>战团 / 转生 / 遗迹</td><td>转生 / 遗忘水</td></tr>
-      <tr><td>200</td><td>魔法兑换 / 深渊裂痕 / 圣物</td><td>魔法兑换 / 驱逐巨猿</td></tr>
-      <tr><td>500</td><td>小宇宙 / 圣遗物</td><td>战团 / 圣遗物 / 小宇宙</td></tr>
-      <tr><td>1000</td><td>锻造台 / 秘境</td><td>锻造台 / 周秘境 / 远古召唤石</td></tr>
-      <tr><td>5000</td><td>星阵 / 奥法 / 次元世界</td><td>奥秘 / 次元 / 伤害分析 / 腕甲</td></tr>
-      <tr><td>35000</td><td>英雄挑战</td><td>英雄挑战</td></tr>
-      <tr><td>300000</td><td>创世系统 / 光环</td><td>创世系统 / 创世老大 / 权威者 / 律令 / 刻痕</td></tr>
-    </table>
-    <div class="note">两版有出入（尤其战团：10.0 写 25/100，游戏 写 500）——以游戏内实际为准；游戏 为 12.0 版本数据。</div>
-    </details>
+    
     <details><summary>充值项目（10.0 标价，参考）</summary>
     <table>
       <tr><th>档位</th><th>内容</th><th>建议</th></tr>
@@ -4081,6 +3821,8 @@ X</td><td>11.9GG</td><td>x10</td><td>10.0</td></tr>
     </div>
     </details></div>
     </details>
+        
+
     <details class="card gcard" id="toc-52">
       <summary><h4><i>符</i>符文盘 · 负向毕业方案</h4></summary>
       <div class="gbody">
@@ -4121,13 +3863,7 @@ X</td><td>11.9GG</td><td>x10</td><td>10.0</td></tr>
         </details>
       </div>
     </details>
-    <details class="card gcard" id="toc-53">
-      <summary><h4><i>面</i>我的面板 · 举例</h4></summary>
-      <div class="gbody">
-        <div id="pdMirror" class="note">在「面板 → 面板数据」填写后，这里会自动显示你最近一次填写的数据。</div>
-        <div class="note" style="color:#8f8674">仅作个人数据示例存档，不参与任何攻略数值推导。</div>
-      </div>
-    </details>
+    
 
 
   </div>
@@ -4214,6 +3950,11 @@ X</td><td>11.9GG</td><td>x10</td><td>10.0</td></tr>
     <div class="sheet-label"><span>界面透明度</span><b id="alphaVal">88%</b></div>
     <input type="range" id="alphaRange" min="40" max="98" step="1" value="88">
     <div class="sheet-note">越往右面板越实，越往左越透（露出壁纸）</div>
+  </div>
+  <div class="sheet-row">
+    <div class="sheet-label"><span>效果关闭模式</span></div>
+    <div class="chips" id="fxChips"></div>
+    <div class="sheet-note">开启后：光条静态显示、背景掉落停在终态、所有图片不再运动；其他布局与功能不变</div>
   </div>
 </div>
 
@@ -4370,18 +4111,18 @@ var WALLS={
 
 /* ================= 默认（空白，供分享使用） ================= */
 function cloneDefaults(){return {
-  physMul:1.25, mode:'none', curLevel:4471094, expRate:1408, unit:'BB', expMod:0, rebirth:'2026-11-09T07:30',
+  physMul:1.25, mode:'none', curLevel:0, expRate:0, unit:'BB', expMod:0, rebirth:'',
   pd:{str:0,agi:0,int:0,spi:0,vit:0,phys:0,mag:0,hp:0,bs:0,bsGold:0,awake:0,trans:0,aspd:0,critDmg:0,pierce:0,physAdd:0,defAdd:0,voidDmg:0,elite:0,mob:0},
   stats:[
-    {key:'exp', name:'经验', dot:'exp', old:8390, target:8800, phys:false},
-    {key:'atk', name:'攻击力', dot:'atk', old:6200, target:6800, phys:false, sync:['phys','crit']},
-    {key:'phys', name:'物理/法术加成', dot:'phys', old:7750, target:8500, phys:true},
-    {key:'crit', name:'暴击伤害', dot:'crit', old:6200, target:6800, phys:false},
-    {key:'hp', name:'生命值', dot:'hp', old:5200, target:5200, phys:false}
+    {key:'exp', name:'经验', dot:'exp', old:0, target:0, phys:false},
+    {key:'atk', name:'攻击力', dot:'atk', old:0, target:0, phys:false, sync:['phys','crit']},
+    {key:'phys', name:'物理/法术加成', dot:'phys', old:0, target:0, phys:true},
+    {key:'crit', name:'暴击伤害', dot:'crit', old:0, target:0, phys:false},
+    {key:'hp', name:'生命值', dot:'hp', old:0, target:0, phys:false}
   ],
   jManual:'', l0:'', lprev:'', yGain:0, tGain:0,
-  xN:5000000, xM:5200000, xE:1408, xUnit:'BB', xMult:3,
-  hV:10413, afBig:6, afSmall:8, afHave:164.21, afPerMin:3968, afBottles:7, afTgtBig:7, afTgtSmall:1
+  xN:0, xM:0, xE:0, xUnit:'BB', xMult:1,
+  hV:0, afBig:0, afSmall:0, afHave:0, afPerMin:0, afBottles:0, afTgtBig:0, afTgtSmall:0
 };}
 
 var STORE_KEY='wuxian.rebirth.calc.v4';
@@ -4442,7 +4183,7 @@ function loadSave(){
   }catch(e){return freshSave();}
 }
 function freshSave(){
-  return {roles:[{id:'main',name:'主号',data:cloneDefaults()}],activeId:'main',ui:{alpha:0.88,theme:'v13',wall:'official',bg:null},history:{'2026-11-18':2.2e19,'2026-11-19':2.3e19}};
+  return {roles:[{id:'main',name:'主号',data:cloneDefaults()}],activeId:'main',ui:{alpha:0.88,theme:'v13',wall:'official',bg:null,fx:true},history:{}};
 }
 function activeRole(){for(var i=0;i<SAVE.roles.length;i++)if(SAVE.roles[i].id===SAVE.activeId)return SAVE.roles[i];return SAVE.roles[0];}
 function saveAll(){try{localStorage.setItem(STORE_KEY,JSON.stringify(SAVE));}catch(e){}}
@@ -4846,7 +4587,27 @@ function initBlockFall(){
                  rest:0.42,el:img});
     return true;
   }
-  var spawnTimer=setInterval(function(){ if(!spawn())clearInterval(spawnTimer); },100);
+  var staticMode=false;
+  var spawnTimer=setInterval(function(){ if(staticMode)return; if(!spawn())clearInterval(spawnTimer); },100);
+  /* 对外：静态模式（掉落终态） */
+  window.__blockFallStatic=function(on){
+    staticMode=!!on;
+    var w=vw(),h=vh();
+    if(on){
+      /* 补一些方块并直接摆成「落地后」的终态 */
+      var need=Math.max(10, Math.min(16, blocks.length));
+      for(var n=blocks.length; n<need; n++){ if(!spawn()) break; }
+      for(var k=0;k<blocks.length;k++){
+        var b=blocks[k];
+        b.y = h - b.h - (k%3)*2;
+        b.x = Math.min(Math.max(4, (k*(w-40)/Math.max(1,blocks.length-1))), Math.max(4,w-b.w-4));
+        b.vx=0; b.vy=0; b.ang=0; b.angV=0; b.sleep=true;
+        b.el.style.transform='translate('+b.x.toFixed(1)+'px,'+b.y.toFixed(1)+'px) rotate(0deg)';
+      }
+    } else {
+      for(var m=0;m<blocks.length;m++){ blocks[m].sleep=false; }
+    }
+  };
   function onOrient(e){var g=(e.gamma||0);tiltX=Math.max(-3,Math.min(3,g*0.05));}
   if(window.DeviceOrientationEvent){window.addEventListener('deviceorientation',onOrient,true);}
   function reqPerm(){
@@ -4860,6 +4621,7 @@ function initBlockFall(){
   var gy=0.55;                 /* 重力加速度（px/frame²，60fps 基准） */
   var last=performance.now();
   function step(now){
+    if(staticMode){ last=now; requestAnimationFrame(step); return; }
     if(document.hidden){last=now;requestAnimationFrame(step);return;}
     var dt=Math.min(50,now-last)/16.67;last=now;
     var w=vw(),h=vh();
@@ -5334,6 +5096,30 @@ function applyWall(){
   var bt=el('bgThumb'),bh=el('bgThumbHint');
   if(bt){if(SAVE.ui.bg){bt.src=SAVE.ui.bg;bt.classList.add('on');if(bh)bh.classList.add('hide');}else{bt.removeAttribute('src');bt.classList.remove('on');if(bh)bh.classList.remove('hide');}}
 }
+
+/* ================= 效果关闭模式 ================= */
+function applyFx(){
+  var off = (SAVE.ui && SAVE.ui.fx===false);
+  document.documentElement.classList.toggle('fx-off', off);
+  try{ if(window.__blockFallStatic) window.__blockFallStatic(off); }catch(e){}
+}
+function buildFxChips(){
+  var box=el('fxChips'); if(!box) return;
+  box.innerHTML='';
+  [['on','动效开启'],['off','效果关闭']].forEach(function(o){
+    var on=o[0]==='on';
+    var cur=(SAVE.ui&&SAVE.ui.fx!==false);
+    var b=document.createElement('span');
+    b.className='chip'+(((on&&cur)||(!on&&!cur))?' on':'');
+    b.textContent=o[1];
+    b.addEventListener('click',function(){
+      SAVE.ui.fx=on; saveAll(); buildFxChips(); applyFx();
+      toast(on?'已恢复动效':'已开启效果关闭模式');
+    });
+    box.appendChild(b);
+  });
+}
+
 function buildThemeChips(){
   var box=el('themeChips');box.innerHTML='';
   Object.keys(THEMES).forEach(function(k){
@@ -5349,6 +5135,7 @@ function buildThemeChips(){
     b.addEventListener('click',function(){SAVE.ui.wall=k;saveAll();buildThemeChips();applyWall();});
     wb.appendChild(b);
   });
+  if(typeof buildFxChips==='function') buildFxChips();
 }
 
 /* ================= 角色 ================= */
@@ -5613,7 +5400,7 @@ function syncPdInputs(){
 function init(){
   initPd();
   buildStats();buildUnits();buildAofa();buildRoles();buildThemeChips();initBlockFall();
-  fillGainHistory();syncInputs();applyTheme();initTabs();initSheets();
+  fillGainHistory();syncInputs();applyTheme();buildFxChips();applyFx();initTabs();initSheets();
   el('trendClose').addEventListener('click',hideTrendModal);
   el('trendMask').addEventListener('click',hideTrendModal);
 
@@ -5880,7 +5667,7 @@ init();
 <script>
 if ('serviceWorker' in navigator && (location.protocol === 'http:' || location.protocol === 'https:')) {
   window.addEventListener('load', function () {
-    navigator.serviceWorker.register('sw.js?v=0.16.6').then(function (reg) {
+    navigator.serviceWorker.register('sw.js?v=0.16.8').then(function (reg) {
       reg.update().catch(function () {});
     }).catch(function () {});
   });
@@ -6523,6 +6310,50 @@ var OCR = (function(){
     }
     return best;
   }
+  /* 小字号解码：按字高估算等宽切分（数字粘连时也能切开） */
+  function decodeSmall(data,w,h,th){
+    try{
+      th=th||190;
+      var m=binarize(data,w,h,th);
+      var xs=[], ys=[];
+      for(var y=0;y<h;y++) for(var x=0;x<w;x++) if(m[y*w+x]){ xs.push(x); ys.push(y); }
+      if(!xs.length) return '';
+      var y0=Math.min.apply(null,ys), y1=Math.max.apply(null,ys);
+      var hg=y1-y0+1; if(hg<6) return '';
+      var gw=hg*0.52;
+      /* 列投影 → 段 */
+      var col=new Array(w); for(var i=0;i<w;i++) col[i]=0;
+      for(var y2=0;y2<h;y2++) for(var x2=0;x2<w;x2++) if(m[y2*w+x2]) col[x2]++;
+      var runs=[],cur=null,gap=0;
+      for(var x3=0;x3<w;x3++){
+        if(col[x3]>0){ if(!cur){cur=[x3,x3];} else {cur[1]=x3;} gap=0; }
+        else if(cur){ gap++; if(gap>=2){ runs.push(cur); cur=null; gap=0; } }
+      }
+      if(cur) runs.push(cur);
+      var out='';
+      runs.forEach(function(r){
+        var rw=r[1]-r[0]+1;
+        var n=Math.max(1,Math.round(rw/gw));
+        if(n<=1){
+          var sub=m.subarray(0); var g=new Uint8Array(rw*hg);
+          for(var yy=0;yy<hg;yy++) for(var xx=0;xx<rw;xx++) g[yy*rw+xx]=m[(y0+yy)*w+(r[0]+xx)];
+          out+=classify(g,rw,hg);
+        }else{
+          var step=rw/n;
+          for(var k=0;k<n;k++){
+            var sx=Math.round(r[0]+k*step), ex=Math.round(r[0]+(k+1)*step);
+            if(ex<=sx) continue;
+            var sw=ex-sx;
+            var g2=new Uint8Array(sw*hg);
+            for(var yy2=0;yy2<hg;yy2++) for(var xx2=0;xx2<sw;xx2++) g2[yy2*sw+xx2]=m[(y0+yy2)*w+(sx+xx2)];
+            out+=classify(g2,sw,hg);
+          }
+        }
+      });
+      return out;
+    }catch(e){ return ''; }
+  }
+
   function decodeRect(data,w,h,th){
     th = th || 200;
     if(window.__ocrPrep && !window.__prepLock){ var pre=window.__ocrPrep(data,w,h); if(pre.w!==w||pre.h!==h){ data=pre.data; w=pre.w; h=pre.h; } }
@@ -6555,6 +6386,7 @@ var OCR = (function(){
   /* 调试钩子：供离线批量评测 OCR 使用 */
   window.__ocrTest={
     decode:function(data,w,h,th){ return decodeRect(data,w,h,th); },
+    small:function(data,w,h,th){ return decodeSmall(data,w,h,th); },
     stable:function(data,w,h){ return decodeStable(data,w,h); },
     valley:function(data,w,h,th,frac){ return decodeValley(data,w,h,th,frac); }
   };
@@ -6704,7 +6536,7 @@ var OCR = (function(){
       var nm=document.createElement('span'); nm.className='nm'; nm.textContent=r.label;
       var val=document.createElement('input'); val.className='val'; val.inputMode='decimal'; val.dataset.i=i; val.value=(r.val==null?'':String(r.val));
       d.appendChild(cb); d.appendChild(nm); d.appendChild(val);
-      if(r.unit){ var u=document.createElement('span'); u.className='u'; u.textContent=r.unit; d.appendChild(u); }
+      var u=document.createElement('span'); u.className='u'; u.textContent=(r.unit||''); d.appendChild(u);   /* 固定单位槽，保证各行输入框左对齐 */
       body.appendChild(d);
     });
     tabletBg(box);
@@ -6963,6 +6795,7 @@ var OCR = (function(){
   var LABEL_TPL={"patches": ["bZi6pI61k2hsiK66onJlZmyponyorI6xup16m7mximpwobqcpr28uLiknbamdWVlZmVmZmVmiLaSZWVmZmVlZoewvLCwuI98mLK7uqqFbmVtqaF9rbezurqspKy5uq1/iLa6mKa4qJGsurq0i2pmZWZqhoJnZoi2kmVkZWVlZmaWuLu8vK6ksLmxoKi2tKB4c62ggLK0q6Cmqqyrpp6hiKu8uZmmsIuWsbu7tqCGdmhmc6qgbGaItZ15eHl4bGVleYqnvLCWuLikhXN4kq6zg3iyraG4q4qCfIKef3GGgoCytriYprq1uLSss7S3uKZvZnSspG1nhra4tLS1sYZmZmqIsrqsnaqyqKOioaSqoG91rbq6vLmusKGOuI98rpxyhJO1mKa3rqKhsLabj5WOa2R0rqZsZoe2tKqrqqJ6ZmSEsry6u7elsLK1urazspdpaYCOk5y2pKaykLOakriOaGaEtJimpoqut7SopqJxaGRmdaykbWaGtZZubm1rZmRlhq6wpJSIc3V3krabeXZuZm6Akp6pt5iTtpSuqq6ueGZmhLSYpqSAoKiqs7ekhmxkZnStpW5oh7aSZmZmZWRlZW16fYSOjnhlZoa0kWhmZmiWtLazsriOg6qKk6y2lmplZoS0maimfaa0tq6iqK18ZWR0rKRtZoe2kmVlZWZlZGV6nKqwuLaRbm2JtZRvbW1sjJqPf5q2k4OSiIqsuZN1aGaEtJaRkHecpKKisLiicGl6kLOui4ebt6KGhoaGgG5ljrO0ppudraamrrqxp6akgmhwhI2qtquxs7S1uru1n3FmhLSRa2+GoKyyt7KZd2Z0qLa8u7e2uLu5tra2trGIZnKAfXNqgK61tbS0tLS2sYlkcqWztKGNnqCgoKCgoJJuZoKwjmVwpLWzqJaAbWVlcJmgoKCgoKCgoJ+fn5+egGZmZmVmZWp6gICAfoCBgHpsZGd6gIFzaGpqamprampqZmVwhnZkZ3qCfXFqZmVmZGZqamprampqampqampqamhlZGRlZWVkZWRkZmZlZWVmZWZkZWVkZGVlZWZmZGVmZmVmZWZmZGZlZmRkZmVlZmVlZmVkZWVlZWVlZGRkZGVlZGRlZWRlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVmZWVlZWVlZWRlZGVlZGRlZWVlZWVlZWVlZWVlZWVlZWVmZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWU=", "ZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRjZGRkZGRkZGp+bWRnaWlqamdkZGhvcG9oZGRnhn5lY2RkZGh8bmRkeoBmZGRkZGRlZWZlZmVlZWZlZWRkZGRkZGRkZGRkZGSBsYN6naGjo6OacmaOqqyqkmhkdq+daWRkZGR5r4Zla6GmdW5ubGZtipGSkpGSkpGSkotuZGRkZGRkZGRkZGRonLF6gLC1tbe6s3pmjKensaluaJa5sX9lZGRkkLalgn+ztKmoqaJ0e7G3t7e3ubi3t7ayfmRkZGRkZGRkZGRkeq+fdnJ4e36guaBsZHKZfZulboWzqrGodmVkbKWtsJ6kuayktbefc2yHjo+Ok7OpkI6OiG5kZGRkZGRkZGNkapmzjaCRZmqIsa56ZGR6rYCbpISusYSUt6N0ZYGznKm1treklLWgbmRkZWZmZm+rmGhlZmVkZGRkZGRkZGRjZIKzsqa1knaXs7utgmlkf6+BorGvuraprrm5nnWjuZeotZuYt7exe2RkY2d/dmRtq5dmY2NkZGRkZGRkZGRkZGWQubm6sZyrt6ifs7OYboKufqWzq6Gur7CqopuPt7qXp5+Enrm6tZJ5aWRuqJJlbquhfHl5cGRkZGRkZGRkZGRkd5Oxtpius5p3boSnr3iIspmwqYR+eJGGdIR5l7S3l6m1s7ats7W3r4FkbquVZm6rt7KxsZtoZGRkZGRkZGRkZGiMtq6XoqufmpubpZxsh7e5urijqYalkniriniIrpepsaebp7WUjpd3ZG6qlmZuq7WurauQZmRkZGRkZGRkZGR/sbq5t6mzt7m5t7eVZ26FiJCzna2bpJ+OsnxkbqyXp5iUsLSkoI5qZWRuqpZmbquabmxsaGRkZGRkZGRkZGRkhrGroYp2e4KjrYZ+b2VvfZShtZGho5urq6RuZG6rl6eUjaeirbWWcmRkbqqWZm6rl2ZkY2NkZGRkZGRkZGRkZGx8eH+KdmVnmKZtY2RwpLW1sbWGkZ+Hp7WMZmRtq5eploattq+bpptoZG6qlmZtq5dmZGNjZGRkZGRkZGRkZGR2m6m1tZBqbJqncmhob5eXgI6yhoSJfpyziGtkbqyUlIaEo56brbOJZXCErqF+hK+igH5+fHBkZGRkZGRkZGRlibOwoZino6SxtaWioHpndYKes6Sxs7O3ubOPZm6rkGpviKGtt7GOamiYtrm5tbe6ube3trWZaWRkZGRkZGRkZHKEeWp2sbu7u7q7u7eDZIq1uaWRoqOio6OjiGZuq5BmfLO6s55+aWRnkaqqq6qrq6urqqqqkmpkZGQ=", "Z2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2ZnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZmZtfWxnaWlra2toZ2dscG9tZ2dndolrZ2dnZ2d2cmdndoBpZ2dnZ2dnaGdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnhrF9f5iam5ybiWlwm6iooHhmapi0d2ZmZ2dvppRoapmsdWtramduhIiJiomJiYqKiX1pZ2dnZ2dnZ2dnZ2dna5+2e5S/wcDBwa1wda65ur6NaHixvY9pZ2dmfringnewuKGenpdzgri9vL29vb29vb2scGdnZ2dnZ2dnZ2dnZ3m0pXB4kpaZs7+eammGk4q1i22bvLq0fGdnaZO6tqaXvby5vsCxe3mjqKiorr+0qKiol21nZ2dnZ2dnZ2dnZ2qUupGUgmdohbaze2dplaZ/tIiLuqaQuKl1aHCrr6i2uL+mjbaxfmpnbG1uboC4kG5ubmtmZ2dnZ2dnZ2dnZ2d9s7KbupNsibS/m21maJunhbahtr6ilLTAo3CIu6ekwbivurK7kGlnZmhtaWd6totnZ2dmZ2dnZ2dnZ2dnZ2dnm7+9vLiPm7q9vbaXdGqhpYm6vL2+wL+/vbiHqMCmpLONjLzBtX9qZmZxooZneraNaWlpZ2dnZ2dnZ2dnZ2dnZ5e4vr+vsr6zjY+xvZ9wpKGNuqKQk5+im42TjLy/pqSvmrK9vr+xlnRndrORZ3q4q5iYlnlnZ2dnZ2dnZ2dnZ2dwi7azkrKtjXh4iqyecqi3sr6ii4SHnXGJjYSvtaakv723q7aytraGZnazkWd6usDAv72PZ2dnZ2dnZ2dnZ2dncp+/tKistLCxr7G0imyeurq9uKqolrF8qaRyeqampLKgoLC6mImJcmd2s5Fnerisn5+bemdnZ2dnZ2dnZ2dnZ429wL+4prO4v723sX9odIGGorSetZe1j7aSaGmkpqSllbi4qKuYbGdndrORZ3q3jmtqaWdnZmdnZ2dnZ2dnZ2eNsaabhnR7g7Cmf3lrbICUp7SvjbaVtKu2fWdppKako4mpqLO4m3tnZ3azkWd7totnZ2dnZ2dnZ2dnZ2dnZ2dncYB+iJF2Z2+rnGlnZ4W2ura4qn6qip+3pm1naqSmpaaGr7u0oayea2d2spBneraLZ2dnZ2dmZ2dnZ2dnZ2dnZ3maq7m6iWdwq5xpZmeEq5iGqaR5i32ItptwZ2qkppqahq2lm627kmlug7aaeIi4lXd3d3ZpZ2dnZ2dnZ2dnZ2c="], "w": 64, "h": 20};
   var BOX_CANDIDATES={
     level:[
+      [0.7600,0.0995,0.9660,0.1255],   /* 828×1792（学习样本 0001）*/
       [0.7880,0.0960,0.9360,0.1112],   /* 用户 A 1179×2556 */
       [0.7950,0.0975,0.9345,0.1100],   /* 用户 A 备用 */
       [0.8100,0.0950,0.9380,0.1085],   /* 用户 B 1320×2868 */
@@ -6975,6 +6808,7 @@ var OCR = (function(){
       [0.8180,0.1230,0.9300,0.1390]    /* 新样本 1179×2556（卡片下移） */
     ],
     exp:[
+      [0.0800,0.5495,0.2790,0.5745],   /* 828×1792（学习样本 0001，纯数字）*/
       [0.0870,0.5505,0.2920,0.5685],
       [0.0900,0.5510,0.3000,0.5700],
       [0.1080,0.5524,0.2590,0.5670],   /* 样本6 */
@@ -6984,13 +6818,37 @@ var OCR = (function(){
       [0.0937,0.5525,0.3000,0.5690],   /* 828×1792 备用 */
       [0.0900,0.5490,0.3300,0.5680]    /* 884×1920 */
     ],
+    unit:[
+      [0.2750,0.5490,0.3300,0.5760]    /* 828×1792（学习样本 0001）*/
+    ],
     mod:[
+      [0.2400,0.7450,0.6200,0.7760],   /* 宽框：容错数值起点偏左（如「1,747,930%」）*/
+      [0.3100,0.7480,0.5600,0.7720],   /* 828×1792（学习样本 0001）*/
       [0.7197,0.7385,0.9318,0.7573],   /* C 第一行右 */
       [0.2650,0.7405,0.4620,0.7640],   /* A 第一行左 */
       [0.2833,0.8211,0.5303,0.8344],   /* B 第三行左 */
       [0.3000,0.7410,0.7200,0.7580]    /* 884×1920 第一行左 */
     ]
+  }
+  /* 按分辨率实测的框位档位（新机型加入这里即可） */
+  var OCR_PROFILES={
+    '864x1920':{
+      level:[[0.840,0.090,0.945,0.110]],
+      exp:[[0.106,0.550,0.235,0.570]],
+      mod:[[0.780,0.812,0.995,0.836]]
+    },
+    '1289x2800':{
+      level:[[0.700,0.100,0.945,0.118],[0.720,0.102,0.940,0.116]],
+      exp:[[0.100,0.570,0.240,0.586]],
+      mod:[[0.600,0.748,0.920,0.770]]
+    },
+    '1290x2796':{
+      level:[[0.680,0.062,0.950,0.082],[0.700,0.064,0.945,0.080]],
+      exp:[[0.100,0.548,0.240,0.566]],
+      mod:[[0.280,0.752,0.580,0.774]]
+    }
   };
+;
   var DEFAULT_BOXES={
     level:BOX_CANDIDATES.level[0],
     exp:BOX_CANDIDATES.exp[0],
@@ -7387,9 +7245,39 @@ var OCR = (function(){
     return {list:out,w:W,h:H};
   })();
 
+  /* 属性面板是否存在（左列有 ≥3 个金色行图标）→ 决定标签搜索范围 */
+  function hasAttrsPanel(cx,W,H){
+    try{
+      var x0=Math.round(0.015*W), x1=Math.round(0.105*W);
+      var y0=Math.round(0.28*H), y1=Math.round(0.98*H);
+      var w=x1-x0, h=y1-y0; if(w<8||h<20) return false;
+      var d=cx.getImageData(x0,y0,w,h).data;
+      var rows=new Array(h); for(var z=0;z<h;z++) rows[z]=0;
+      for(var y=0;y<h;y++){
+        var c=0;
+        for(var x=0;x<w;x++){
+          var i=(y*w+x)*4, r=d[i],g=d[i+1],b=d[i+2];
+          if(r>165 && g>120 && b<120 && (r-b)>65) c++;
+        }
+        rows[y]=c;
+      }
+      var segs=[],cur=null,gap=0,thr=Math.max(3,Math.round(w*0.10));
+      for(var y2=0;y2<h;y2++){
+        if(rows[y2]>=thr){ if(!cur){cur=[y2,y2];} else {cur[1]=y2;} gap=0; }
+        else if(cur){ gap++; if(gap>12){ segs.push(cur); cur=null; gap=0; } }
+      }
+      if(cur) segs.push(cur);
+      var n=segs.filter(function(sg){
+        var hh=sg[1]-sg[0]+1;
+        return hh>=Math.round(H*0.009) && hh<=Math.round(H*0.030);
+      }).length;
+      return n>=3;
+    }catch(e){ return false; }
+  }
+
   function findModLabel(cx, W, H){
     var TW=_LABEL_FT.w, TH=_LABEL_FT.h;
-    var y0=Math.round(H*0.70), y1=Math.round(H*0.97);
+    var y0=Math.round(H*0.25), y1=Math.round(H*0.97);   /* 全屏搜索（展开面板时标签会移到中部） */
     var x0=0, x1=Math.round(W*0.76);
     var labH=Math.round(H*0.0140);            /* 标签高 */
     if(labH<12) labH=12;
@@ -7598,7 +7486,7 @@ var OCR = (function(){
   }
   var EXP_UNITS={K:1,M:1,B:1,T:1,AA:1,BB:1,CC:1,DD:1,EE:1,FF:1,GG:1,HH:1,II:1,JJ:1,KK:1,LL:1,MM:1,NN:1,OO:1,PP:1,QQ:1,RR:1,SS:1,TT:1,UU:1,VV:1,WW:1,XX:1,YY:1,ZZ:1};
   function expByRowScan(cx, W, H){
-    var res='';
+    var res='', bestScore=-1;
     for(var yc=0.536; yc<=0.575; yc+=0.004){
       var yA=Math.round(H*yc), yB=Math.round(H*(yc+0.016));
       var box=rowValueBox(cx, W, H, yA, yB, Math.round(W*0.02), Math.round(W*0.46));
@@ -7607,11 +7495,69 @@ var OCR = (function(){
       if(bw<20||bh<8) continue;
       var dd=cx.getImageData(box[0],box[1],bw,bh);
       var t='';
-      try{ t=OCR.decodeAuto(dd.data,bw,bh,140)||''; }catch(e){ continue; }
-      var m=t.match(/(\d[\d,]*(?:\.\d+)?)([A-Z]{1,2})/);
-      if(m && EXP_UNITS[m[2]]){ res=m[0]; break; }
+      /* decodeRect 保留小数点；多阈值取最优 */
+      try{ t=OCR.decodeRect(dd.data,bw,bh,190)||''; }catch(e){ t=''; }
+      if(!t){ try{ t=OCR.decodeAuto(dd.data,bw,bh,140)||''; }catch(e){ t=''; } }
+      t=String(t).replace(/\s/g,'');
+      var m=t.match(/^(\d[\d,]*(?:\.\d{1,2})?)([A-Z]{1,2})?/);
+      if(m){
+        var unit=m[2]||'';
+        var digits=m[1].replace(/[^0-9]/g,'').length;
+        /* 合法单位或足够长的数字才接受；多行取最优（单位优先、位数多优先） */
+        if((unit && EXP_UNITS[unit]) || digits>=3){
+          var score=(unit?20:0)+digits;
+          if(score>bestScore){ bestScore=score; res=m[1].replace(/,/g,'')+unit; }
+        }
+      }
     }
     return res;
+  }
+
+  /* 皇冠图标锚定（属性面板展开/收起都适用）：金色图标行 → 右侧数值 */
+  function crownRowScan(cx,W,H){
+    try{
+      var x0=Math.round(0.015*W), x1=Math.round(0.105*W);
+      var y0=Math.round(0.25*H), y1=Math.round(0.98*H);
+      var w=x1-x0, h=y1-y0; if(w<10||h<20) return '';
+      var d=cx.getImageData(x0,y0,w,h).data;
+      var rows=new Array(h); for(var z=0;z<h;z++) rows[z]=0;
+      for(var y=0;y<h;y++){
+        var c=0;
+        for(var x=0;x<w;x++){
+          var i=(y*w+x)*4, r=d[i],g=d[i+1],b=d[i+2];
+          if(r>170 && g>125 && b<115 && (r-b)>70) c++;
+        }
+        rows[y]=c;
+      }
+      var segs=[],cur=null,gap=0,thr=Math.max(3,Math.round(w*0.12));
+      for(var y2=0;y2<h;y2++){
+        if(rows[y2]>=thr){ if(!cur){cur=[y2,y2];} else {cur[1]=y2;} gap=0; }
+        else if(cur){ gap++; if(gap>10){ segs.push(cur); cur=null; gap=0; } }
+      }
+      if(cur) segs.push(cur);
+      /* 只保留「图标大小」的段 */
+      segs=segs.filter(function(sg){
+        var hh=sg[1]-sg[0]+1;
+        return hh>=Math.round(H*0.010) && hh<=Math.round(H*0.032);
+      });
+      if(!segs.length) return '';
+      var best='';
+      segs.slice(0,3).forEach(function(sg){
+        var cy=y0+(sg[0]+sg[1])/2;
+        var vy0=Math.max(0,Math.round(cy-H*0.011)), vy1=Math.min(H,Math.round(cy+H*0.011));
+        var vx0=Math.round(0.26*W), vx1=Math.round(0.66*W);
+        var dd=cx.getImageData(vx0,vy0,vx1-vx0,vy1-vy0);
+        var t='';
+        [150,170,190].forEach(function(th){
+          var q='';
+          try{ q=OCR.decodeStable(dd.data,dd.width,dd.height,th)||''; }catch(e){ q=''; }
+          q=String(q).replace(/[^0-9]/g,'');
+          if(q.length>t.length) t=q;
+        });
+        if(t.length>=4 && t.length<=8 && t.length>best.length) best=t;
+      });
+      return best;
+    }catch(e){ return ''; }
   }
 
   /* ===== 皇冠锚定 + 连通域切数字（纯 JS，无外部依赖） ===== */
@@ -7805,6 +7751,54 @@ var OCR = (function(){
     return {lv:best, crown:c, raw:rawT, box:[X0,Y0,X1,Y1], glyphs:group.length};
   }
 
+  /* 横向带扫描：给定 y 带，自动在整行找「像目标」的数字串（抗机型/偏移差异） */
+  function bandScan(cx, W, H, y0, y1, kind){
+    try{
+      var yy0=Math.max(0,Math.round(y0*H)), yy1=Math.min(H,Math.round(y1*H));
+      var bh=yy1-yy0; if(bh<8) return '';
+      var d=cx.getImageData(0,yy0,W,bh);
+      var best='', bestScore=-1;
+      [140,160,180,200].forEach(function(th){
+        var cols=new Array(W);
+        for(var x=0;x<W;x++){
+          var ink=0;
+          for(var y=0;y<bh;y++){
+            var i=(y*W+x)*4, v=(d.data[i]*0.299+d.data[i+1]*0.587+d.data[i+2]*0.114);
+            if(v>th) ink++;
+          }
+          cols[x]=ink;
+        }
+        /* 列有墨 → 连续段（gap 容忍 3px） */
+        var segs=[], cur=null, gap=0;
+        for(var x2=0;x2<W;x2++){
+          if(cols[x2]>=Math.max(1,Math.round(bh*0.10))){
+            if(!cur){ cur=[x2,x2]; } else { cur[1]=x2; }
+            gap=0;
+          } else if(cur){
+            gap++;
+            if(gap>6){ segs.push(cur); cur=null; gap=0; }
+          }
+        }
+        if(cur) segs.push(cur);
+        segs.forEach(function(sg){
+          var sw=sg[1]-sg[0]+1; if(sw<28||sw>W*0.75) return;
+          var pad=6;
+          var x0=Math.max(0,sg[0]-pad), x1=Math.min(W,sg[1]+pad);
+          var dd=cx.getImageData(x0,yy0,x1-x0,bh);
+          var t='';
+          try{ t=OCR.decodeAuto(dd.data,x1-x0,bh,th)||''; }catch(e){ return; }
+          t=t.replace(/\s/g,'');
+          var ok=false, score=0;
+          if(kind==='level'){ ok=/^\d{5,9}$/.test(t); score=t.length; }
+          else if(kind==='exp'){ ok=/^\d{3,6}(?:\.\d+)?[A-Z]{1,2}$/.test(t); score=(t.match(/\d/g)||[]).length; }
+          else { ok=/^[\d.,]{5,12}%?$/.test(t); score=(t.match(/\d/g)||[]).length; }
+          if(ok && score>bestScore){ bestScore=score; best=t; }
+        });
+      });
+      return best;
+    }catch(e){ return ''; }
+  }
+
   /* 全自动：多候选区域逐一尝试，取最优结果 */
   function autoIdle(image){
     var _sig=image.width+'x'+image.height, _prof=loadProfiles()[_sig]||{};
@@ -7827,17 +7821,39 @@ var OCR = (function(){
         var d=cx.getImageData(x0,y0,w,h);
         try{ return fn(d.data,w,h,_small)||''; }catch(e){ return ''; }
       }
+      /* 分辨率档位：命中则把实测框位放在候选最前（权重更高） */
+      var _resProf=(typeof OCR_PROFILES!=='undefined' && OCR_PROFILES[W+'x'+H]) || null;
+      var LVB=_resProf&&_resProf.level? _resProf.level.slice() : BOX_CANDIDATES.level;   /* 档位命中时只信档位框位 */
+      var EXPB=_resProf&&_resProf.exp? _resProf.exp.concat(BOX_CANDIDATES.exp) : BOX_CANDIDATES.exp;
+      var MODB=_resProf&&_resProf.mod? _resProf.mod.concat(BOX_CANDIDATES.mod) : BOX_CANDIDATES.mod;
+      var UNITB=(BOX_CANDIDATES.unit||[]);
       var raw={};
       /* 等级：取候选中最长的 5~9 位数字 */
       var bestLv='', _ccRes=null;
       try{ _ccRes=levelByCrownCC(cx, W, H); bestLv=_ccRes.lv||''; }catch(e){ bestLv=''; }
       window.__crown=_ccRes;
-      if(!bestLv) BOX_CANDIDATES.level.forEach(function(b){
+      /* 始终用候选二次确认：多候选 × 双通道 → 投票（票多者胜，同票取更长） */
+      var lvVotes={};
+      if(bestLv) lvVotes[bestLv]=(lvVotes[bestLv]||0)+1;
+      LVB.forEach(function(b,bi){
+        if(!_resProf && b[0]>0.760 && W<=1000) return;   /* 起点过右会混入「等级」二字（档位框位除外） */
         var savedSmall=_small; _small=_smallLv;
-        var t=dec(b,function(d,w,h,hint){ return OCR.decodeAuto(d,w,h,140,hint); }).replace(/[^0-9]/g,'');
-        if(t.length>=5&&t.length<=9&&t.length>=bestLv.length) bestLv=t;   /* 同长度取后出现的（更具体） */
+        var wgt=(bi<=1? 2 : 1);   /* 标准框位权重更高 */
+        var ts=dec(b,function(d,w,h,hint){ return OCR.decodeStable(d,w,h,(W<900?190:160))||''; }).replace(/[^0-9]/g,'');
+        var ta=dec(b,function(d,w,h,hint){ return OCR.decodeAuto(d,w,h,140,hint); }).replace(/[^0-9]/g,'');
+        [ts,ta].forEach(function(t){
+          if(!t) return;
+          if(t.length>=6 && t.charAt(t.length-1)==='1') t=t.slice(0,-1);   /* 去掉皇冠尾巴 */
+          if(t.length>=5&&t.length<=8) lvVotes[t]=(lvVotes[t]||0)+wgt;   /* 等级上限 8 位 */
+        });
         _small=savedSmall;
       });
+      var lvBest='', lvBestN=-1;
+      Object.keys(lvVotes).forEach(function(k){
+        var n=lvVotes[k];
+        if(n>lvBestN || (n===lvBestN && k.length>lvBest.length)){ lvBestN=n; lvBest=k; }
+      });
+      if(lvBest) bestLv=lvBest;
       if(!bestLv && !_prof.level){
         try{ var _ll=learnLevel(cx,W,H); if(_ll){ bestLv=_ll.val; _prof.level=_ll.box; } }catch(e){}
       }
@@ -7847,7 +7863,9 @@ var OCR = (function(){
       /* 经验收益：数字+单位 */
       var bestExp='', bestExpDigits=-1;
       var UNITS={K:1,M:1,B:1,T:1,AA:1,BB:1,CC:1,DD:1,EE:1,FF:1,GG:1,HH:1,II:1,JJ:1,KK:1,LL:1,MM:1,NN:1,OO:1,PP:1,QQ:1,RR:1,SS:1,TT:1,UU:1,VV:1,WW:1,XX:1,YY:1,ZZ:1};
-      BOX_CANDIDATES.exp.forEach(function(b){
+      /* 行扫描优先（不依赖固定框位） */
+      try{ var _ers=expByRowScan(cx,W,H); if(_ers) bestExp=_ers; }catch(e){}
+      if(!bestExp) EXPB.forEach(function(b){
         var t=dec(b,function(d,w,h,hint){ return OCR.decodeAuto(d,w,h,140,hint); });
         var m=t.match(/(\d[\d,]*(?:\.\d+)?)([A-Z]{1,2})/);
         if(!m) return;
@@ -7856,40 +7874,142 @@ var OCR = (function(){
         if(digits>bestExpDigits){ bestExpDigits=digits; bestExp=m[0]; }
       });
       if(!bestExp){ try{ bestExp=expByRowScan(cx, W, H)||''; }catch(e){ bestExp=''; } }
+      /* 兜底：有些机型单位字被裁掉，接受「带小数/较长」的纯数值，避免误取短串 */
+      if(!bestExp){
+        var altExp='', altDigits=-1;
+        EXPB.forEach(function(b){
+          var t=dec(b,function(d,w,h,hint){ return OCR.decodeAuto(d,w,h,140,hint); });
+          var m=t.match(/(\d[\d,]*(?:\.\d+)?)/);
+          if(!m) return;
+          var digits=m[1].replace(/[^0-9]/g,'').length;
+          var hasDot=m[1].indexOf('.')>=0;
+          if((hasDot && digits>=4) || digits>=6){
+            if(digits>altDigits){ altDigits=digits; altExp=m[1]; }
+          }
+        });
+        if(altExp) bestExp=altExp;
+      }
       if(!bestExp && !_prof.exp){
         try{ var _le=learnExp(cx,W,H); if(_le){ bestExp=_le.val; _prof.exp=_le.box; } }catch(e){}
       }
       if(!bestExp && _prof.exp){ try{ bestExp=decBox(cx,W,H,_prof.exp)||''; }catch(e){} }
+      /* 单位补齐：经验字符串若缺单位，从单位框读一次 */
+      if(bestExp && !/[A-Z]/.test(bestExp) && UNITB.length){
+        for(var ui=0; ui<UNITB.length; ui++){
+          var ub=UNITB[ui];
+          var ut=dec(ub,function(d,w,h,hint){ return OCR.decodeAuto(d,w,h,140,hint); }).replace(/[^A-Za-z]/g,'').toUpperCase();
+          var um=ut.match(/^(AA|BB|CC|DD|EE|FF|GG|HH|II|JJ|KK|LL|MM|NN|OO|PP|QQ|RR|SS|TT|UU|VV|WW|XX|YY|ZZ|K|M|B|T)/);
+          if(um){ bestExp = bestExp + um[1]; break; }
+        }
+      }
+      if(!bestExp){
+        var ey0=0.54, ey1=0.58;
+        if(BOX_CANDIDATES.exp && BOX_CANDIDATES.exp[0]){ ey0=BOX_CANDIDATES.exp[0][1]-0.004; ey1=BOX_CANDIDATES.exp[0][3]+0.004; }
+        var bse=bandScan(cx,W,H,ey0,ey1,'exp');
+        if(bse) bestExp=bse;
+      }
       if(bestExp) raw.exp=bestExp;
       /* 经验修正：优先用标签锚定，成功则只解该区域 */
-      var bestMod=null, bestVal=-1;
+      var bestMod=null, bestVal=-1, bestModDg=0, bestModHasComma=false, bestModRaw='';
       var labels=null;
       try{ labels=findModLabel(cx, W, H); }catch(e){ labels=null; }
-      function tryMod(b){
-        var t=dec(b,function(d,w,h,hint){ return OCR.decodeAuto(d,w,h,140,hint); });
-        /* 只接受「数字 + 分隔符 + 可选%」；把误读的千分位点统一成数字 */
-        var clean=t.replace(/\s/g,'');
-        if(!/^[\d.,]+%?$/.test(clean)) return;
-        if(clean.replace(/[^0-9]/g,'').length<5) return;
-        var core=clean.replace(/%/g,'');
-        var dots=(core.match(/\./g)||[]).length;
-        var dotTail=(core.match(/\.(\d+)$/)||[])[1]||'';
-        if(dots>1) core=core.replace(/\./g,'');            /* 8.169.629 → 8169629 */
-        else if(dots===1 && dotTail.length===5){             /* 242.85920 → 242859.20 */
-          core=core.replace(/\./, '') .replace(/(\d{2})$/, '.$1');
-        }
-        else core=core.replace(/,/g,'');                     /* 10,649,880 → 10649880 */
-        var v=parseFloat(core);
-        if(isFinite(v)&&v>bestVal){ bestVal=v; bestMod=String(v); }
+      var modCands=[];
+      function tryMod(b, src){
+        src=src||'fixed';
+        var texts=[];
+        /* 1) 档位/小屏：stable 优先 */
+        try{
+          var st=dec(b,function(d,w,h){ var q=''; try{ q=OCR.decodeStable(d,w,h,190)||''; }catch(e){ q=''; } return q; });
+          if(st) texts.push(st);
+        }catch(e){}
+        /* 2) 常规 auto */
+        try{
+          var au=dec(b,function(d,w,h,hint){ return OCR.decodeAuto(d,w,h,140,hint); });
+          if(au) texts.push(au);
+        }catch(e){}
+        texts.forEach(function(t0){
+          var t=String(t0).replace(/\s/g,'').replace(/%.*$/,'%');
+          if(!/^[\d.,]+%?$/.test(t)) return;
+          if(t.replace(/[^0-9]/g,'').length<5) return;
+          var core=t.replace(/%/g,'');
+          var dots=(core.match(/\./g)||[]).length;
+          var dotTail=(core.match(/\.(\d+)$/)||[])[1]||'';
+          if(dots>1) core=core.replace(/\./g,'');
+          else if(dots===1 && dotTail.length===5){ core=core.replace(/\./,'').replace(/(\d{2})$/,'.$1'); }
+          else core=core.replace(/,/g,'');
+          var v=parseFloat(core);
+          if(!isFinite(v)) return;
+          var vi=Math.round(v);
+          var dg=String(vi).length;
+          if(dg<4 || dg>8) return;
+          modCands.push({v:String(vi), src:src, comma:String(t0).indexOf(',')>=0});
+        });
       }
+      var labelVal=null, labelRowY=-1;
+      var farLabelVal=null, farLabelRowY=-1;
       if(labels){
         for(var li=0; li<labels.length; li++){
           var lb=labels[li].label, lh=lb[3]-lb[1], lw=lb[2]-lb[0];
-          tryMod([(lb[2]+lw*0.05)/W, (lb[1]-lh*0.25)/H,
-                  Math.min(1,(lb[2]+lw*7)/W), Math.min(1,(lb[3]+lh*0.55)/H)]);
+          /* 屏幕中部（面板展开）的匹配：要求高分 + 左侧有金色皇冠图标 */
+          if(lb[1] < H*0.68){
+            if(labels[li].score < 0.70) continue;
+            try{
+              var gx0=Math.max(0,Math.round(lb[0]-W*0.075)), gx1=Math.max(1,Math.round(lb[0]-W*0.004));
+              var gy0=Math.max(0,Math.round(lb[1]-lh*0.3)), gy1=Math.min(H,Math.round(lb[3]+lh*0.3));
+              var gd=cx.getImageData(gx0,gy0,Math.max(1,gx1-gx0),Math.max(1,gy1-gy0)).data;
+              var goldN=0;
+              for(var gi2=0;gi2<gd.length;gi2+=4){
+                var gr=gd[gi2],gg=gd[gi2+1],gb=gd[gi2+2];
+                if(gr>165&&gg>120&&gb<120&&(gr-gb)>70) goldN++;
+              }
+              if(goldN < Math.max(8, Math.round((gy1-gy0)*(gx1-gx0)*0.02))) continue;
+            }catch(e){ continue; }
+          }
+          var bx=[(lb[2]+lw*0.05)/W, (lb[1]-lh*0.25)/H,
+                  Math.min(1,(lb[2]+lw*7)/W), Math.min(1,(lb[3]+lh*0.55)/H)];
+          var _n0=modCands.length;
+          tryMod(bx,'label');
+          if(modCands.length>_n0){
+            var lc=modCands[modCands.length-1];
+            labelVal=lc.v; labelRowY=lb[1];
+            /* 中部（远离固定框位）标签：只采纳 ≥6 位且位数最优的 */
+            if(MODB.length && Math.abs(lb[1]/H - MODB[0][1]) > 0.05 && lc.v.length>=7){
+              if(!farLabelVal || lc.v.length>farLabelVal.length){ farLabelVal=lc.v; farLabelRowY=lb[1]; }
+            }
+          }
         }
       }
-      BOX_CANDIDATES.mod.forEach(tryMod);   /* 固定候选也参与，最终取最大百分比 */
+      MODB.forEach(function(b){ tryMod(b,'fixed'); });   /* 固定候选也参与 */
+      bestMod=null;
+      /* 去尾：如 86044899 是 8604489 加尾巴 → 丢长的 */
+      if(modCands.length>1){
+        modCands=modCands.filter(function(c){
+          return !modCands.some(function(d){
+            return d!==c && d.v!==c.v && d.v.length>=5 && c.v.indexOf(d.v)===0;
+          });
+        });
+      }
+      /* 来源优先级：固定候选（更贴近数值列）优先；固定候选缺失/非法时用标签锚定 */
+      if(modCands.length){
+        var cr=modCands.filter(function(o){return o.src==='crown';});
+        var fx=modCands.filter(function(o){return o.src==='fixed';});
+        var lb=modCands.filter(function(o){return o.src==='label';});
+        var pick=null;
+        var byLen=function(a,b){
+          var d=b.v.length-a.v.length; if(d) return d;
+          if(!!a.comma !== !!b.comma) return a.comma?-1:1;
+          return parseFloat(b.v)-parseFloat(a.v);
+        };
+        /* 标签行明显偏离固定框位（如属性面板展开）→ 信标签 */
+        var farLabel = !!farLabelVal;
+        if(farLabel){ pick={v:farLabelVal,src:'label'}; }
+        else if(cr.length){ cr.sort(byLen); pick=cr[0]; }
+        else {
+          var allc=fx.concat(lb);   /* 固定候选与标签候选合并择优 */
+          if(allc.length){ allc.sort(byLen); pick=allc[0]; }
+        }
+        if(pick){ bestMod=pick.v; bestVal=parseFloat(bestMod); }
+      }
       if(bestVal<0 && !_prof.mod){
         try{ var _lm=learnMod(cx,W,H); if(_lm){ bestMod=_lm.val.replace(/%/g,''); bestVal=parseFloat(bestMod.replace(/,/g,'')); _prof.mod=_lm.box; } }catch(e){}
       }
@@ -7897,7 +8017,61 @@ var OCR = (function(){
         var _t3=decBox(cx,W,H,_prof.mod).replace(/\s/g,'');
         if(/^[\d.,]+%$/.test(_t3)){ bestMod=_t3.replace(/%/g,''); bestVal=parseFloat(bestMod.replace(/,/g,'')); }
       }catch(e){} }
+      if(bestMod && String(bestMod).replace(/[^0-9]/g,'').length>9){
+        var my0=0.74, my1=0.78;
+        if(BOX_CANDIDATES.mod && BOX_CANDIDATES.mod[0]){ my0=BOX_CANDIDATES.mod[0][1]-0.004; my1=BOX_CANDIDATES.mod[0][3]+0.004; }
+        var bsm=bandScan(cx,W,H,my0,my1,'mod');
+        if(bsm && String(bsm).replace(/[^0-9]/g,'').length<=9) bestMod=bsm.replace(/%/g,'');
+      }
       if(bestMod) raw.mod=bestMod+'%';
+      /* 严格校验：不合规置空，避免写错值 */
+      if(raw.level){ raw.level=String(raw.level).replace(/[^0-9]/g,''); if(!/^\d{5,9}$/.test(raw.level)) raw.level=''; }
+      if(raw.exp){
+        var _eRaw=String(raw.exp).replace(/\s/g,'');
+        var _mExp=_eRaw.match(/^(\d[\d,]*)(\.\d{1,2})?([A-Z]{1,2})?$/);
+        if(_mExp){
+          var _num=_mExp[1].replace(/,/g,''), _dec=_mExp[2]||'', _u=_mExp[3]||'';
+          /* 小数点丢失：纯数字 5~7 位，按末两位为小数 */
+          if(_dec==='' && /^\d{4,7}$/.test(_num)){ _dec='.'+_num.slice(-2); _num=_num.slice(0,-2); }
+          /* 单位补全：单字母但非 K/M/B/T 的，按双字母单位处理（C→CC） */
+          if(_u.length===1 && 'KMBT'.indexOf(_u)<0) _u=_u+_u;
+          raw.exp=_num+_dec+_u;
+        } else raw.exp='';
+        if(raw.exp && raw.exp.replace(/[^0-9]/g,'').length<3) raw.exp='';
+      }
+      if(raw.mod){
+        var _m=String(raw.mod).replace(/[^0-9]/g,'');
+        raw.mod = /^\d{4,8}$/.test(_m) ? _m : '';
+      }
+      /* 未知分辨率兜底：首轮全空时，借用其他机型档位框位再试一次 */
+      if(!raw.level && !raw.exp && !raw.mod && !_resProf && typeof OCR_PROFILES!=='undefined'){
+        try{
+          Object.keys(OCR_PROFILES).forEach(function(pk){
+            var pf=OCR_PROFILES[pk];
+            if(!raw.level && pf.level){
+              (pf.level||[]).forEach(function(b){
+                var t=dec(b,function(d,w,h){ var q=''; try{ q=OCR.decodeStable(d,w,h,190)||''; }catch(e){ q=''; } return q; }).replace(/[^0-9]/g,'');
+                if(t.length>=6 && t.charAt(t.length-1)==='1') t=t.slice(0,-1);
+                if(t.length>=5 && t.length<=8) raw.level=t;
+              });
+            }
+            if(!raw.exp && pf.exp){
+              (pf.exp||[]).forEach(function(b){
+                var t=dec(b,function(d,w,h){ var q=''; try{ q=OCR.decodeStable(d,w,h,190)||''; }catch(e){ q=''; } return q; });
+                var m=String(t).match(/^(\d[\d,]*(?:\.\d{1,2})?)([A-Z]{1,2})?/);
+                if(m) raw.exp=m[1].replace(/,/g,'')+(m[2]||'');
+              });
+            }
+            if(!raw.mod && pf.mod){
+              (pf.mod||[]).forEach(function(b){
+                var t=dec(b,function(d,w,h){ var q=''; try{ q=OCR.decodeStable(d,w,h,190)||''; }catch(e){ q=''; } return q; });
+                t=String(t).replace(/%.*$/,'%').replace(/[^0-9]/g,'');
+                if(/^\d{4,8}$/.test(t)) raw.mod=t+'%';
+              });
+            }
+          });
+        }catch(e){}
+      }
       if(!raw.level && !raw.exp && !raw.mod) return false;
       var res=parseAll(raw,null);
       if(!(res&&(res.curLevel||res.expRate||res.expMod))) return false;
@@ -8127,41 +8301,418 @@ var TABLE=[{"d": "混沌次元", "b": "律令暴君S,创世刻痕S,恶魔塔185�
     box.innerHTML=
         '<div class="bxplate"><div class="bxcap">\u5b8c\u6574\u95e8\u69db\u8868</div>'+listH+'</div>'
       + '<div class="bxplate"><div class="bxcaprow"><span class="bxcap">\u63d0\u793a\u5361\u7247</span>'
-      + '<span class="bxhd">\u2694 \u53ef\u6311\u6218 \u00b7 '+top.d+'</span></div>'+cardH+'</div>'
+      + '<span class="bxhd">\u2694 \u53ef\u6311\u6218 \u00b7 '+top.d+'</span>'+tagHTML((function(){ try{ var n=String(top.b||'').split(/[,，]/)[0].trim(); var m=n.match(/^(.*?)(SSS|SS|S|X|A|B|C|D|E|F)$/); return m?m[1]:n; }catch(e){ return ''; } })())+'</div>'+cardH+'</div>'
       + '<div class="bxplate"><div class="bxcap">模拟属性（可调整）</div>'+barsHTML(v)+'</div>';
 
 
     /* ===== 13.0 副本血量（来自本地图鉴/数值表） ===== */
+    if(typeof _open13==='undefined') window._open13={d:false,h:false};
+    var _o13=window._open13;
     var d13H='';
     BOSS13.dun.forEach(function(r){
+      var st=[[r[2],'\u9636\u6bb51'],[r[3],'\u9636\u6bb52'],[r[4],'\u9636\u6bb53']].filter(function(x){ return x[0] && x[0]!=='\u2014'; });
+      var hpTxt=st.length? st.map(function(x){ return x[1]+' '+x[0]; }).join(' \u00b7 ') : '\u2014';
       d13H+='<div class="bx13row"><span class="k">'+r[0]+'</span><span class="nm">'+r[1]+'</span>'
-          +'<span class="hp">'+r[2]+(r[3]&&r[3]!=='—'?(' / '+r[3]):'')+(r[4]&&r[4]!=='—'?(' / '+r[4]):'')+'</span></div>';
+          +'<span class="hp">'+hpTxt+'</span></div>'
+          +'<div class="bx13req" style="padding-left:29px">\u4e09\u7ef4\u63a8\u8350\uff1a<b>\u5f85\u73a9\u5bb6\u5206\u4eab\u63d0\u4f9b</b></div>';
     });
     var h13H='';
     BOSS13.hero.forEach(function(r){
-      h13H+='<div class="bx13row"><span class="nm">'+r[0]+'</span><span class="hp">'+r[1]+'</span></div>';
+      var parts=String(r[1]).split(/\uff5c|\|/);
+      var lines=[];
+      parts.forEach(function(seg){
+        seg=String(seg).trim(); if(!seg) return;
+        var m=seg.match(/^(SSS|SS|S|X)\s*(.*)$/);
+        var diff=m?m[1]:'', rest=m?m[2]:seg;
+        var vals=rest.split('/').map(function(v){ return v.trim(); }).filter(Boolean);
+        if(vals.length>1){
+          lines.push((diff?diff+' ':'')+vals.map(function(v,i){ return '\u9636\u6bb5'+(i+1)+' '+v; }).join(' \u00b7 '));
+        } else {
+          lines.push(seg);
+        }
+      });
+      h13H+='<div class="bx13row"><span class="nm">'+r[0]+'</span><span class="hp">'+lines.join('<br>')+'</span></div>'
+          +'<div class="bx13req" style="text-indent:'+(String(r[0]).length*12)+'px">\u4e09\u7ef4\u63a8\u8350\uff1a<b>\u5f85\u73a9\u5bb6\u5206\u4eab\u63d0\u4f9b</b></div>';
     });
-    box.insertAdjacentHTML('beforeend',
-      '<div class="bxplate"><div class="bxcap">13.0 誓灭之境 · 26 关血量</div>'
-      +'<div class="bx13">'+d13H+'</div>'
-      +'<div class="bx13tip">血量单位沿用游戏后缀；标「—」为该关没有该阶段。数据来自本地 13.0 副本数值表（测试服，可能调整）。</div></div>');
-    box.insertAdjacentHTML('beforeend',
-      '<div class="bxplate"><div class="bxcap">13.0 新英雄挑战 · 血量</div>'
-      +'<div class="bx13">'+h13H+'</div></div>');
-
+    var v13box=document.getElementById('bossV13');
+    if(v13box){
+      var h13='';
+      BOSS13.dun.forEach(function(r){
+        var st=[[r[2],'\u9636\u6bb51'],[r[3],'\u9636\u6bb52'],[r[4],'\u9636\u6bb53']].filter(function(x){ return x[0] && x[0]!=='\u2014'; });
+        var hpTxt=st.length? st.map(function(x){ return x[1]+' '+x[0]; }).join(' \u00b7 ') : '\u2014';
+        h13+=rowStd('\u7b2c'+r[0]+'\u5173 \u00b7 '+r[1]+tagSpans(['13\u00b7\u4e3b\u7ebf']),
+          ['\u8840\u91cf '+hpTxt]);
+      });
+      var hh13='';
+      BOSS13.hero.forEach(function(r){
+        var segs=String(r[1]).split(/\uff5c|\|/);
+        var lines=segs.map(function(seg,idx){
+          seg=String(seg).trim(); if(!seg) return '';
+          var m=seg.match(/^(SSS|SS|S|X)\s*(.*)$/);
+          var diff=m?m[1]:'', rest=m?m[2]:seg;
+          var vals=rest.split('/').map(function(x){ return x.trim(); }).filter(Boolean);
+          if(vals.length>1) return (diff?diff+' ':'')+vals.map(function(v,i2){ return '\u9636\u6bb5'+(i2+1)+' '+v; }).join(' \u00b7 ');
+          return seg;
+        }).filter(Boolean);
+        lines.push('\u6389\u843d\uff1a'+r[2]+' \u00b7 \u89e3\u9501\uff1a'+r[3]);
+        hh13+=rowStd(r[0]+tagSpans(['13\u00b7\u4e3b\u7ebf','\u82f1\u96c4\u6311\u6218']), lines);
+      });
+      v13box.innerHTML='<div class="bxplate"><div class="bxcap">13.0 主线 \u00b7 誓灭之境（26 关血量）</div>'+h13
+        +'<div class="bx13tip">\u6d4b\u8bd5\u670d\u6570\u636e\uff0c\u6b63\u5f0f\u670d\u53ef\u80fd\u5fae\u8c03\u3002</div></div>'
+        +'<div class="bxplate"><div class="bxcap">13.0 新英雄挑战血量</div>'+hh13+'</div>';
+      v13box.dataset.done='1';
+    }
     box.querySelectorAll('.bxgrp').forEach(function(h){
       h.addEventListener('click',function(){
-        var b=document.getElementById('bxbody'+h.getAttribute('data-g'));
+        var g=h.getAttribute('data-g');
+        var b=document.getElementById('bxbody'+g);
         if(!b) return;
         var open=b.style.display==='block';
         b.style.display=open?'none':'block';
         h.querySelector('.caret').textContent=open?'\u25b8':'\u25be';
+        if(g==='13d') window._open13.d=!open;
+        if(g==='13h') window._open13.h=!open;
         if(!open) fitRows(b);
       });
     });
     bindSim();
     if(visible()) sweep();
   }
+
+  /* ===== 12 虚空之路（虚空蚀界 23 层） ===== */
+  var VROAD=[["1", "遁入梦魇", "异界网道打 1 次即可解锁", "5814.1DD", "17.44EE", "", ""], ["2", "旧世看守者", "乌诺托斯进度1", "164.95EE", "", "", "庇护法典×1；橙色秘法自选×1"], ["3", "走进深处", "", "740.13FF", "", "", "炼狱之心×2；橙色秘法自选×1"], ["4", "监牢的入口", "", "12.6GG", "", "", "寂静湮灭之种×1"], ["5", "地底霸主", "", "658.94GG", "", "", ""], ["6", "追踪", "", "1352.11GG", "", "", "橙秘法书自选×1"], ["7", "遗失标记", "", "5151.22GG", "", "", ""], ["8", "寻找遗失卷轴", "", "2632.2GG", "44.74HH", "", ""], ["9", "进入宫殿", "完成沙漠遗城2次", "6722.1GG", "20.16HH", "", "权柄裂片×1；汲取虚空核心×1"], ["10", "再入宫殿", "", "14.15HH", "42.46HH", "", "权柄裂片×1"], ["11", "寻找目标", "", "19.29HH", "327.94HH", "", ""], ["12", "夜空", "", "25.73HH", "437.48HH", "", ""], ["13", "最后的碎片?", "", "148.05HH", "444.16HH", "", "权柄裂片×1"], ["14", "通往力量", "完成永愿巫后", "365.68HH", "1097.06HH", "2194.12HH", "神火的余烬×1；虚无吞噬核心×1"], ["15", "褪色之页", "", "1571.45HH", "", "", "褪色之页×30；红色秘法书自选×1"], ["16", "通往智慧", "", "1561.62HH", "4684.87HH", "9369.74HH", "神火的余烬×1"], ["17", "闯入者", "完成卡拉萨斯IV", "5803.58HH", "8705.38HH", "26.11II", "起源之气息×1"], ["18", "赤色炼狱", "", "28.57II", "42.86II", "128.58II", "起源之气息×1"], ["19", "灰烬吊坠", "", "39.44II", "59.17II", "177.52II", "破碎灰烬吊坠×30"], ["20", "顿悟", "", "64.41II", "192.23II", "386.46II", "神火的余烬×1"], ["21", "创世之力", "", "86.86II", "130.3II", "390.91II", "起源之气息×1"], ["22", "抵御异界之力", "", "379.19II", "568.78II", "1706.36II", "起源之气息×1"], ["23", "抵达地脉", "", "2281.72II", "3422.59II", "10.26JJ", "地底岩浆×30"]];
+
+  /* 每日 BOSS（每日游玩内容，独立于主线） */
+  var DAILY={
+    bosses:[
+      ['巨蛇海妖','8 万'],['火之灵','3.5 万'],['诅咒巨像','3.5 万'],['死灵法师','8 万'],
+      ['死亡骑士','3.5~8 万'],['猪人之王','3.5~8 万'],['炎魔龙','3.5~8 万'],['下界守卫者','3.5~8 万'],
+      ['权威者卡加沙','30 万'],['律令暴君','30 万'],['创世刻痕','30 万']
+    ],
+    tasks:[
+      ['秘境','每日刷新，记得打满'],
+      ['战团','每日刷新'],
+      ['副本','每日 1 次门票，最多存 20 张'],
+      ['异界召唤','每日 250~300 次（约 500~800 精华）'],
+      ['英雄挑战','按当前三维挑最高能过的']
+    ]
+  };
+  /* 与「全部 BOSS」一致的行：名称+标签 / 多行数据 */
+  function rowStd(nameHTML, lines, right){
+    var h='<div class="boss-row"><span class="b-main"><span class="b-nm">'+nameHTML+'</span>';
+    (lines||[]).forEach(function(l,i){
+      if(!l) return;
+      h+='<span class="b-req">'+(i===0? l : '<span class="b-hp">'+l+'</span>')+'</span>';
+    });
+    if(right) h+='<span class="b-req"><span class="b-hp">'+right+'</span></span>';
+    return h+'</span></div>';
+  }
+  function tagSpans(arr){
+    if(!arr||!arr.length) return '';
+    return '<span class="bxtags">'+arr.map(function(t){ return '<span class="bxtag">'+t+'</span>'; }).join('')+'</span>';
+  }
+  function initV12(){
+    var box=document.getElementById('bossV12'); if(!box) return;
+    if(box.dataset.done) return;
+    var rows='';
+    VROAD.forEach(function(r){
+      var st=[['阶段1',r[3]],['阶段2',r[4]],['阶段3',r[5]]].filter(function(x){ return x[1]; });
+      var hpTxt=st.length? st.map(function(x){ return x[0]+' '+x[1]; }).join(' \u00b7 ') : '\u2014';
+      rows+=rowStd('\u7b2c'+r[0]+'\u5c42 \u00b7 '+r[1]+tagSpans(['12\u00b7\u4e3b\u7ebf']),
+        [ r[2]? '\u5f00\u542f\uff1a'+r[2] : '',
+          '\u8840\u91cf '+hpTxt,
+          r[6]? '\u6389\u843d\uff1a'+r[6] : '' ]);
+    });
+    box.innerHTML='<div class="bxplate"><div class="bxcap">12.0 主线 \u00b7 虚空之路（虚空蚀界 1~23 层）</div>'
+      + rows
+      + '<div class="bx13tip">12 版本主线任务：虚空蚀界 1~23 层；开启条件与掉落见各行。血量单位沿用游戏后缀。</div></div>';
+    box.dataset.done='1';
+  }
+  function lvNum(str){
+    try{
+      var t=String(str).replace(/\s/g,'');
+      var m=t.match(/([\d.]+)\s*(万)?/);
+      if(!m) return 0;
+      var v=parseFloat(m[1]);
+      if(m[2]) v*=10000;
+      return isFinite(v)? v : 0;
+    }catch(e){ return 0; }
+  }
+  var DAILY_KEY='wxcalc_daily_unlock_v1';
+  function dailyUnlocked(){ try{ return JSON.parse(localStorage.getItem(DAILY_KEY)||'{}')||{}; }catch(e){ return {}; } }
+  function curLevelNum(){
+    try{
+      var c=window.__calc;
+      if(c && c.getState){ var s=c.getState(); if(s && s.curLevel>0) return s.curLevel; }
+    }catch(e){}
+    try{ var sv=window.__calc&&window.__calc.getSave?window.__calc.getSave():null;
+      if(sv&&sv.roles){ for(var i=0;i<sv.roles.length;i++){ if(sv.roles[i].id===sv.activeId && sv.roles[i].data && sv.roles[i].data.curLevel>0) return sv.roles[i].data.curLevel; } }
+    }catch(e){}
+    return 0;
+  }
+  /* ===== 标签 / 门槛整合 ===== */
+  var HERO_PAGE_SET={'梦魇编制者':1,'梦魇之主':1,'炼狱军团准将':1,'永愿巫后':1,'至尊法师':1,'卡加沙':1,'权威者卡加沙':1,'律令暴君':1,'创世刻痕':1,'下界守卫者':1};
+  var GATE_ALIAS={'权威者卡加沙':'卡加沙'};
+  function gateEntries(boss){
+    var out=[];
+    var alias=GATE_ALIAS[boss]||boss;
+    try{
+      TABLE.forEach(function(r){
+        String(r.b||'').split(/[,，、]/).forEach(function(it){
+          it=it.trim();
+          var m=it.match(/^(.*?)(SSS|SS|S|X|A|B|C|D|E|F)$/);
+          if(m && (m[1]===boss || m[1]===alias)) out.push({sys:r.d, diff:m[2], s:r.s, e:r.e});
+        });
+      });
+    }catch(e){}
+    return out;
+  }
+  function dataIncomplete(boss){
+    try{ return gateEntries(boss).length===0; }catch(e){ return true; }
+  }
+  function tagsOf(boss){
+    var pages=[];
+    var _isDaily=false;
+    DAILY.bosses.forEach(function(x){ if(x[0]===boss){ _isDaily=true; } });
+    var is13hero=(BOSS13.hero||[]).some(function(h){ return h[0]===boss; });
+    var is13dun=(BOSS13.dun||[]).some(function(d){ return d[1]===boss; });
+    if(_isDaily || HERO_PAGE_SET[boss] || is13hero){
+      pages.push('英雄挑战');
+    }
+    if(is13dun || is13hero){ pages.push('13·主线'); }
+    if((VROAD||[]).some(function(v){ return v[1]===boss; })){ pages.push('12·主线'); }
+    var t=pages.slice();
+    if(_isDaily){ t.push('常驻每日'); }
+    var _knownBoss = !!BOSS_HP[boss] || _isDaily;
+    if(_knownBoss && dataIncomplete(boss)){ t.push('挑战数据暂不全'); }
+    return t;
+  }
+  function tagHTML(boss){
+    var t=tagsOf(boss);
+    return t.length? '<span class="bxtags">'+t.map(function(x){ return '<span class="bxtag">'+x+'</span>'; }).join('')+'</span>' : '';
+  }
+  function initDaily(){
+    var box=document.getElementById('bossDaily'); if(!box) return;
+    var prev=box.querySelectorAll('.bxbody');
+    var exp=prev[0]? (prev[0].style.display==='block') : false;
+    var exp2=prev[1]? (prev[1].style.display==='block') : false;
+    var lv=curLevelNum(), store=dailyUnlocked(), changed=false, shownDaily=0;
+    var b='';
+    DAILY.bosses.forEach(function(x){
+      var thr=lvNum(x[1]);
+      var unlocked=!!store[x[0]];
+      if(!unlocked && lv>0 && thr>0 && lv>=thr){ store[x[0]]=true; unlocked=true; changed=true; }
+      /* 三维目标：只显示当前最低未达标档；达标后自动推进下一档 */
+      var ges=gateEntries(x[0]).slice().sort(function(a,b2){ return (a.s||0)-(b2.s||0); });
+      var v3=nums()||{atk:0,phys:0,crit:0,exp:0,hp:0};
+      var target=null, firstMet=false;
+      for(var gi=0; gi<ges.length; gi++){
+        var g=ges[gi];
+        var okT=(v3.atk>=g.s && v3.phys>=g.s && v3.crit>=g.s && v3.exp>=g.e);
+        if(okT){ firstMet=true; } else { target=g; break; }
+      }
+      var passed = unlocked || firstMet;
+      /* 全阶段达标：隐藏「全阶段达标」那行文字，BOSS 行保留 */
+      var reqTxt = target? (target.diff+' 三维 '+target.s+' / 经验 '+target.e)
+                 : '';
+      b+='<div class="bx13row'+(passed?' ok':'')+'"><span class="nm">'+x[0]+tagHTML(x[0])+'</span>'
+        +'<span class="hp'+(passed?' ok':'')+'">'+(passed?'可挑战':'开放等级 '+x[1])+'</span></div>'
+        +(reqTxt? '<div class="bx13req" style="text-indent:'+(String(x[0]).length*12)+'px">'+reqTxt+'</div>' : '');
+    shownDaily++;
+    });
+    if(changed) { try{ localStorage.setItem(DAILY_KEY,JSON.stringify(store)); }catch(e){} }
+    var t='';
+    DAILY.tasks.forEach(function(x){
+      t+='<div class="bx13row"><span class="nm">'+x[0]+'</span><span class="hp">'+x[1]+'</span></div>';
+    });
+    box.innerHTML='<div class="bxplate"><div class="bxcap">每日 BOSS / 每日游玩内容</div>'
+      +'<div class="bxgrp" data-g="dly"><span class="caret">'+(exp?'\u25be':'\u25b8')+'</span>\u6bcf\u65e5 BOSS\uff08\u5f00\u653e\u7b49\u7ea7\uff09<span class="cnt">'+shownDaily+'</span></div>'
+      +'<div class="bxbody" id="bxbodydly" style="display:'+(exp?'block':'none')+'"><div class="bx13">'+b+'</div></div>'
+      +'<div class="bxgrp" data-g="dly2"><span class="caret">'+(exp2?'\u25be':'\u25b8')+'</span>\u6bcf\u65e5\u73a9\u6cd5\u6e05\u5355<span class="cnt">'+DAILY.tasks.length+'</span></div>'
+      +'<div class="bxbody" id="bxbodydly2" style="display:'+(exp2?'block':'none')+'"><div class="bx13">'+t+'</div></div>'
+      +'<div class="bx13tip">\u5f53\u524d\u7b49\u7ea7\u8fbe\u5230\u5f00\u653e\u7b49\u7ea7\u540e\u81ea\u52a8\u6807\u8bb0\u300c\u53ef\u6311\u6218\u300d\uff08\u6c38\u4e45\u4fdd\u7559\uff09\uff1b\u6bcf\u65e5 0 \u70b9\u524d\u505a\u5b8c\uff0c\u95e8\u7968\u6bcf\u5929\u53ef\u9886 1 \u6b21\uff0c\u6700\u591a\u4fdd\u7559 20 \u5f20\u3002</div></div>';
+    bindGroups(box);
+  }
+  function sectionTitle(t, cnt){
+    return '<div class="bxsec">'+t+(cnt!=null?'<span class="bxseccnt">'+cnt+'</span>':'')+'</div>';
+  }
+  function bossRowHTML(opts){
+    var cls='boss-row'+(opts.met?' ok':'');
+    var right=opts.right? '<span class="b-hp">'+opts.right+'</span>':'';
+    return '<div class="'+cls+'">'
+      +'<span class="b-main"><span class="b-nm">'+opts.name+(opts.tags||'')+'</span>'
+      +(opts.line1? '<span class="b-req">'+opts.line1+'</span>':'')
+      +(opts.line2? '<span class="b-req"><span class="b-hp">'+opts.line2+'</span></span>':'')
+      +(right? '<span class="b-req">'+right+'</span>':'')
+      +'</span></div>';
+  }
+  function initAll(){
+    var box=document.getElementById('bossAll'); if(!box) return;
+    var v=nums()||{atk:0,phys:0,crit:0,exp:0,hp:0};
+    var store=dailyUnlocked(), lv=curLevelNum();
+    /* 1) 从门槛表收集：BOSS → 各难度档；非 BOSS 条目单独保留 */
+    var bossMap={}, nonBoss=[];
+    TABLE.forEach(function(r){
+      String(r.b||'').split(/[,，、]/).forEach(function(item){
+        item=item.trim().replace(/^(以及|和|、)+/,'').trim(); if(!item) return;
+        var mm=item.match(/^(.*?)(SSS|SS|S|X|A|B|C|D|E|F)$/);
+        var base=mm?mm[1]:item, diff=mm?mm[2]:'';
+        var isKnown=!!(BOSS_HP[base]) || DAILY.bosses.some(function(x){ return x[0]===base; });
+        if(typeof window.__kdbg==='undefined') window.__kdbg=[];
+        if(window.__kdbg.length<6) window.__kdbg.push(item+'|'+base+'|'+isKnown+'|'+typeof BOSS_HP+'|'+(BOSS_HP&&BOSS_HP[base]?'hit':'miss'));
+        if(mm && isKnown){
+          if(!bossMap[base]) bossMap[base]={base:base, tiers:[], sys:r.d};
+          bossMap[base].tiers.push({s:r.s||0, e:r.e||0, diff:diff});
+        } else {
+          nonBoss.push({label:item, s:r.s||0, e:r.e||0, sys:r.d, base:base});
+        }
+      });
+    });
+    /* 2) 每日 BOSS 补没有门槛数据的（如 下界守卫者） */
+    DAILY.bosses.forEach(function(x){
+      if(!bossMap[x[0]]){
+        bossMap[x[0]]={base:x[0], tiers:[], sys:'英雄挑战', lvl:x[1], noData:true};
+      } else {
+        bossMap[x[0]].lvl=x[1];
+      }
+    });
+    /* 3) 计算每个 BOSS 的当前目标档（最低未达标档） */
+    var BOSSES=[];
+    Object.keys(bossMap).forEach(function(k){
+      var o=bossMap[k];
+      o.tiers.sort(function(a,b2){ return (a.s||0)-(b2.s||0); });
+      var target=null, anyMet=false, maxS=0;
+      o.tiers.forEach(function(t){
+        if(t.s>maxS) maxS=t.s;
+        var ok=(v.atk>=t.s && v.phys>=t.s && v.crit>=t.s && v.exp>=t.e);
+        if(ok){ anyMet=true; } else if(!target){ target=t; }
+      });
+      o.target=target; o.anyMet=anyMet; o.maxS=maxS;
+      o.allMet=(o.tiers.length>0 && !target);
+      var unl=!!store[k];
+      var ln=lvNum(o.lvl||'');
+      if(!unl && ln>0 && lv>=ln){ store[k]=true; unl=true; }
+      o.unlocked=unl;
+      o.sortKey = target? target.s : (o.tiers.length? maxS : 0);
+      BOSSES.push(o);
+    });
+    BOSSES.sort(function(a,b2){ return (a.sortKey||0)-(b2.sortKey||0) || String(a.base).localeCompare(String(b2.base),'zh'); });
+    try{ localStorage.setItem(DAILY_KEY,JSON.stringify(store)); }catch(e){}
+    /* 4) 渲染：每个重复 BOSS 目录（每日BOSS / 各次元）全组可挑战后折叠 */
+    var dailySet={}; DAILY.bosses.forEach(function(x){ dailySet[x[0]]=1; });
+    function bossRowOf(o){
+      var passed=o.unlocked || o.anyMet;
+      var tags=tagsOf(o.base);
+      if(!tags.length && o.sys) tags=[o.sys];
+      var tagH=tagSpans(tags);
+      var right = (o.unlocked||o.anyMet) ? '可挑战' : (o.lvl? '开放等级 '+o.lvl : '');
+      var line1='';
+      if(o.target){
+        line1=o.target.diff+' 三维 '+o.target.s+' / 经验 '+o.target.e;
+      }
+      return bossRowHTML({met:passed, name:o.base+tagH, line1:line1, right:right});
+    }
+    /* 分组：每日BOSS 一组；其余按所属次元 */
+    var groups={}, order=[];
+    BOSSES.forEach(function(o){
+      var key = dailySet[o.base]? '\u6bcf\u65e5BOSS' : (o.sys||'\u5176\u4ed6');
+      if(!groups[key]){ groups[key]={name:key, items:[], allPassed:true, idx:-1}; order.push(key); }
+      groups[key].items.push(o);
+      var passed=(o.unlocked||o.anyMet);
+      if(!passed) groups[key].allPassed=false;
+    });
+    window.__foldDbg=order.map(function(k){ return k+':'+groups[k].items.length+':'+groups[k].allPassed; });
+    var pieces=[], placed={};
+    BOSSES.forEach(function(o){
+      var key = dailySet[o.base]? '\u6bcf\u65e5BOSS' : (o.sys||'\u5176\u4ed6');
+      var g=groups[key];
+      if(g.allPassed){
+        if(!placed[key]){ placed[key]=true; pieces.push({fold:key}); }
+        return;
+      }
+      pieces.push({row:o});
+    });
+    var finalHTML=pieces.map(function(it){
+      if(it.row) return bossRowOf(it.row);
+      var g=groups[it.fold];
+      var inner=g.items.map(bossRowOf).join('');
+      return '<div class="bxgrp" data-g="fold_'+encodeURIComponent(g.name)+'"><span class="caret">\u25b8</span>'
+        +g.name+'<span class="cnt">'+g.items.length+'</span></div>'
+        +'<div class="bxbody" id="bxbodyfold_'+encodeURIComponent(g.name)+'" style="display:none">'+inner+'</div>';
+    }).join('');
+    var html=finalHTML;
+    /* 5) 非 BOSS 门槛项（塔层等） */
+    nonBoss.sort(function(a,b2){ return (a.s||0)-(b2.s||0); });
+    var nbHTML=nonBoss.map(function(n){
+      var ok=(n.s>0) && (v.atk>=n.s && v.phys>=n.s && v.crit>=n.s && v.exp>=n.e);
+      var tags=tagsOf(n.base); if(!tags.length) tags=[n.sys];
+      return bossRowHTML({met:ok, name:n.label+tagSpans(tags),
+        line1:'三维 '+(n.s||'-')+' · 经验 '+(n.e||'-')});
+    }).join('');
+    /* 6) 13.0 主线 */
+    var b13='';
+    BOSS13.dun.forEach(function(r){
+      var st=[[r[2],'阶段1'],[r[3],'阶段2'],[r[4],'阶段3']].filter(function(x){ return x[0] && x[0]!=='\u2014'; });
+      var hpT=st.length? st.map(function(x){ return x[1]+' '+x[0]; }).join(' \u00b7 ') : '\u2014';
+      b13+=rowStd('\u7b2c'+r[0]+'\u5173 \u00b7 '+r[1]+tagSpans(['13\u00b7\u4e3b\u7ebf']), ['\u8840\u91cf '+hpT]);
+    });
+    BOSS13.hero.forEach(function(r){
+      var segs=String(r[1]).split(/\uff5c|\|/);
+      var lines=segs.map(function(seg){
+        seg=String(seg).trim(); if(!seg) return '';
+        var m=seg.match(/^(SSS|SS|S|X)\s*(.*)$/);
+        var diff=m?m[1]:'', rest=m?m[2]:seg;
+        var vals=rest.split('/').map(function(x){ return x.trim(); }).filter(Boolean);
+        if(vals.length>1) return (diff?diff+' ':'')+vals.map(function(xx,i2){ return '\u9636\u6bb5'+(i2+1)+' '+xx; }).join(' \u00b7 ');
+        return seg;
+      }).filter(Boolean);
+      lines.push('\u6389\u843d\uff1a'+r[2]+' \u00b7 \u89e3\u9501\uff1a'+r[3]);
+      b13+=rowStd(r[0]+tagSpans(['13\u00b7\u4e3b\u7ebf','\u82f1\u96c4\u6311\u6218']), lines);
+    });
+    /* 7) 等级开放副本 */
+    var LVOPEN=[[1000,'\u953b\u9020\u53f0 / \u5468\u79d8\u5883 / \u8fdc\u53e4\u53ec\u5524\u77f3'],[5000,'\u5965\u79d8 / \u6b21\u5143 / \u4f24\u5bb3\u5206\u6790 / \u8155\u7532'],[35000,'\u82f1\u96c4\u6311\u6218'],[250000,'\u865a\u7a7a\u8680\u754c'],[300000,'\u521b\u4e16\u7cfb\u7edf / \u6743\u5a01\u8005 / \u521b\u4e16\u523b\u75d5']];
+    var lvHTML=LVOPEN.map(function(x){
+      return bossRowHTML({met:(lv>0 && lv>=x[0]), name:x[1], line1:'\u5f00\u653e\u7b49\u7ea7 '+(x[0]>=10000? (x[0]/10000)+' \u4e07' : x[0])});
+    }).join('');
+    box.innerHTML=
+      '<div class="bxplate"><div class="bxcap">\u5168\u90e8 BOSS</div>'
+      + html + (nbHTML? sectionTitle('\u5854\u5c42 / \u5176\u4ed6\u95e8\u69db\u9879', null)+nbHTML : '')
+      + '</div>'
+      + '<div class="bxplate"><div class="bxcap">13.0 \u4e3b\u7ebf \u00b7 \u8a93\u706d\u4e4b\u5883</div>'+b13+'</div>'
+      + '<div class="bxplate"><div class="bxcap">\u7b49\u7ea7\u5f00\u653e\u526f\u672c</div>'+lvHTML+'</div>';
+    box.dataset.done='1';
+    bindGroups(box);
+  }
+    function bindGroups(root){
+    root.querySelectorAll('.bxgrp').forEach(function(h){
+      h.addEventListener('click',function(){
+        var b=document.getElementById('bxbody'+h.getAttribute('data-g'));
+        if(!b) return;
+        var open=b.style.display==='block';
+        b.style.display=open?'none':'block';
+        h.querySelector('.caret').textContent=open?'\u25b8':'\u25be';
+      });
+    });
+  }
+  var _bossTab='reco';
+  function showBossTab(k){
+    _bossTab=k;
+    ['reco','v12','v13','all'].forEach(function(t){
+      var el=document.getElementById(t==='reco'?'bossPanel':'boss'+t.charAt(0).toUpperCase()+t.slice(1));
+      if(!el) return;
+      el.style.display=(t===k)?'' : 'none';
+    });
+    var tabs=document.querySelectorAll('#bossTabs .bxstab');
+    for(var i=0;i<tabs.length;i++) tabs[i].classList.toggle('on', tabs[i].getAttribute('data-bt')===k);
+    if(k==='v12') initV12();
+    if(k==='all'){ buildList && buildList(); initAll(); }
+    if(k==='v13'){ var v=document.getElementById('bossV13'); if(v && !v.dataset.done){ v.dataset.done='1'; bindGroups(v); } }
+  }
+  window.__showBossTab=showBossTab;
+  document.addEventListener('click',function(ev){
+    var t=ev.target.closest && ev.target.closest('#bossTabs .bxstab');
+    if(t){ showBossTab(t.getAttribute('data-bt')); }
+  },true);
 
   /* BOSS 页是否可见 */
   function visible(){
@@ -8184,7 +8735,7 @@ var TABLE=[{"d": "混沌次元", "b": "律令暴君S,创世刻痕S,恶魔塔185�
   function sweep(){
     if(_t1) clearTimeout(_t1);
     if(_t2) clearTimeout(_t2);
-    function tracks(){ return [].slice.call(document.querySelectorAll('#bossPanel .bxtrk')).reverse(); }
+    function tracks(){ return [].slice.call(document.querySelectorAll('.bxscope .bxtrk')).reverse(); }
     function step(i){
       var list=tracks();
       if(!list.length) return;
@@ -8212,6 +8763,31 @@ var TABLE=[{"d": "混沌次元", "b": "律令暴君S,创世刻痕S,恶魔塔185�
     step(0);
   }
 
+  /* 该门槛行对应 BOSS 的血量（多阶段逐条标注） */
+  function rowHp(bstr){
+    try{
+      var items=String(bstr).split(/[,，、]/), outs=[];
+      items.forEach(function(it){
+        it=String(it).trim(); if(!it) return;
+        var mm=it.match(/^(.*?)(SSS|SS|S|X|A|B|C|D|E|F)$/);
+        if(!mm) return;
+        var name=mm[1], diff=mm[2], best='';
+        Object.keys(BOSS_HP).forEach(function(k){
+          if(name.indexOf(k)===0 && k.length>best.length) best=k;
+        });
+        if(!best) return;
+        var hp=BOSS_HP[best] && BOSS_HP[best][diff];
+        if(!hp) return;
+        var vals=String(hp).split('/').map(function(v){ return v.trim(); }).filter(Boolean);
+        var txt=vals.length>1
+          ? vals.map(function(v,i){ return '阶段'+(i+1)+' '+v; }).join(' · ')
+          : vals[0];
+        outs.push(name+diff+' '+txt);
+      });
+      if(!outs.length) return '—';
+      return outs.join('；');
+    }catch(e){ return '—'; }
+  }
   function buildList(){
     var box=document.getElementById('bossList'); if(!box) return;
     var v=nums()||{atk:0,phys:0,crit:0,exp:0,hp:0};
@@ -8221,16 +8797,17 @@ var TABLE=[{"d": "混沌次元", "b": "律令暴君S,创世刻痕S,恶魔塔185�
       if(r.d!==lastDim){ html+='<div class="boss-grp">'+r.d+'</div>'; lastDim=r.d; }
       var yes=met(r,v);
       html+='<div class="boss-row'+(yes?' ok':'')+'">'
-          + '<span class="b-mark">'+(yes?'\u2705':'\u2b1c')+'</span>'
-          + '<span class="b-nm">'+r.b.split(',').slice(0,2).join('\u3001')+(r.b.split(',').length>2?' \u7b49':'')+'</span>'
-          + '<span class="b-req">\u4e09\u7ef4 '+r.s+' \u00b7 \u7ecf\u9a8c '+r.e+'</span></div>';
+          + '<span class="b-main"><span class="b-nm">'+r.b.split(',').join('\u3001')+'</span>'
+          + '<span class="b-req">\u4e09\u7ef4 '+r.s+' \u00b7 \u7ecf\u9a8c '+r.e+'</span>'
+          + '<span class="b-req"><span class="b-hp">\u8840\u91cf '+rowHp(r.b)+'</span></span></span></div>';
     }
     html+='<div class="boss-grp">\u5f85\u8865\u5145\u66f4\u65b0</div>';
     for(var pi=0;pi<PENDING.length;pi++){
       var p2=PENDING[pi];
-      html+='<div class="boss-row pend"><span class="b-mark">\u25cc</span>'
-          + '<span class="b-nm">'+p2.d+' \u00b7 '+p2.b+'</span>'
-          + '<span class="b-req">\u5f85\u8865\u5145\u66f4\u65b0</span></div>';
+      html+='<div class="boss-row pend">'
+          + '<span class="b-main"><span class="b-nm">'+p2.d+' \u00b7 '+p2.b+'</span>'
+          + '<span class="b-req">\u5f85\u8865\u5145\u66f4\u65b0</span>'
+          + '<span class="b-req"><span class="b-hp">\u8840\u91cf —</span></span></span></div>';
     }
     html+='<div class="boss-src" style="margin-top:8px">\u6570\u636e\u6765\u6e90\uff1a'+SRC+'\u5927\u4f6c</div>';
     box.innerHTML=html;
@@ -8495,6 +9072,150 @@ document.querySelectorAll('.tocitem').forEach(function(a){
 })();
 
 
+</script>
+
+<script>
+/* ===== 撰写转换计算器（撰写天赋书第二条词缀：暴怒 ↔ 攻速） ===== */
+(function(){
+  var WAR={str:'物理强度',crit:'物理暴击伤害',rage:'物理暴怒',spd:'攻速之力'};
+  var MAG={str:'法术强度',crit:'法术暴击伤害',rage:'法术暴怒',spd:'冷缩之力'};
+  function el(id){ return document.getElementById(id); }
+  function calc(){
+    if(!el('cwOut')) return;
+    var str=parseFloat(el('cwStr').value)||0, crit=parseFloat(el('cwCrit').value)||0;
+    var rage=parseFloat(el('cwRage').value)||0, spd=parseFloat(el('cwSpd').value)||0;
+    var iStr=str/(1+spd/100), iCrit=crit/(1+rage/100), base=str*crit/100;
+    var rowsA=[], rowsB=[];
+    for(var i=1;i<=5;i++){
+      var sA=spd+7.5*i, rA=rage-10*i;
+      var stA=iStr*(1+sA/100), crA=iCrit*(1+rA/100), tdA=stA*crA/100;
+      rowsA.push([i,stA,crA,base?tdA/base:0]);
+      var sB=spd-7.5*i, rB=rage+10*i;
+      var stB=iStr*(1+sB/100), crB=iCrit*(1+rB/100), tdB=stB*crB/100;
+      rowsB.push([i,stB,crB,base?tdB/base:0]);
+    }
+    function best(rows){ var b=rows[0]; rows.forEach(function(r){ if(r[3]>b[3]) b=r; }); return b; }
+    var bA=best(rowsA), bB=best(rowsB);
+    var fin = bA[3]>=bB[3] ? {name:'减怒加速（暴怒↓ / 攻速↑）',v:bA} : {name:'加怒减速（暴怒↑ / 攻速↓）',v:bB};
+    var imp=(fin.v[3]-1)*100;
+    function tbl(rows,b){
+      var h='<div class="cwtable"><div class="cwr cwh"><span>次数</span><span>强度</span><span>暴击伤害</span><span>伤害比</span></div>';
+      rows.forEach(function(r){
+        h+='<div class="cwr'+(r===b?' cwbest':'')+'"><span>'+r[0]+'</span><span>'+r[1].toFixed(2)+'</span><span>'+r[2].toFixed(2)+'</span><span>'+(r[3]>=1?'<b>'+r[3].toFixed(4)+'</b>':r[3].toFixed(4))+'</span></div>';
+      });
+      return h+'</div>';
+    }
+    el('cwOut').innerHTML =
+      '<div class="cwsum"><span class="k">原始总伤害</span> <b>'+(base?base.toFixed(2):'—')+'</b></div>'
+      +'<div class="cwsec">减怒加速：每次 暴怒 −10 / 攻速 +7.5</div>'+tbl(rowsA,bA)
+      +'<div class="cwsec">加怒减速：每次 暴怒 +10 / 攻速 −7.5</div>'+tbl(rowsB,bB)
+      +'<div class="cwsum">最佳：<b>'+fin.name+'</b>，交换 <b>'+fin.v[0]+'</b> 次，提升 <b style="color:'+(imp>0?'#7fd6a0':'#e05548')+'">'+imp.toFixed(2)+'%</b></div>';
+  }
+  function setJob(){
+    if(!el('cwJob')) return;
+    var L=el('cwJob').value==='mag'?MAG:WAR;
+    el('cwLstr').textContent=L.str; el('cwLcrit').textContent=L.crit;
+    el('cwLrage').textContent=L.rage+'%'; el('cwLspd').textContent=L.spd+'%';
+    calc();
+  }
+  function init(){
+    if(!el('cwGo')) return;
+    el('cwJob').addEventListener('change',setJob);
+    el('cwGo').addEventListener('click',calc);
+    ['cwStr','cwCrit','cwRage','cwSpd'].forEach(function(id){ var e=el(id); if(e) e.addEventListener('input',calc); });
+    setJob();
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+  window.__craftCalc=calc;
+})();
+</script>
+
+<script>
+/* 资料库搜索：输入即筛选「资料库」板块内的卡片 */
+(function(){
+  function init(){
+    var inp=document.getElementById('libSearch');
+    var blk=document.getElementById('blk-data');
+    if(!inp||!blk) return;
+    var cnt=document.getElementById('libSearchN');
+    var cards=[].slice.call(blk.querySelectorAll('details.gcard'));
+    var toc=blk.querySelector('details.blktoc');
+    function apply(){
+      var q=inp.value.trim().toLowerCase();
+      if(!q){
+        cards.forEach(function(c){ c.style.display=''; });
+        if(cnt) cnt.textContent='';
+        if(toc) toc.style.display='';
+        return;
+      }
+      var n=0;
+      cards.forEach(function(c){
+        var hit=c.textContent.toLowerCase().indexOf(q)>=0;
+        c.style.display=hit?'':'none';
+        if(hit){
+          n++;
+          c.open=true;
+          [].forEach.call(c.querySelectorAll('details'),function(x){ x.open=true; });
+        }
+      });
+      if(cnt) cnt.textContent=n? (n+' 条') : '无';
+      if(toc) toc.style.display=(n?'':'none');
+    }
+    inp.addEventListener('input',apply);
+    inp.addEventListener('search',apply);
+    inp.addEventListener('change',apply);
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+})();
+</script>
+
+<script>
+/* ===== 隐藏标识 · 显示逻辑校验 =====
+   规则：带 data-hide="1" 的元素，普通访客默认隐藏；开发者不隐藏。
+   开发者判定：file:// 本地、localhost/127.0.0.1、URL 带 ?dev=1、
+              或 localStorage.wxcalc_dev = '1'。
+   URL 带 ?dev=0 可强制按普通访客显示（用于自检）。
+*/
+(function(){
+  var isDev=false;
+  try{
+    var h=location.hostname, q=location.search||'';
+    isDev = (location.protocol==='file:') || h==='localhost' || h==='127.0.0.1' || h==='[::1]' || h==='';
+    try{ if(localStorage.getItem('wxcalc_dev')==='1') isDev=true; }catch(e){}
+    if(/[?&]dev=1(&|$)/.test(q)) isDev=true;
+    if(/[?&]dev=0(&|$)/.test(q)) isDev=false;
+  }catch(e){}
+  window.__ISDEV=isDev;
+  function apply(){
+    var els=document.querySelectorAll('[data-hide="1"]');
+    for(var i=0;i<els.length;i++){
+      var el=els[i];
+      if(isDev){
+        if(el.getAttribute('data-hide-display')!==null){
+          el.style.display=el.getAttribute('data-hide-display');
+          el.removeAttribute('data-hide-display');
+        }
+      }else{
+        if(el.getAttribute('data-hide-display')===null){
+          el.setAttribute('data-hide-display', el.style.display||'');
+        }
+        el.style.display='none';
+      }
+    }
+    /* 若当前停留的页签被隐藏，退回到第一个可见项 */
+    try{
+      var active=document.querySelector('.anchor.on[data-hide="1"]');
+      if(active && !isDev){
+        var list=document.querySelectorAll('.anchor');
+        for(var j=0;j<list.length;j++){
+          if(!list[j].hasAttribute('data-hide')){ list[j].click(); break; }
+        }
+      }
+    }catch(e){}
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',apply); else apply();
+  window.__applyHide=apply;
+})();
 </script>
 </body>
 </html>
