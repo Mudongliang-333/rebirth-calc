@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#060b18">
-<title>无限升级 · 轮回计算器 v13.0「誓灭之境」 v0.17.0</title>
+<title>无限升级 · 轮回计算器 v13.0「誓灭之境」 v0.17.1</title>
 <link rel="icon" href="icon-192.png">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
@@ -1600,7 +1600,7 @@ html.fx-off .block-layer img.blk{will-change:auto}
   <div class="top-row">
     <div class="t1-col">
       <div class="t1">轮回计算器</div>
-      <div class="t1-sub"><span class="badge" id="unitTag">BB</span><span class="badge" id="verTag">v0.17.0</span><span class="beta-tag">BETA</span></div>
+      <div class="t1-sub"><span class="badge" id="unitTag">BB</span><span class="badge" id="verTag">v0.17.1</span><span class="beta-tag">BETA</span></div>
     </div>
     <div class="brand-mid">
       <img class="brand-logo" src="assets/logo_wxsj.webp" alt="无限升级">
@@ -5418,7 +5418,7 @@ var OCR = (function(){
   }
   function saveRects(sig, boxes){
     try{ localStorage.setItem(rectKey(sig), JSON.stringify(boxes)); }catch(e){}
-    try{ localStorage.setItem(RECT_SLOT), JSON.stringify(boxes)); }catch(e){}
+    try{ localStorage.setItem(RECT_SLOT, JSON.stringify(boxes)); }catch(e){}
   }
   /* 内置默认标定：来自一张标准挂机截图（1289×2800），仅当宽高比接近时启用 */
   /* 多候选区域：每张训练图贡献一组，解码时逐一尝试取最优 */
@@ -8240,7 +8240,7 @@ document.querySelectorAll('.tocitem').forEach(function(a){
 (function(){
   var TABLE_SLOT='wxcalc_ocr_table_v1';
   var TABLE=(function(){ try{ var o=JSON.parse(localStorage.getItem(TABLE_SLOT)||'{}'); return (o&&typeof o==='object')?o:{}; }catch(e){ return {}; } })();
-  function saveTable(){ try{ localStorage.setItem(TABLE_SLOT), JSON.stringify(TABLE)); }catch(e){} }
+  function saveTable(){ try{ localStorage.setItem(TABLE_SLOT, JSON.stringify(TABLE)); }catch(e){} }
   window.OCRData={
     all:function(){ return JSON.parse(JSON.stringify(TABLE)); },
     get:function(k){ var it=TABLE[k]; return it?it.v:undefined; },
@@ -8635,6 +8635,6 @@ document.querySelectorAll('.tocitem').forEach(function(a){
 
 })();
 </script>
-<div class="pubfoot" style="text-align:center;font-size:10.5px;color:#8a8070;padding:10px 12px 16px;line-height:1.7">项目作者：木东 · v0.17.0<br>数据来源：页面已写明来源的整理者与攻略作者</div>
+<div class="pubfoot" style="text-align:center;font-size:10.5px;color:#8a8070;padding:10px 12px 16px;line-height:1.7">项目作者：木东 · v0.17.1<br>数据来源：页面已写明来源的整理者与攻略作者</div>
 </body>
 </html>
