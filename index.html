@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#060b18">
-<title>无限升级 · 轮回计算器 v13.0「誓灭之境」 v0.17.5</title>
+<title>无限升级 · 轮回计算器 v13.0「誓灭之境」 v0.17.6</title>
 <link rel="icon" href="icon-192.png">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
@@ -357,17 +357,37 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
 #stats{display:grid;grid-template-columns:1fr 1fr;gap:9px}
 #stats .stat{margin-bottom:0;padding:9px 9px}
 .down-arw{text-align:center;color:#6b6355;font-size:13px;line-height:1;margin:6px 0 7px;text-shadow:0 1px 2px rgba(0,0,0,.6)}
-.bg-aurora{position:absolute;inset:-20%;pointer-events:none;z-index:1;opacity:.68;mix-blend-mode:screen;
-  filter:blur(10px);
-  background:radial-gradient(ellipse at 20% 28%,rgba(124,86,255,.42),transparent 52%),
+.bg-aurora{position:absolute;inset:-20%;pointer-events:none;z-index:1;opacity:.78;mix-blend-mode:screen;
+  filter:blur(4px);
+  background:radial-gradient(ellipse at 20% 28%,rgba(124,86,255,.38),transparent 52%),
              radial-gradient(ellipse at 78% 68%,rgba(232,187,94,.20),transparent 55%),
-             radial-gradient(ellipse at 58% 12%,rgba(80,140,255,.18),transparent 55%);
+             radial-gradient(ellipse at 58% 12%,rgba(80,140,255,.20),transparent 55%);
   animation:auroraDrift 70s ease-in-out infinite alternate}
+.bg-aurora::before,.bg-aurora::after{content:'';position:absolute;pointer-events:none;filter:blur(32px);opacity:.52}
+.bg-aurora::before{left:-15%;top:2%;width:130%;height:46%;transform:rotate(-9deg);
+  background:linear-gradient(115deg,transparent 8%,rgba(80,150,255,.30) 32%,rgba(166,110,255,.34) 52%,rgba(232,187,94,.12) 72%,transparent 90%);
+  animation:auroraRibbon 48s ease-in-out infinite alternate}
+.bg-aurora::after{left:-10%;top:46%;width:120%;height:34%;transform:rotate(7deg);
+  background:linear-gradient(70deg,transparent 12%,rgba(232,187,94,.16) 34%,rgba(110,180,255,.26) 56%,rgba(160,100,255,.24) 76%,transparent 92%);
+  animation:auroraRibbon2 66s ease-in-out infinite alternate}
 @keyframes auroraDrift{from{transform:translate3d(-2%,-1%,0) scale(1.04)}to{transform:translate3d(2%,1%,0) scale(1.12)}}
-@media (prefers-reduced-motion:reduce){.bg-aurora{animation:none}}
-.fx-off .bg-aurora{animation:none;opacity:.34}
-.block-layer{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
-.block-layer img.blk{position:absolute;top:0;left:0;object-fit:contain;image-rendering:pixelated;opacity:.92;will-change:transform;filter:drop-shadow(0 3px 6px rgba(0,0,0,.5))}
+@keyframes auroraRibbon{from{transform:translate3d(-4%,-1%,0) rotate(-9deg) scale(1.02)}to{transform:translate3d(4%,2%,0) rotate(-6deg) scale(1.06)}}
+@keyframes auroraRibbon2{from{transform:translate3d(3%,-2%,0) rotate(7deg) scale(1.02)}to{transform:translate3d(-4%,2%,0) rotate(4deg) scale(1.05)}}
+.bg-stars{position:absolute;inset:0;pointer-events:none;z-index:2;opacity:.55;
+  background-image:
+    radial-gradient(1.2px 1.2px at 18% 24%,rgba(255,242,200,.92),transparent 60%),
+    radial-gradient(1px 1px at 68% 58%,rgba(190,215,255,.85),transparent 60%),
+    radial-gradient(1.1px 1.1px at 82% 18%,rgba(255,225,170,.75),transparent 60%),
+    radial-gradient(1px 1px at 36% 76%,rgba(210,190,255,.75),transparent 60%);
+  background-size:240px 240px,340px 340px,420px 420px,300px 300px;
+  background-position:0 0,70px 110px,160px 40px,30px 190px;
+  animation:starDrift 180s linear infinite}
+@keyframes starDrift{from{background-position:0 0,70px 110px,160px 40px,30px 190px}
+  to{background-position:240px 240px,410px 450px,580px 460px,330px 490px}}
+@media (prefers-reduced-motion:reduce){.bg-aurora,.bg-aurora::before,.bg-aurora::after,.bg-stars{animation:none}}
+.fx-off .bg-aurora,.fx-off .bg-stars{animation:none}
+.fx-off .bg-aurora{opacity:.34}
+.fx-off .bg-stars{opacity:.28}
 .grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 12px}
 .grid3{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:0 10px}
 .dt-5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px;margin-top:8px}
@@ -1592,8 +1612,7 @@ table{width:100%;border-collapse:collapse;font-size:11.5px;margin-top:6px}
 /* ===== 效果关闭模式（fx-off）===== */
 html.fx-off *,html.fx-off *::before,html.fx-off *::after{
   animation:none!important;transition:none!important}
-html.fx-off .block-layer img.blk{will-change:auto}
-</style>
+html.fx-off </style>
 <meta name="author" content="木东">
 </head>
 <body>
@@ -1603,14 +1622,14 @@ html.fx-off .block-layer img.blk{will-change:auto}
   <div class="bg-scrim"></div>
   <div class="bg-vig"></div>
   <div class="bg-aurora"></div>
+  <div class="bg-stars"></div>
 </div>
-<div class="block-layer" id="blockLayer" aria-hidden="true"></div>
 
 <div class="top">
   <div class="top-row">
     <div class="t1-col">
       <div class="t1">轮回计算器</div>
-      <div class="t1-sub"><span class="badge" id="unitTag">BB</span><span class="badge" id="verTag">v0.17.5</span><span class="beta-tag">BETA</span></div>
+      <div class="t1-sub"><span class="badge" id="unitTag">BB</span><span class="badge" id="verTag">v0.17.6</span><span class="beta-tag">BETA</span></div>
     </div>
     <div class="brand-mid">
       <img class="brand-logo" src="assets/logo_wxsj.webp" alt="无限升级">
@@ -3111,8 +3130,7 @@ function fillSmall(){
   fill('afTgtSmall',state.afTgtBig,state.afTgtSmall);
 }
 function initBlockFall(){
-  var layer=el('blockLayer');if(!layer)return;
-  var size=60;
+  /* 积木掉落效果已删除；仅保留 stats runner 需要的精灵数据 */
   var sprites=[];for(var i=1;i<=55;i++)sprites.push('assets/skins/skin_'+((i<10?'0':'')+i)+'.png');
   var used={};
   window.__fallSprites=sprites;
@@ -3121,64 +3139,11 @@ function initBlockFall(){
     if(!free.length)return null;
     var k=free[Math.floor(Math.random()*free.length)];
     used[k]=true;
-    var src=sprites[k];
-    return src;
+    return sprites[k];
   };
-  /* 静奢默认：积木只在首次进入时落下 1.5~2.4 秒，然后淡出；不再循环 */
-  var reduced=false;
-  try{reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){}
-  if(reduced){layer.style.display='none';return;}
-  layer.style.opacity='1';layer.style.transition='opacity .7s ease';
-  var blocks=[],spawned=0,maxBlocks=14,done=false;
-  var start=performance.now(),last=start;
-  function vw(){return layer.clientWidth||window.innerWidth;}
-  function vh(){return layer.clientHeight||window.innerHeight;}
-  function spawn(){
-    if(spawned>=maxBlocks)return false;
-    var free=[];for(var i=0;i<sprites.length;i++)if(!used[i])free.push(i);
-    if(!free.length)return false;
-    var k=free[Math.floor(Math.random()*free.length)];used[k]=true;
-    var w=vw(),x=Math.random()*Math.max(1,w-size);
-    var y=-size-Math.random()*320;
-    var img=document.createElement('img');
-    img.className='blk';img.src=sprites[k];img.alt='';
-    img.style.width=size+'px';img.style.height=size+'px';
-    img.style.transform='translate('+x.toFixed(1)+'px,'+y.toFixed(1)+'px) rotate(0deg)';
-    layer.appendChild(img);
-    blocks.push({x:x,y:y,vx:(Math.random()-.5)*2.6,vy:0,w:size,h:size,
-                 ang:(Math.random()-.5)*24,angV:(Math.random()-.5)*3.2,el:img});
-    spawned++;return true;
-  }
-  function finish(){
-    if(done)return;done=true;
-    layer.style.opacity='0';
-    setTimeout(function(){layer.innerHTML='';blocks=[];},750);
-  }
-  var timer=setInterval(function(){ if(done||!spawn())clearInterval(timer); },90);
-  setTimeout(finish,2600);
-  function step(now){
-    if(done)return;
-    if(document.hidden){last=now;requestAnimationFrame(step);return;}
-    var elapsed=now-start;
-    if(elapsed>2400){finish();return;}
-    var dt=Math.min(50,now-last)/16.67;last=now;
-    var h=vh(),w=vw();
-    for(var i=0;i<blocks.length;i++){
-      var b=blocks[i];
-      b.vy+=0.55*dt;
-      b.x+=b.vx*dt;b.y+=b.vy*dt;b.ang+=b.angV*dt;
-      b.angV*=Math.pow(0.995,dt);
-      if(b.x<0){b.x=0;b.vx=Math.abs(b.vx)*0.5;}
-      if(b.x+b.w>w){b.x=w-b.w;b.vx=-Math.abs(b.vx)*0.5;}
-      if(b.y+b.h>h){b.y=h-b.h;b.vy=-b.vy*0.32;b.vx*=0.8;b.angV*=0.8;}
-      b.el.style.transform='translate('+b.x.toFixed(1)+'px,'+b.y.toFixed(1)+'px) rotate('+b.ang.toFixed(1)+'deg)';
-    }
-    requestAnimationFrame(step);
-  }
-  requestAnimationFrame(step);
-  window.__blockFallStatic=function(on){ if(on) finish(); };
-  window.addEventListener('resize',function(){ if(!done) finish(); });
+  window.__blockFallStatic=function(){};
 }
+
 
 
 function renderOverview(){
@@ -8395,6 +8360,6 @@ document.querySelectorAll('.tocitem').forEach(function(a){
 
 })();
 </script>
-<div class="pubfoot" style="text-align:center;font-size:10.5px;color:#8a8070;padding:10px 12px 16px;line-height:1.7">项目作者：木东 · v0.17.5<br>数据来源：页面已写明来源的整理者与攻略作者</div>
+<div class="pubfoot" style="text-align:center;font-size:10.5px;color:#8a8070;padding:10px 12px 16px;line-height:1.7">项目作者：木东 · v0.17.6<br>数据来源：页面已写明来源的整理者与攻略作者</div>
 </body>
 </html>
