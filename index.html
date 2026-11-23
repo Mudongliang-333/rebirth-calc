@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#060b18">
-<title>无限升级 · 轮回计算器 v13.0「誓灭之境」 v0.17.4</title>
+<title>无限升级 · 轮回计算器 v13.0「誓灭之境」 v0.17.5</title>
 <link rel="icon" href="icon-192.png">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
@@ -357,13 +357,15 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
 #stats{display:grid;grid-template-columns:1fr 1fr;gap:9px}
 #stats .stat{margin-bottom:0;padding:9px 9px}
 .down-arw{text-align:center;color:#6b6355;font-size:13px;line-height:1;margin:6px 0 7px;text-shadow:0 1px 2px rgba(0,0,0,.6)}
-.bg-aurora{position:absolute;inset:-15%;pointer-events:none;opacity:.42;mix-blend-mode:screen;
-  background:radial-gradient(ellipse at 25% 30%,rgba(120,80,220,.22),transparent 55%),
-             radial-gradient(ellipse at 75% 65%,rgba(232,187,94,.10),transparent 60%);
+.bg-aurora{position:absolute;inset:-20%;pointer-events:none;z-index:1;opacity:.68;mix-blend-mode:screen;
+  filter:blur(10px);
+  background:radial-gradient(ellipse at 20% 28%,rgba(124,86,255,.42),transparent 52%),
+             radial-gradient(ellipse at 78% 68%,rgba(232,187,94,.20),transparent 55%),
+             radial-gradient(ellipse at 58% 12%,rgba(80,140,255,.18),transparent 55%);
   animation:auroraDrift 70s ease-in-out infinite alternate}
 @keyframes auroraDrift{from{transform:translate3d(-2%,-1%,0) scale(1.04)}to{transform:translate3d(2%,1%,0) scale(1.12)}}
 @media (prefers-reduced-motion:reduce){.bg-aurora{animation:none}}
-.fx-off .bg-aurora{animation:none;opacity:.22}
+.fx-off .bg-aurora{animation:none;opacity:.34}
 .block-layer{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
 .block-layer img.blk{position:absolute;top:0;left:0;object-fit:contain;image-rendering:pixelated;opacity:.92;will-change:transform;filter:drop-shadow(0 3px 6px rgba(0,0,0,.5))}
 .grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 12px}
@@ -1599,8 +1601,8 @@ html.fx-off .block-layer img.blk{will-change:auto}
 <div class="bg" aria-hidden="true">
   <div class="bg-img" id="bgImg"></div>
   <div class="bg-scrim"></div>
-  <div class="bg-aurora"></div>
   <div class="bg-vig"></div>
+  <div class="bg-aurora"></div>
 </div>
 <div class="block-layer" id="blockLayer" aria-hidden="true"></div>
 
@@ -1608,7 +1610,7 @@ html.fx-off .block-layer img.blk{will-change:auto}
   <div class="top-row">
     <div class="t1-col">
       <div class="t1">轮回计算器</div>
-      <div class="t1-sub"><span class="badge" id="unitTag">BB</span><span class="badge" id="verTag">v0.17.4</span><span class="beta-tag">BETA</span></div>
+      <div class="t1-sub"><span class="badge" id="unitTag">BB</span><span class="badge" id="verTag">v0.17.5</span><span class="beta-tag">BETA</span></div>
     </div>
     <div class="brand-mid">
       <img class="brand-logo" src="assets/logo_wxsj.webp" alt="无限升级">
@@ -8393,6 +8395,6 @@ document.querySelectorAll('.tocitem').forEach(function(a){
 
 })();
 </script>
-<div class="pubfoot" style="text-align:center;font-size:10.5px;color:#8a8070;padding:10px 12px 16px;line-height:1.7">项目作者：木东 · v0.17.4<br>数据来源：页面已写明来源的整理者与攻略作者</div>
+<div class="pubfoot" style="text-align:center;font-size:10.5px;color:#8a8070;padding:10px 12px 16px;line-height:1.7">项目作者：木东 · v0.17.5<br>数据来源：页面已写明来源的整理者与攻略作者</div>
 </body>
 </html>

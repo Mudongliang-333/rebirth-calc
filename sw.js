@@ -1,4 +1,4 @@
-const CACHE = 'wxcalc-v0.17.4';
+const CACHE = 'wxcalc-v0.17.5';
 const ASSETS = [
   './', './index.html',
   './icon-180.png', './icon-192.png', './icon-512.png', './icon-1024.png',
