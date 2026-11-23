@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#060b18">
-<title>无限升级 · 轮回计算器 v13.0「誓灭之境」 v0.17.2</title>
+<title>无限升级 · 轮回计算器 v13.0「誓灭之境」 v0.17.3</title>
 <link rel="icon" href="icon-192.png">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
@@ -1600,7 +1600,7 @@ html.fx-off .block-layer img.blk{will-change:auto}
   <div class="top-row">
     <div class="t1-col">
       <div class="t1">轮回计算器</div>
-      <div class="t1-sub"><span class="badge" id="unitTag">BB</span><span class="badge" id="verTag">v0.17.2</span><span class="beta-tag">BETA</span></div>
+      <div class="t1-sub"><span class="badge" id="unitTag">BB</span><span class="badge" id="verTag">v0.17.3</span><span class="beta-tag">BETA</span></div>
     </div>
     <div class="brand-mid">
       <img class="brand-logo" src="assets/logo_wxsj.webp" alt="无限升级">
@@ -4063,7 +4063,7 @@ function init(){
         '<h5>使用方法</h5>'+
         '<ul>'+
         '<li>① 在总览 → 核心数据 → 「比」卡片的「经输比（加点用）」输入框里填好比值</li>'+
-        '<li>② 输入框失焦后自动生成加点方案：'+
+        '<li>② 输入框失焦后按经输比更新目标：'+
           '攻击 +2%、加成 +2.5%、爆伤 +2%，'+
           '经验按该比值对齐到 2% 档位（攻击×比值）</li>'+
         '<li>③ 想微调再去「面板」页直接改各项目标值</li>'+
@@ -7875,8 +7875,7 @@ document.querySelectorAll('.tocitem').forEach(function(a){
     aofa:'奥法全阶计算<span class="bxfoot">数据来源：<b>阿莫西林　沉鱼</b></span>',
     holy:'圣法点计算表<span class="bxfoot">数据来源：<b>阿莫西林　沉鱼</b></span>',
     str:'强度计算<span class="bxfoot">数据来源：<b>QXJ</b></span>',
-    craft:'撰写转换<span class="bxfoot">数据来源：<b>QXJ</b></span>',
-    plan:'神力加点方案<span class="bxfoot">依据：属性神力公式实测定标 + 乖埕加点规则</span>'
+    craft:'撰写转换<span class="bxfoot">数据来源：<b>QXJ</b></span>'
   };
   function show(k){
     [].forEach.call(document.querySelectorAll('#calcTabs .bxstab'),function(b){
@@ -8460,6 +8459,6 @@ document.querySelectorAll('.tocitem').forEach(function(a){
 
 })();
 </script>
-<div class="pubfoot" style="text-align:center;font-size:10.5px;color:#8a8070;padding:10px 12px 16px;line-height:1.7">项目作者：木东 · v0.17.2<br>数据来源：页面已写明来源的整理者与攻略作者</div>
+<div class="pubfoot" style="text-align:center;font-size:10.5px;color:#8a8070;padding:10px 12px 16px;line-height:1.7">项目作者：木东 · v0.17.3<br>数据来源：页面已写明来源的整理者与攻略作者</div>
 </body>
 </html>
