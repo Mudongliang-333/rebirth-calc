@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#060b18">
-<title>无限升级 · 轮回计算器 v13.0「誓灭之境」 v0.17.1</title>
+<title>无限升级 · 轮回计算器 v13.0「誓灭之境」 v0.17.2</title>
 <link rel="icon" href="icon-192.png">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
@@ -1600,7 +1600,7 @@ html.fx-off .block-layer img.blk{will-change:auto}
   <div class="top-row">
     <div class="t1-col">
       <div class="t1">轮回计算器</div>
-      <div class="t1-sub"><span class="badge" id="unitTag">BB</span><span class="badge" id="verTag">v0.17.1</span><span class="beta-tag">BETA</span></div>
+      <div class="t1-sub"><span class="badge" id="unitTag">BB</span><span class="badge" id="verTag">v0.17.2</span><span class="beta-tag">BETA</span></div>
     </div>
     <div class="brand-mid">
       <img class="brand-logo" src="assets/logo_wxsj.webp" alt="无限升级">
@@ -1792,8 +1792,7 @@ html.fx-off .block-layer img.blk{will-change:auto}
           <button class="bxstab" data-ct="holy" type="button">圣法点</button>
           <button class="bxstab" data-ct="str" type="button">强度计算</button>
           <button class="bxstab" data-ct="craft" type="button">撰写转换</button>
-          <button class="bxstab" data-ct="plan" type="button">加点方案</button>
-        </div>
+          </div>
       </div>
       <div class="calcpanel on" id="sp-aofa">
       <div class="qsec">
@@ -1842,43 +1841,7 @@ html.fx-off .block-layer img.blk{will-change:auto}
     </div>
       </div>
     </div>
-      <div class="calcpanel" id="sp-plan">
-      <div class="qsec">
-        <div class="card form">
-      <div class="grid3">
-        <div class="row"><div class="lbl">当前等级 L</div><input id="plLv" inputmode="decimal" placeholder="自动取面板" autocomplete="off" spellcheck="false"></div>
-        <div class="row"><div class="lbl">本轮可用神力</div><input id="plPow" inputmode="decimal" placeholder="默认按等级算" autocomplete="off" spellcheck="false"></div>
-        <div class="row"><div class="lbl">生命参考值（可选）</div><input id="plHref" inputmode="decimal" placeholder="血量墙参考，如 1900" autocomplete="off" spellcheck="false"></div>
-      </div>
-      <div class="grid3">
-        <div class="row"><div class="lbl">当前攻击力</div><input id="plA" inputmode="decimal" autocomplete="off" spellcheck="false"></div>
-        <div class="row"><div class="lbl">当前加成%</div><input id="plP" inputmode="decimal" autocomplete="off" spellcheck="false"></div>
-        <div class="row"><div class="lbl">当前暴伤%</div><input id="plC" inputmode="decimal" autocomplete="off" spellcheck="false"></div>
-      </div>
-      <div class="grid3">
-        <div class="row"><div class="lbl">当前经验%</div><input id="plE" inputmode="decimal" autocomplete="off" spellcheck="false"></div>
-        <div class="row"><div class="lbl">当前生命值</div><input id="plHp" inputmode="decimal" autocomplete="off" spellcheck="false"></div>
-        <div class="row"><div class="lbl">下一档三维门槛 s</div><input id="plS" inputmode="decimal" autocomplete="off" spellcheck="false"></div>
-      </div>
-      <div class="grid2">
-        <div class="row"><div class="lbl">下一档经验门槛 e</div><input id="plE2" inputmode="decimal" autocomplete="off" spellcheck="false"></div>
-        <div class="row"><div class="lbl">策略</div>
-          <select id="plMode">
-            <option value="all">全部梭哈三维/经验（输出）</option>
-            <option value="balance">均衡：达标后边角料点生命</option>
-            <option value="wall">血量墙：先补生命到参考值</option>
-          </select>
-        </div>
-      </div>
-      <div class="btns">
-        <button class="cbtn" id="plGo" type="button">计算加点方案</button>
-        <button class="btn ghost" id="plRead" type="button">从面板读取</button>
-      </div>
-      <div id="plOut" class="cout" style="line-height:1.7"></div>
-      <div class="note" style="font-size:10px;color:var(--muted);margin-top:6px">公式：属性所需神力 = K × (S(值/2) − S(原值/2))，K=1.2e7（已实测定标）；加成显示值需 ÷1.25。生命参考规则：一般不超过三维一半，过特殊门槛时可酌情增加。</div>
-    </div>
-  </div>
-    </div>
+      
       <div class="calcpanel" id="sp-str">
       <div class="qsec">
         <div class="card" style="margin-top:6px">
@@ -7937,145 +7900,7 @@ document.querySelectorAll('.tocitem').forEach(function(a){
 })();
 </script>
 
-<script>
-/* 计算器 · 神力加点方案（梭哈输出 / 均衡 / 血量墙） */
-(function(){
-  var K=1.2e7;
-  function S(x){ return x*(x+1)*(2*x+1)/6; }
-  function cost(from,to,attr){
-    if(to<=from) return 0;
-    var f=from, t=to;
-    if(attr==='phys'){ f=from/1.25; t=to/1.25; }   /* 加成显示值 = 存储值×1.25 */
-    return K*(S(t/2)-S(f/2));
-  }
-  function fmt(x){
-    if(!isFinite(x)||x<=0) return '0';
-    var u=[[1e16,'京'],[1e12,'万亿'],[1e8,'亿'],[1e4,'万']];
-    for(var i=0;i<u.length;i++){ if(x>=u[i][0]) return (x/u[i][0]).toFixed(2)+u[i][1]; }
-    return String(Math.round(x));
-  }
-  function num(id){ var el=document.getElementById(id); return el? parseFloat(el.value): NaN; }
-  function val(id){ var v=num(id); return isFinite(v)? v : 0; }
-  function has(id){ var v=num(id); return isFinite(v); }
-  function readPanel(){
-    try{
-      var st=window.__calc && window.__calc.getState? window.__calc.getState():null;
-      if(!st) return {};
-      var out={};
-      (st.stats||[]).forEach(function(s){ if(s && s.target!=null) out[s.key]=s.target; });
-      out.level=st.curLevel;
-      return out;
-    }catch(e){ return {}; }
-  }
-  function lifeInverse(cur, maxAdd, budget){
-    /* 二分求生命可加 Δ 使 cost(cur, cur+Δ) <= budget */
-    if(budget<=0 || maxAdd<=0) return 0;
-    var lo=0, hi=maxAdd;
-    for(var i=0;i<60;i++){
-      var mid=(lo+hi)/2;
-      if(cost(cur,cur+mid,'hp')<=budget) lo=mid; else hi=mid;
-    }
-    return lo;
-  }
-  function run(){
-    var out=document.getElementById('plOut'); if(!out) return;
-    var p=readPanel();
-    if(!has('plLv') && p.level) document.getElementById('plLv').value=Math.round(p.level);
-    var L=val('plLv');
-    var P=has('plPow')? num('plPow') : Math.pow(L/10,3);
-    if(!isFinite(P)||P<=0) P=0;
-    var A=val('plA'), Pp=val('plP'), C=val('plC'), E=val('plE'), Hp=val('plHp');
-    var s=num('plS'), e2=num('plE2');
-    var ref=num('plHref');
-    var mode=(document.getElementById('plMode')||{}).value||'all';
-    var html='';
-    if(!isFinite(s)&&!isFinite(e2)&&!isFinite(ref)){
-      out.innerHTML='请至少填写「下一档三维门槛 s / 经验门槛 e」或「生命参考值」。';
-      return;
-    }
-    var cA=cost(A, isFinite(s)?s:A,'atk'), cP=cost(Pp, isFinite(s)?s:Pp,'phys'),
-        cC=cost(C, isFinite(s)?s:C,'crit'), cE=cost(E, isFinite(e2)?e2:E,'exp');
-    var cTotal=cA+cP+cC+cE;
-    var rows=[];
-    rows.push('<b>冲下一档成本</b>（'+(isFinite(s)?('攻击 '+s+' / 加成 '+s+' / 暴伤 '+s):'攻击/加成/暴伤 —')+' / '+(isFinite(e2)?('经验 '+e2):'经验 —')+'）');
-    rows.push('　攻击 '+fmt(cA)+' ｜ 加成 '+fmt(cP)+' ｜ 暴伤 '+fmt(cC)+' ｜ 经验 '+fmt(cE)+' ｜ <b>合计 '+fmt(cTotal)+'</b>');
-    rows.push('<b>本轮可用神力</b> '+fmt(P)+(L>0?('（等级 '+Math.round(L)+' → (L/10)³）'):''));
-    var rounds=cTotal>0? Math.ceil(cTotal/P):0;
-    rows.push('冲档预计：'+(cTotal<=P?'<b style="color:#7fd08a">一轮可达</b>':('<b style="color:#e8934a">需约 '+rounds+' 轮</b>（全投三维/经验）')));
-    var remain=Math.max(0,P-cTotal);
-    if(cTotal<=P) rows.push('冲档后剩余神力：<b>'+fmt(remain)+'</b>');
-    html+='<div style="margin-bottom:8px">'+rows.join('<br>')+'</div>';
 
-    /* 方案 A：全部梭哈三维/经验 */
-    var aTxt='<div style="padding:6px 8px;border-radius:8px;background:rgba(95,208,230,.06);margin-top:6px">'
-      +'<b>'+((mode==='all')?'★ ':'')+'方案 A · 全部梭哈三维/经验</b><br>'
-      +'把 '+fmt(cTotal)+' 神力全部投三维/经验'+(cTotal<=P?'（一轮完成，生命不变）':('（约 '+rounds+' 轮，生命不变）'))
-      +'<br><span style="font-size:10px;color:var(--muted)">适合：无血量墙 / 输出优先；生命靠装备、血书、龙血、生命宝石补</span></div>';
-    html+=aTxt;
-
-    /* 方案 B：均衡（达标后边角料点生命，不超过三维一半） */
-    var capS=(isFinite(s)? s/2 : null);
-    var cap=capS!=null? Math.min(capS, isFinite(ref)?ref:capS): null;
-    var bTxt='<div style="padding:6px 8px;border-radius:8px;background:rgba(127,208,138,.06);margin-top:6px">'
-      +'<b>'+((mode==='balance')?'★ ':'')+'方案 B · 均衡（边角料点生命）</b><br>';
-    if(cTotal>P){
-      bTxt+='本轮冲档都不够（需 '+rounds+' 轮），建议先全投三维/经验，生命暂不动。';
-    }else{
-      var lifeAdd=0, lifeCost=0, lifeNote='';
-      if(cap!=null && cap>Hp){
-        var maxAdd=cap-Hp;
-        lifeAdd=lifeInverse(Hp,maxAdd,remain);
-        lifeCost=cost(Hp,Hp+lifeAdd,'hp');
-        lifeNote='生命上限（≤三维一半'+(isFinite(ref)?'且≤参考值':'')+'）：'+Math.round(cap);
-      }else{
-        lifeNote='当前生命已达/超过上限（'+(cap!=null?Math.round(cap):'—')+'），不再加点';
-      }
-      bTxt+='冲档后剩余 '+fmt(remain)+' 神力 → 生命 +'+(lifeAdd>0?Math.round(lifeAdd):0)
-        +'（消耗 '+fmt(lifeCost)+'）'+(lifeAdd>0?('，生命 '+(Math.round(Hp))+' → '+Math.round(Hp+lifeAdd)):'')
-        +'<br>'+lifeNote
-        +'<br><span style="font-size:10px;color:var(--muted)">规则：一般不超过三维一半，过特殊门槛时可酌情增加</span>';
-    }
-    bTxt+='</div>';
-    html+=bTxt;
-
-    /* 方案 C：血量墙 */
-    var cTxt='<div style="padding:6px 8px;border-radius:8px;background:rgba(232,147,74,.08);margin-top:6px">'
-      +'<b>'+((mode==='wall')?'★ ':'')+'方案 C · 血量墙（先补生命到参考值）</b><br>';
-    if(!isFinite(ref)){
-      cTxt+='未填生命参考值，无法计算；可参考频道卡点：卡2≈1900、卡4≈3000、异4≈6000（三维对应见生存参考表）。';
-    }else if(ref<=Hp){
-      cTxt+='当前生命 '+Math.round(Hp)+' 已达到参考值 '+Math.round(ref)+'，无需补生命 → 按方案 A 全投三维/经验。';
-    }else{
-      var need=ref-Hp, cLife=cost(Hp,ref,'hp');
-      cTxt+='生命缺口 '+Math.round(need)+'，补到参考值需神力 '+fmt(cLife)+'<br>';
-      if(cLife<=P){
-        var rest=P-cLife;
-        cTxt+='本轮先补生命（'+fmt(cLife)+'），剩 '+fmt(rest)+' 可投三维/经验 → 冲档进度 '+Math.min(100,Math.round(rest/cTotal*100))+'%';
-      }else{
-        var r2=cLife>0? Math.ceil(cLife/P):0;
-        cTxt+='本轮神力不足（需约 '+r2+' 轮补生命），建议先补生命保刷，再冲下一档。';
-      }
-    }
-    cTxt+='<br><span style="font-size:10px;color:var(--muted)">仅当该内容为血量墙（会暴毙）时使用；突破后回到常规比例</span></div>';
-    html+=cTxt;
-
-    var tips='<div style="margin-top:8px;font-size:10px;color:var(--muted)">当前策略：'
-      +({all:'全部梭哈三维/经验',balance:'均衡（边角料点生命）',wall:'血量墙优先'}[mode]||'')
-      +'。<br>结果基于属性神力公式（K=1.2e7，加成 ÷1.25）；生命参考值来自频道卡点或实测，仅作参考。</div>';
-    out.innerHTML=html+tips;
-  }
-  document.addEventListener('click',function(ev){
-    if(!ev.target) return;
-    if(ev.target.id==='plGo'){ run(); }
-    if(ev.target.id==='plRead'){
-      var p=readPanel();
-      function set(id,k){ var el=document.getElementById(id); if(el && p[k]!=null) el.value=p[k]; }
-      set('plLv','level'); set('plA','atk'); set('plP','phys'); set('plC','crit'); set('plE','exp'); set('plHp','hp');
-      run();
-    }
-  });
-})();
-</script>
 
 })();
 </script>
@@ -8635,6 +8460,6 @@ document.querySelectorAll('.tocitem').forEach(function(a){
 
 })();
 </script>
-<div class="pubfoot" style="text-align:center;font-size:10.5px;color:#8a8070;padding:10px 12px 16px;line-height:1.7">项目作者：木东 · v0.17.1<br>数据来源：页面已写明来源的整理者与攻略作者</div>
+<div class="pubfoot" style="text-align:center;font-size:10.5px;color:#8a8070;padding:10px 12px 16px;line-height:1.7">项目作者：木东 · v0.17.2<br>数据来源：页面已写明来源的整理者与攻略作者</div>
 </body>
 </html>

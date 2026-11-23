@@ -4,5 +4,6 @@
  "all": false,
  "done": false,
  "library": false,
- "boss_entity_pages": false
+ "boss_entity_pages": false,
+ "calc_plan": false
 }
