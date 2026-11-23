@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: 文件白名单
         run: |
-          BAD=$(git ls-files | grep -vE '^(index\.html|assets/|ocr_engine/|icon-|apple-touch-icon-|splash-|sw\.js|manifest\.webmanifest|README\.md|\.github/workflows/ci\.yml)$' || true)
+          BAD=$(git ls-files | grep -vE '^(index\.html$|assets/|ocr_engine/|icon-|apple-touch-icon-|splash-|sw\.js$|manifest\.webmanifest$|README\.md$|\.github/workflows/ci\.yml$)' || true)
           [ -z "$BAD" ] || { echo "非白名单文件: $BAD"; exit 1; }
       - name: 公开面禁止字样
         run: |
