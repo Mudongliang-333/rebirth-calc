@@ -11,11 +11,11 @@ jobs:
       - uses: actions/checkout@v4
       - name: 文件白名单
         run: |
-          BAD=$(git ls-files | grep -vE '^(index\.html$|assets/|ocr_engine/|icon-|apple-touch-icon-|splash-|sw\.js$|manifest\.webmanifest$|README\.md$|\.github/workflows/ci\.yml$)' || true)
+          BAD=$(git ls-files | grep -vE '^(index\.html$|assets/|ocr_engine/|icon-|apple-touch-icon-|splash-|sw\.js$|manifest\.webmanifest$|README\.md$|features\.json$|\.github/workflows/ci\.yml$)' || true)
           [ -z "$BAD" ] || { echo "非白名单文件: $BAD"; exit 1; }
       - name: 公开面禁止字样
         run: |
-          echo 'X19EQl9URVNUCuaho+ahiOWupArmlbDmja7mnaXmupDlj7DotKYKbWFpbnRhaW4KZnJpZW5kX3NvdXJjZQowM1/lt6XlhbcvCjA0X+aVsOaNri8KMDVf6aKR6YGT55+l6K+GLwrlhoXpg6jmiqXlkYoK5ouG5YyFCuegtOinowrlpJbmjIIKZ2hwXwpkYXRhLWJ0PSJ0ZXN0IgpkYXRhLWJ0PSJ2MTIiCmRhdGEtYnQ9InYxMyIKZGF0YS1idD0iYWxsIgpkYXRhLWJ0PSJkb25lIgppZD0iYmxrLWRhdGEiCmRhdGEtaGlkZQpkZXYtbWFyawpkZXZCYWRnZQpERVYgwrcg6ZqQ6JePCl9fREJfSFBfQVJDSElWRQpfX0RCX0xJQl9UQUJMRVMKX19EQjEzCi9Vc2Vycy8KRG93bmxvYWRzLw==' | base64 -d > /tmp/patterns.txt
+          echo 'X19EQl9URVNUCuaho+ahiOWupArmlbDmja7mnaXmupDlj7DotKYKbWFpbnRhaW4KZnJpZW5kX3NvdXJjZQowM1/lt6XlhbcvCjA0X+aVsOaNri8KMDVf6aKR6YGT55+l6K+GLwrlhoXpg6jmiqXlkYoK5ouG5YyFCuegtOinowrlpJbmjIIKZ2hwXwpkYXRhLWJ0PSJ0ZXN0IgpkYXRhLWhpZGUKZGV2LW1hcmsKZGV2QmFkZ2UKREVWIMK3IOmakOiXjwpfX0RCX0hQX0FSQ0hJVkUKX19EQl9MSUJfVEFCTEVTCl9fREIxMwoxMy4wIOaVsOaNruaUu+eVpeW3peS9nOWPsApkYXRhLWJ0PSJ2MTIiCmRhdGEtYnQ9InYxMyIKZGF0YS1idD0iYWxsIgpkYXRhLWJ0PSJkb25lIgppZD0iYmxrLWRhdGEiCi9Vc2Vycy8KRG93bmxvYWRzLw==' | base64 -d > /tmp/patterns.txt
           FAIL=0
           while IFS= read -r p; do
             [ -z "$p" ] && continue
