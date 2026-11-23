@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#060b18">
-<title>无限升级 · 轮回计算器 v13.0「誓灭之境」 v0.17.3</title>
+<title>无限升级 · 轮回计算器 v13.0「誓灭之境」 v0.17.4</title>
 <link rel="icon" href="icon-192.png">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
@@ -357,6 +357,13 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
 #stats{display:grid;grid-template-columns:1fr 1fr;gap:9px}
 #stats .stat{margin-bottom:0;padding:9px 9px}
 .down-arw{text-align:center;color:#6b6355;font-size:13px;line-height:1;margin:6px 0 7px;text-shadow:0 1px 2px rgba(0,0,0,.6)}
+.bg-aurora{position:absolute;inset:-15%;pointer-events:none;opacity:.42;mix-blend-mode:screen;
+  background:radial-gradient(ellipse at 25% 30%,rgba(120,80,220,.22),transparent 55%),
+             radial-gradient(ellipse at 75% 65%,rgba(232,187,94,.10),transparent 60%);
+  animation:auroraDrift 70s ease-in-out infinite alternate}
+@keyframes auroraDrift{from{transform:translate3d(-2%,-1%,0) scale(1.04)}to{transform:translate3d(2%,1%,0) scale(1.12)}}
+@media (prefers-reduced-motion:reduce){.bg-aurora{animation:none}}
+.fx-off .bg-aurora{animation:none;opacity:.22}
 .block-layer{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
 .block-layer img.blk{position:absolute;top:0;left:0;object-fit:contain;image-rendering:pixelated;opacity:.92;will-change:transform;filter:drop-shadow(0 3px 6px rgba(0,0,0,.5))}
 .grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 12px}
@@ -1592,6 +1599,7 @@ html.fx-off .block-layer img.blk{will-change:auto}
 <div class="bg" aria-hidden="true">
   <div class="bg-img" id="bgImg"></div>
   <div class="bg-scrim"></div>
+  <div class="bg-aurora"></div>
   <div class="bg-vig"></div>
 </div>
 <div class="block-layer" id="blockLayer" aria-hidden="true"></div>
@@ -1600,7 +1608,7 @@ html.fx-off .block-layer img.blk{will-change:auto}
   <div class="top-row">
     <div class="t1-col">
       <div class="t1">轮回计算器</div>
-      <div class="t1-sub"><span class="badge" id="unitTag">BB</span><span class="badge" id="verTag">v0.17.3</span><span class="beta-tag">BETA</span></div>
+      <div class="t1-sub"><span class="badge" id="unitTag">BB</span><span class="badge" id="verTag">v0.17.4</span><span class="beta-tag">BETA</span></div>
     </div>
     <div class="brand-mid">
       <img class="brand-logo" src="assets/logo_wxsj.webp" alt="无限升级">
@@ -1730,8 +1738,8 @@ html.fx-off .block-layer img.blk{will-change:auto}
       </div>
       <div id="xOut" class="hint-line" style="font-size:11.5px;color:#d6c9a8"></div>
       <div class="pddiv"></div>
-<div class="pdsec" id="pdCard">
-      <div class="pdt">面板数据 <span class="hint">可选 · 填了用于资料库显示举例</span></div>
+<details class="pdsec" id="pdCard">
+      <summary class="pdt">面板数据 <span class="hint">可选 · 填了用于资料库显示举例</span></summary>
 <div class="pdgrid">
         <div class="pcell"><div class="lbl">力量</div><input id="pdStr" inputmode="decimal" autocomplete="off"></div>
         <div class="pcell"><div class="lbl">敏捷</div><input id="pdAgi" inputmode="decimal" autocomplete="off"></div>
@@ -1761,7 +1769,7 @@ html.fx-off .block-layer img.blk{will-change:auto}
       <div class="hint-line" id="pdHint" style="margin-top:6px">数值可从右上角相机的识别结果带出，也可直接手动填写；填完点「保存快照」记录一次。</div>
       <div class="hint-line" id="pdSnapTip" style="margin-top:4px;color:#8f8674">「保存快照」= 把当前面板数据 + 等级 + 经验收益/修正按时间存成一条记录（最多 60 条），用于以后对比成长；不会改动你当前的输入。</div>
       <div class="pd-live" id="pdLive">—</div>
-    </div>
+    </details>
 
       <div class="btns">
         <button class="btn" id="btnReset">清空</button>
@@ -3103,9 +3111,8 @@ function fillSmall(){
 function initBlockFall(){
   var layer=el('blockLayer');if(!layer)return;
   var size=60;
-  var blocks=[];
   var sprites=[];for(var i=1;i<=55;i++)sprites.push('assets/skins/skin_'+((i<10?'0':'')+i)+'.png');
-  var idx=0,tiltX=0,used={};
+  var used={};
   window.__fallSprites=sprites;
   window.__takeSpr=function(){
     var free=[];for(var i=0;i<sprites.length;i++)if(!used[i])free.push(i);
@@ -3113,137 +3120,64 @@ function initBlockFall(){
     var k=free[Math.floor(Math.random()*free.length)];
     used[k]=true;
     var src=sprites[k];
-    for(var j=blocks.length-1;j>=0;j--){
-      if(blocks[j].el&&blocks[j].el.getAttribute('src')===src){blocks[j].el.remove();blocks.splice(j,1);}
-    }
     return src;
   };
+  /* 静奢默认：积木只在首次进入时落下 1.5~2.4 秒，然后淡出；不再循环 */
+  var reduced=false;
+  try{reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){}
+  if(reduced){layer.style.display='none';return;}
+  layer.style.opacity='1';layer.style.transition='opacity .7s ease';
+  var blocks=[],spawned=0,maxBlocks=14,done=false;
+  var start=performance.now(),last=start;
   function vw(){return layer.clientWidth||window.innerWidth;}
   function vh(){return layer.clientHeight||window.innerHeight;}
   function spawn(){
-    var free=[];for(var q=0;q<sprites.length;q++)if(!used[q])free.push(q);
+    if(spawned>=maxBlocks)return false;
+    var free=[];for(var i=0;i<sprites.length;i++)if(!used[i])free.push(i);
     if(!free.length)return false;
-    var pickIdx=free[Math.floor(Math.random()*free.length)];
-    used[pickIdx]=true;
-    var w=vw();
-    var x=Math.random()*Math.max(1,w-size);
-    var y=-size-Math.random()*400;
+    var k=free[Math.floor(Math.random()*free.length)];used[k]=true;
+    var w=vw(),x=Math.random()*Math.max(1,w-size);
+    var y=-size-Math.random()*320;
     var img=document.createElement('img');
-    img.className='blk';img.src=sprites[pickIdx];img.alt='';
+    img.className='blk';img.src=sprites[k];img.alt='';
     img.style.width=size+'px';img.style.height=size+'px';
     img.style.transform='translate('+x.toFixed(1)+'px,'+y.toFixed(1)+'px) rotate(0deg)';
     layer.appendChild(img);
-    blocks.push({x:x,y:y,vx:(Math.random()-.5)*5,vy:0,w:size,h:size,
-                 ang:(Math.random()-.5)*30,angV:(Math.random()-.5)*6,
-                 rest:0.42,el:img});
-    return true;
+    blocks.push({x:x,y:y,vx:(Math.random()-.5)*2.6,vy:0,w:size,h:size,
+                 ang:(Math.random()-.5)*24,angV:(Math.random()-.5)*3.2,el:img});
+    spawned++;return true;
   }
-  var staticMode=false;
-  var spawnTimer=setInterval(function(){ if(staticMode)return; if(!spawn())clearInterval(spawnTimer); },100);
-  /* 对外：静态模式（掉落终态） */
-  window.__blockFallStatic=function(on){
-    staticMode=!!on;
-    var w=vw(),h=vh();
-    if(on){
-      /* 补一些方块并直接摆成「落地后」的终态 */
-      var need=Math.max(10, Math.min(16, blocks.length));
-      for(var n=blocks.length; n<need; n++){ if(!spawn()) break; }
-      for(var k=0;k<blocks.length;k++){
-        var b=blocks[k];
-        b.y = h - b.h - (k%3)*2;
-        b.x = Math.min(Math.max(4, (k*(w-40)/Math.max(1,blocks.length-1))), Math.max(4,w-b.w-4));
-        b.vx=0; b.vy=0; b.ang=0; b.angV=0; b.sleep=true;
-        b.el.style.transform='translate('+b.x.toFixed(1)+'px,'+b.y.toFixed(1)+'px) rotate(0deg)';
-      }
-    } else {
-      for(var m=0;m<blocks.length;m++){ blocks[m].sleep=false; }
-    }
-  };
-  function onOrient(e){var g=(e.gamma||0);tiltX=Math.max(-3,Math.min(3,g*0.05));}
-  if(window.DeviceOrientationEvent){window.addEventListener('deviceorientation',onOrient,true);}
-  function reqPerm(){
-    if(window.DeviceOrientationEvent&&typeof DeviceOrientationEvent.requestPermission==='function'){
-      try{DeviceOrientationEvent.requestPermission().catch(function(){});}catch(e){}
-    }
-    document.removeEventListener('touchstart',reqPerm);document.removeEventListener('click',reqPerm);
+  function finish(){
+    if(done)return;done=true;
+    layer.style.opacity='0';
+    setTimeout(function(){layer.innerHTML='';blocks=[];},750);
   }
-  document.addEventListener('touchstart',reqPerm,{passive:true});
-  document.addEventListener('click',reqPerm);
-  var gy=0.55;                 /* 重力加速度（px/frame²，60fps 基准） */
-  var last=performance.now();
+  var timer=setInterval(function(){ if(done||!spawn())clearInterval(timer); },90);
+  setTimeout(finish,2600);
   function step(now){
-    if(staticMode){ last=now; requestAnimationFrame(step); return; }
+    if(done)return;
     if(document.hidden){last=now;requestAnimationFrame(step);return;}
+    var elapsed=now-start;
+    if(elapsed>2400){finish();return;}
     var dt=Math.min(50,now-last)/16.67;last=now;
-    var w=vw(),h=vh();
-    /* —— 积分：重力 + 空气阻力 + 角速度 —— */
-    for(var k=0;k<blocks.length;k++){
-      var b=blocks[k];
-      if(b.sleep) continue;
-      b.vy += gy*dt;
-      b.vx += tiltX*dt*0.6;
-      b.vx *= Math.pow(0.992, dt);
-      b.vy *= Math.pow(0.998, dt);
-      if(b.vy>34) b.vy=34;
-      if(b.vx>26) b.vx=26; if(b.vx<-26) b.vx=-26;
-      b.x += b.vx*dt; b.y += b.vy*dt;
-      b.ang += b.angV*dt;
-      b.angV *= Math.pow(0.995, dt);
-      /* 左右墙：反弹并带走一点自转 */
-      if(b.x<0){ b.x=0; b.vx=Math.abs(b.vx)*0.62; b.angV += b.vx*0.08; }
-      if(b.x+b.w>w){ b.x=w-b.w; b.vx=-Math.abs(b.vx)*0.62; b.angV += b.vx*0.08; }
-      /* 地面：真实反弹，速度足够小才休眠 */
-      if(b.y+b.h>h){
-        b.y=h-b.h;
-        if(b.vy>1.2){
-          b.vy = -b.vy*b.rest;          /* 弹起 */
-          b.vx *= 0.86;                 /* 摩擦 */
-          b.angV = b.angV*0.72 + b.vx*0.35;
-        }else{
-          b.vy=0; b.vx*=0.80; b.angV*=0.80;
-          if(Math.abs(b.vx)<0.25 && Math.abs(b.angV)<0.4){ b.sleep=true; b.vx=0; b.angV=0; }
-        }
-      }
-      if(b.y<-b.h*8) b.y=-b.h*8;
-    }
-    /* —— 碰撞：分离 + 速度交换 + 传递自转 —— */
-    for(var it=0;it<3;it++){
-      for(var i=0;i<blocks.length;i++){
-        for(var j=i+1;j<blocks.length;j++){
-          var a=blocks[i],c=blocks[j];
-          var dx=(a.x+a.w/2)-(c.x+c.w/2),dy=(a.y+a.h/2)-(c.y+c.h/2);
-          var ox=(a.w+c.w)/2-Math.abs(dx),oy=(a.h+c.h)/2-Math.abs(dy);
-          if(ox>0&&oy>0){
-            if(ox<oy){
-              var p=(dx>0?1:-1)*ox/2;
-              a.x+=p; c.x-=p;
-              var tv=a.vx; a.vx=c.vx*0.72; c.vx=tv*0.72;
-              a.angV += (c.vx-a.vx)*0.06; c.angV -= (c.vx-a.vx)*0.06;
-              a.sleep=c.sleep=false;
-            }else{
-              var q=(dy>0?1:-1)*oy/2;
-              a.y+=q; c.y-=q;
-              var tv2=a.vy; a.vy=c.vy*0.45; c.vy=tv2*0.45;
-              a.angV += (c.vx-a.vx)*0.05; c.angV -= (c.vx-a.vx)*0.05;
-              a.sleep=c.sleep=false;
-            }
-          }
-        }
-      }
-    }
-    /* —— 渲染 —— */
-    for(var k3=0;k3<blocks.length;k3++){
-      var b3=blocks[k3];
-      b3.el.style.transform='translate('+b3.x.toFixed(1)+'px,'+b3.y.toFixed(1)+'px) rotate('+b3.ang.toFixed(1)+'deg)';
+    var h=vh(),w=vw();
+    for(var i=0;i<blocks.length;i++){
+      var b=blocks[i];
+      b.vy+=0.55*dt;
+      b.x+=b.vx*dt;b.y+=b.vy*dt;b.ang+=b.angV*dt;
+      b.angV*=Math.pow(0.995,dt);
+      if(b.x<0){b.x=0;b.vx=Math.abs(b.vx)*0.5;}
+      if(b.x+b.w>w){b.x=w-b.w;b.vx=-Math.abs(b.vx)*0.5;}
+      if(b.y+b.h>h){b.y=h-b.h;b.vy=-b.vy*0.32;b.vx*=0.8;b.angV*=0.8;}
+      b.el.style.transform='translate('+b.x.toFixed(1)+'px,'+b.y.toFixed(1)+'px) rotate('+b.ang.toFixed(1)+'deg)';
     }
     requestAnimationFrame(step);
   }
   requestAnimationFrame(step);
-  window.addEventListener('resize',function(){
-    layer.innerHTML='';blocks=[];idx=0;clearInterval(spawnTimer);
-    spawnTimer=setInterval(function(){ if(!spawn())clearInterval(spawnTimer); },100);
-  });
+  window.__blockFallStatic=function(on){ if(on) finish(); };
+  window.addEventListener('resize',function(){ if(!done) finish(); });
 }
+
 
 function renderOverview(){
   var r=compute();
@@ -8459,6 +8393,6 @@ document.querySelectorAll('.tocitem').forEach(function(a){
 
 })();
 </script>
-<div class="pubfoot" style="text-align:center;font-size:10.5px;color:#8a8070;padding:10px 12px 16px;line-height:1.7">项目作者：木东 · v0.17.3<br>数据来源：页面已写明来源的整理者与攻略作者</div>
+<div class="pubfoot" style="text-align:center;font-size:10.5px;color:#8a8070;padding:10px 12px 16px;line-height:1.7">项目作者：木东 · v0.17.4<br>数据来源：页面已写明来源的整理者与攻略作者</div>
 </body>
 </html>
