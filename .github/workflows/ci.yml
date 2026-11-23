@@ -1,0 +1,38 @@
+name: public-ci
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  public-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 文件白名单
+        run: |
+          BAD=$(git ls-files | grep -vE '^(index\.html|assets/|ocr_engine/|icon-|apple-touch-icon-|splash-|sw\.js|manifest\.webmanifest|README\.md|\.github/workflows/ci\.yml)$' || true)
+          [ -z "$BAD" ] || { echo "非白名单文件: $BAD"; exit 1; }
+      - name: 公开面禁止字样
+        run: |
+          echo 'X19EQl9URVNUCuaho+ahiOWupArmlbDmja7mnaXmupDlj7DotKYKbWFpbnRhaW4KZnJpZW5kX3NvdXJjZQowM1/lt6XlhbcvCjA0X+aVsOaNri8KMDVf6aKR6YGT55+l6K+GLwrlhoXpg6jmiqXlkYoK5ouG5YyFCuegtOinowrlpJbmjIIKZ2hwXwpkYXRhLWJ0PSJ0ZXN0IgpkYXRhLWJ0PSJ2MTIiCmRhdGEtYnQ9InYxMyIKZGF0YS1idD0iYWxsIgpkYXRhLWJ0PSJkb25lIgppZD0iYmxrLWRhdGEiCmRhdGEtaGlkZQpkZXYtbWFyawpkZXZCYWRnZQpERVYgwrcg6ZqQ6JePCl9fREJfSFBfQVJDSElWRQpfX0RCX0xJQl9UQUJMRVMKX19EQjEzCi9Vc2Vycy8KRG93bmxvYWRzLw==' | base64 -d > /tmp/patterns.txt
+          FAIL=0
+          while IFS= read -r p; do
+            [ -z "$p" ] && continue
+            C=$(grep -c -- "$p" index.html || true)
+            [ "$C" -eq 0 ] || { echo "命中禁止字样: $p ($C)"; FAIL=1; }
+          done < /tmp/patterns.txt
+          [ "$FAIL" -eq 0 ]
+      - name: 公开页结构
+        run: |
+          test -f index.html
+          test -f manifest.webmanifest
+          test -f sw.js
+          grep -q 'id="bossTabs"' index.html
+          grep -q 'data-bt="reco"' index.html
+          SIZE=$(wc -c < index.html); [ "$SIZE" -le 2097152 ] || { echo "index.html 超过 2MB"; exit 1; }
+      - name: gitleaks
+        run: |
+          curl -sL -o /tmp/gl.tgz https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz
+          tar -xzf /tmp/gl.tgz -C /tmp gitleaks
+          /tmp/gitleaks detect --no-banner --redact --exit-code 1
