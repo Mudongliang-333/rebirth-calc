@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#060b18">
-<title>无限升级 · 轮回计算器 v13.0「誓灭之境」 v0.17.7</title>
+<title>无限升级 · 轮回计算器 v13.0「誓灭之境」 v0.17.8</title>
 <link rel="icon" href="icon-192.png">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
@@ -1596,7 +1596,7 @@ html.fx-off </style>
   <div class="top-row">
     <div class="t1-col">
       <div class="t1">轮回计算器</div>
-      <div class="t1-sub"><span class="badge" id="unitTag">BB</span><span class="badge" id="verTag">v0.17.7</span><span class="beta-tag">BETA</span></div>
+      <div class="t1-sub"><span class="badge" id="unitTag">BB</span><span class="badge" id="verTag">v0.17.8</span><span class="beta-tag">BETA</span></div>
     </div>
     <div class="brand-mid">
       <img class="brand-logo" src="assets/logo_wxsj.webp" alt="无限升级">
@@ -4974,11 +4974,48 @@ var OCR = (function(){
   function st(){ return (C().getState? C().getState() : {})||{}; }
   function cToast(msg){ if(C().toast) C().toast(msg); }
   var OCR_ROWS=null, OCR_DONE=null;
+  function thumbData(image){
+    try{
+      var W=image.width||image.naturalWidth, H=image.height||image.naturalHeight;
+      var sc=Math.min(1,260/Math.max(W,H,1));
+      var cv=document.createElement('canvas'); cv.width=Math.max(1,Math.round(W*sc)); cv.height=Math.max(1,Math.round(H*sc));
+      cv.getContext('2d').drawImage(image,0,0,cv.width,cv.height);
+      return cv.toDataURL('image/jpeg',0.72);
+    }catch(e){ return ''; }
+  }
+  var _ocrPrevStyle=false;
+  function _ocrPreviewStyle(){
+    if(_ocrPrevStyle) return; _ocrPrevStyle=true;
+    var st=document.createElement('style');
+    st.textContent='#ocrBody .ocr-preview{display:flex;gap:6px;overflow-x:auto;margin:0 0 8px;padding:2px 0}'+
+      '#ocrBody .ocr-preview img{width:74px;height:auto;border-radius:6px;border:1px solid rgba(232,187,94,.35);cursor:zoom-in;flex:0 0 auto;background:#120c1c}'+
+      '#ocrBigMask{position:fixed;inset:0;z-index:9998;background:rgba(5,3,9,.94);display:flex;align-items:center;justify-content:center;padding:12px}'+
+      '#ocrBigMask img{max-width:94vw;max-height:88vh;border-radius:8px;box-shadow:0 10px 40px rgba(0,0,0,.6)}';
+    document.head.appendChild(st);
+  }
+  function _ocrShowBig(src){
+    var old=document.getElementById('ocrBigMask'); if(old) old.remove();
+    var d=document.createElement('div'); d.id='ocrBigMask';
+    var im=document.createElement('img'); im.src=src; d.appendChild(im);
+    d.addEventListener('click',function(){ d.remove(); });
+    document.body.appendChild(d);
+  }
   function openOcrDialog(rows, onOk){
     OCR_ROWS=rows; OCR_DONE=onOk;
     var mask=document.getElementById('ocrMask'), box=document.getElementById('ocrModal'), body=document.getElementById('ocrBody');
     if(!body){ onOk(rows.filter(function(r){return r.checked!==false;})); return; }
     body.innerHTML='';
+    var _imgs=window.__OCR_IMAGES||[];
+    if(_imgs.length){
+      _ocrPreviewStyle();
+      var pv=document.createElement('div'); pv.className='ocr-preview';
+      _imgs.forEach(function(src,ii){
+        var im=document.createElement('img'); im.src=src; im.title='原图 '+(ii+1)+'（点击放大）';
+        im.addEventListener('click',function(){ _ocrShowBig(src); });
+        pv.appendChild(im);
+      });
+      body.appendChild(pv);
+    }
     rows.forEach(function(r,i){
       if(r.note){
         var dn=document.createElement('div'); dn.className='ocr-note'; dn.textContent=r.label;
@@ -5000,6 +5037,8 @@ var OCR = (function(){
     var m=document.getElementById('ocrMask'), b=document.getElementById('ocrModal');
     if(m) m.classList.remove('show');
     if(b) b.classList.remove('show');
+    window.__OCR_IMAGES=[];
+    var ob=document.getElementById('ocrBigMask'); if(ob) ob.remove();
   }
   function ocrFeedback(){
     var rows=(OCR_ROWS||[]).map(function(r){
@@ -5071,7 +5110,7 @@ var OCR = (function(){
     cToast(applied.length? ('已写入：'+applied.join('、')) : '未选择可写入项');
   }
   window.OCRUI={open:openOcrDialog, confirm:ocrConfirm, apply:applyOcr, scanTransfer:scanTransfer, transfer:openTransferDialog};
-  window.__ocrHooks={open:openOcrDialog, buildIdleRows:buildIdleRows, apply:applyOcr, autoIdle:function(image){ try{ autoIdle(image,true); }catch(e){} return window.__lastLegacyRes||null; }};
+  window.__ocrHooks={open:openOcrDialog, buildIdleRows:buildIdleRows, apply:applyOcr, autoIdle:function(image){ try{ autoIdle(image,true); }catch(e){} return window.__lastLegacyRes||null; }, scanTransfer:scanTransfer};
   function wireDialog(){
     var _ic=document.getElementById('ocrIntroClose'), _ix=document.getElementById('ocrIntroCancel'),
         _im=document.getElementById('ocrIntroMask'), _imn=document.getElementById('ocrIntroMain');
@@ -5395,7 +5434,20 @@ var OCR = (function(){
   }
   function setNoTip(){
     var sv=getSave();
-    if(sv){ if(!sv.ui||typeof sv.ui!=='object') sv.ui={}; sv.ui.ocrNoTip=true; }
+    if(sv){
+      if(!sv.ui||typeof sv.ui!=='object') sv.ui={};
+      sv.ui.ocrNoTip=true;
+      if(sv.ui.ocrPickMode!=='camera' && sv.ui.ocrPickMode!=='album') sv.ui.ocrPickMode='album';
+    }
+    if(C().saveAll) C().saveAll();
+  }
+  function ocrPickMode(){
+    var sv=getSave();
+    return (sv&&sv.ui&&sv.ui.ocrPickMode==='camera')?'camera':'album';
+  }
+  function rememberPick(mode){
+    var sv=getSave();
+    if(sv){ if(!sv.ui||typeof sv.ui!=='object') sv.ui={}; sv.ui.ocrPickMode=mode; }
     if(C().saveAll) C().saveAll();
   }
   function openTip(){
@@ -5410,7 +5462,8 @@ var OCR = (function(){
   function oiMain(){
     if(_oiPage===1){ _oiPage=2; oiRender(); return; }
     if(_oiFromDoc){ closeIntro(); return; }   /* 说明页进入：只关闭，不设标记 */
-    setNoTip(); closeIntro(); openPickChooser();
+    setNoTip(); closeIntro(); pickAlbum();     /* 永不提示：记住相册，直接进入选图 */
+
   }
   var _oiFromDoc=false;
   function openIntro(fromDoc){
@@ -5421,7 +5474,11 @@ var OCR = (function(){
     if(m) m.classList.add('show'); if(b) b.classList.add('show');
   }
   function onCamera(){
-    if(noTipOn() || paramsEmpty()){ openPickChooser(); return; }
+    if(noTipOn()){                       /* 选了「永不提示」→ 点击相机直接上传，不再弹选择框 */
+      if(ocrPickMode()==='camera') pickCamera(); else pickAlbum();
+      return;
+    }
+    if(paramsEmpty()){ openPickChooser(); return; }
     openIntro();
   }
   function openPickChooser(){
@@ -5433,8 +5490,8 @@ var OCR = (function(){
     var m=document.getElementById('ocrPickMask'), b=document.getElementById('ocrPickModal');
     if(m) m.classList.remove('show'); if(b) b.classList.remove('show');
   }
-  function pickAlbum(){ closePickChooser(); var f=document.getElementById('ocrFile'); if(f) f.click(); }
-  function pickCamera(){ closePickChooser(); var f=document.getElementById('ocrFileCam'); if(f) f.click(); }
+  function pickAlbum(){ rememberPick('album'); closePickChooser(); var f=document.getElementById('ocrFile'); if(f) f.click(); }
+  function pickCamera(){ rememberPick('camera'); closePickChooser(); var f=document.getElementById('ocrFileCam'); if(f) f.click(); }
   function closeIntro(){
     var m=document.getElementById('ocrIntroMask'), b=document.getElementById('ocrIntroModal');
     if(m) m.classList.remove('show'); if(b) b.classList.remove('show');
@@ -5459,7 +5516,7 @@ var OCR = (function(){
           var c=document.createElement('canvas'); c.width=im.width; c.height=im.height;
           var cx=c.getContext('2d'); cx.drawImage(im,0,0);
           var tf=scanTransfer(cx,im);
-          if(tf && tf.rows && tf.rows.length>=8){ results.push(tf); isX=true; }
+          if(tf && tf.rows && tf.rows.length>=8){ try{ tf._thumb=thumbData(im); }catch(e){} results.push(tf); isX=true; }
         }catch(err){}
         if(!isX) _idleQ.push({img:im, url:url});
         else URL.revokeObjectURL(url);
@@ -5475,6 +5532,7 @@ var OCR = (function(){
     results.forEach(function(t){
       Object.keys(t.found||{}).forEach(function(k){ merged.found[k]=t.found[k]; });
     });
+    try{ window.__OCR_IMAGES=results.map(function(t){return t._thumb;}).filter(Boolean); }catch(e){}
     openTransferDialog(merged);
   }
   function pumpIdle(){
@@ -5501,13 +5559,14 @@ var OCR = (function(){
       var tf=null;
       try{ tf=scanTransfer(cx,img); }catch(err){ tf=null; }
       function _legacy(){
-        if(tf && tf.rows && tf.rows.length>=8){ openTransferDialog(tf); return; }
+        if(tf && tf.rows && tf.rows.length>=8){ try{ window.__OCR_IMAGES=[thumbData(img)].filter(Boolean); }catch(e){} openTransferDialog(tf); return; }
         if(autoIdle(img)) return;
         if(tf && tf.needMore) cToast('只看到 '+tf.rowsCount+' 行，请框选 4 个位置（标定一次后自动识别）');
         else if(tf && tf.ambiguous) cToast('特征不足，请框选 4 个位置（标定一次后自动识别）');
         else cToast('首次使用需框选 4 个位置，之后自动识别');
         openOverlay();
       }
+      if(tf && tf.rows && tf.rows.length>=8){ try{ window.__OCR_IMAGES=[thumbData(img)].filter(Boolean); }catch(e){} openTransferDialog(tf); return; }
       if(window.OCRAI && window.OCRAI.tryAsync(img, _legacy)) return;
       _legacy();
     };
@@ -7935,6 +7994,17 @@ document.querySelectorAll('.tocitem').forEach(function(a){
   function saveTable(){ try{ localStorage.setItem(TABLE_SLOT, JSON.stringify(TABLE)); }catch(e){} }
   window.OCRData={
     all:function(){ return JSON.parse(JSON.stringify(TABLE)); },
+    tables:function(){                        /* 分子表读取：main/panel/transfer/rebirth */
+      var out={main:{},panel:{},transfer:{},rebirth:{}};
+      Object.keys(TABLE).forEach(function(k){
+        var it=TABLE[k];
+        if(k.indexOf('panel:')===0) out.panel[k.slice(6)]=it;
+        else if(k.indexOf('transfer:')===0) out.transfer[k.slice(9)]=it;
+        else if(k.indexOf('rebirth:')===0) out.rebirth[k.slice(8)]=it;
+        else out.main[k]=it;
+      });
+      return out;
+    },
     get:function(k){ var it=TABLE[k]; return it?it.v:undefined; },
     set:function(k,v,src){ if(v===null||v===undefined||v==='') return; TABLE[k]={v:v,at:Date.now(),src:src||'ocr'}; saveTable(); },
     clear:function(){ TABLE={}; saveTable(); }
@@ -8041,6 +8111,16 @@ document.querySelectorAll('.tocitem').forEach(function(a){
       var mm=t.match(re);
       if(mm){ var v=num(mm[1]); if(v!=null) out.pd[key]={label:label,v:v,unit:mm[2]||''}; }
     });
+    /* 转生面板：结构化数值（映射到属性规划原值：hp/exp/atk/crit/add） */
+    out.transfer={};
+    (function(){
+      var MAP=[['hp','生命值'],['exp','经验加成'],['atk','攻击力'],['pCrit','物理暴击伤害'],['mCrit','法术暴击伤害'],['pAdd','物理加成'],['mAdd','法术加成']];
+      MAP.forEach(function(pair){
+        var re=new RegExp(pair[1]+'[^\\d]{0,8}([\\d][\\d,]*(?:\\.\\d+)?)\\s*%?');
+        var mm=t.match(re);
+        if(mm){ var v=num(mm[1]); if(v!=null&&v>0) out.transfer[pair[0]]=v; }
+      });
+    })();
     /* 转生面板：标签 + 左值% (+ >> 右值%) */
     REBIRTH_LABELS.forEach(function(label){
       var re=new RegExp(label+'[^\\d]{0,6}([\\d][\\d,]*(?:\\.\\d+)?)\\s*%?'+'(?:[^\\d>]{0,12}(?:>>|»|→)\\s*([\\d][\\d,]*(?:\\.\\d+)?)\\s*%?)?');
@@ -8138,7 +8218,7 @@ document.querySelectorAll('.tocitem').forEach(function(a){
     Object.keys(f.panel||{}).forEach(function(k){ var it=f.panel[k]; push('面板·'+it.label+' '+it.v+(it.unit||'')); });
     return parts;
   }
-  function pendingExtras(f){ window.__OCR_EXTRAS=f?{panel:f.panel||{},pd:f.pd||{},rebirth:f.rebirth||{}}:null; }
+  function pendingExtras(f){ window.__OCR_EXTRAS=f?{panel:f.panel||{},pd:f.pd||{},rebirth:f.rebirth||{},transfer:f.transfer||{}}:null; }
   function openFromExtract(f){
     /* 主字段仅当识别到「等级」锚点才展示，避免把其它面板数字误当等级/经验/修正 */
     var hasMain=!!f.curLevel;
@@ -8155,6 +8235,16 @@ document.querySelectorAll('.tocitem').forEach(function(a){
     }
     if(!hasMain && !parts.length) return false;
     try{ window.__ocrHooks.open(rows, window.__ocrHooks.apply); return true; }catch(e){ return false; }
+  }
+  function thumb(image){
+    try{
+      var W=image.width||image.naturalWidth, H=image.height||image.naturalHeight;
+      var sc=Math.min(1,260/Math.max(W,H,1));
+      var cv=document.createElement('canvas');
+      cv.width=Math.max(1,Math.round(W*sc)); cv.height=Math.max(1,Math.round(H*sc));
+      cv.getContext('2d').drawImage(image,0,0,cv.width,cv.height);
+      return cv.toDataURL('image/jpeg',0.72);
+    }catch(e){ return ''; }
   }
   function loadImage(file){
     return new Promise(function(res,rej){
@@ -8189,6 +8279,7 @@ document.querySelectorAll('.tocitem').forEach(function(a){
       try{ E.hideProgress&&E.hideProgress(); }catch(e){}
       var f=extract(r.text||'');
       window.__OCR_RAW=String(r.text||'').slice(0,6000);
+      try{ window.__OCR_IMAGES=[thumb(image)].filter(Boolean); }catch(e){ window.__OCR_IMAGES=[]; }
       var oldExp=(oldRes&&oldRes.expRate)||null;
       var merged=merge(f, oldRes||{});
       f.curLevel=merged.curLevel; f.expRate=merged.expRate; f.unit=merged.unit; f.expMod=merged.expMod; f.afBig=merged.afBig; f.afSmall=merged.afSmall;
@@ -8273,6 +8364,20 @@ document.querySelectorAll('.tocitem').forEach(function(a){
     var images=[];
     Promise.all(files.map(loadImage)).then(function(loaded){
       images=loaded;
+      /* 含转生面板 → 旧多图通道（逐张 scanTransfer 后合并） */
+      var hasTF=false;
+      try{
+        images.forEach(function(o){
+          var cv=document.createElement('canvas'); cv.width=o.img.width; cv.height=o.img.height;
+          var cx=cv.getContext('2d'); cx.drawImage(o.img,0,0);
+          var tf=(window.__ocrHooks&&window.__ocrHooks.scanTransfer)?window.__ocrHooks.scanTransfer(cx,o.img):null;
+          if(tf && tf.rows && tf.rows.length>=8) hasTF=true;
+        });
+      }catch(e){}
+      if(hasTF){
+        try{ window.__OCR_IMAGES=images.map(function(o){return thumb(o.img);}).filter(Boolean); }catch(e){}
+        if(legacy) legacy(); return;
+      }
       var extracts=[], i=0;
       function step(){
         if(i>=images.length){
@@ -8281,6 +8386,7 @@ document.querySelectorAll('.tocitem').forEach(function(a){
           images.forEach(function(o){ URL.revokeObjectURL(o.url); });
           var f=mergeExtract(extracts);
           window.__OCR_RAW=extracts.map(function(x){return x._raw||'';}).join('\n----\n').slice(0,8000);
+          try{ window.__OCR_IMAGES=images.map(function(o){ return thumb(o.img); }).filter(Boolean); }catch(e){ window.__OCR_IMAGES=[]; }
           if(openFromExtract(f)) return;
           if(legacy) legacy(); return;
         }
@@ -8308,6 +8414,7 @@ document.querySelectorAll('.tocitem').forEach(function(a){
           Object.keys(ex.panel||{}).forEach(function(k){ var it=ex.panel[k]; OCRData.set('panel:'+it.label, it.v+(it.unit||''), 'ocr'); });
           Object.keys(ex.pd||{}).forEach(function(k){ var it=ex.pd[k]; OCRData.set('panel:'+it.label, it.v+(it.unit||''), 'ocr'); });
           Object.keys(ex.rebirth||{}).forEach(function(k){ var it=ex.rebirth[k]; OCRData.set('rebirth:'+k, it.raw||'', 'ocr'); });
+          Object.keys(ex.transfer||{}).forEach(function(k){ OCRData.set('transfer:'+k, ex.transfer[k], 'ocr'); });
         }
         var body=document.getElementById('ocrBody'); if(!body) return;
         var map={'当前等级':'curLevel','经验收益':'expRate','收益单位':'unit','经验修正':'expMod','大阶段':'afBig','小阶段':'afSmall'};
@@ -8327,6 +8434,6 @@ document.querySelectorAll('.tocitem').forEach(function(a){
 
 })();
 </script>
-<div class="pubfoot" style="text-align:center;font-size:10.5px;color:#8a8070;padding:10px 12px 16px;line-height:1.7">项目作者：木东 · v0.17.7<br>数据来源：页面已写明来源的整理者与攻略作者</div>
+<div class="pubfoot" style="text-align:center;font-size:10.5px;color:#8a8070;padding:10px 12px 16px;line-height:1.7">项目作者：木东 · v0.17.8<br>数据来源：页面已写明来源的整理者与攻略作者</div>
 </body>
 </html>
