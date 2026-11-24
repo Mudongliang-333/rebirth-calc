@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#060b18">
-<title>无限升级 · 轮回计算器 v13.0「誓灭之境」 v0.17.8</title>
+<title>无限升级 · 轮回计算器 v13.0「誓灭之境」 v0.17.9</title>
 <link rel="icon" href="icon-192.png">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
@@ -1596,7 +1596,7 @@ html.fx-off </style>
   <div class="top-row">
     <div class="t1-col">
       <div class="t1">轮回计算器</div>
-      <div class="t1-sub"><span class="badge" id="unitTag">BB</span><span class="badge" id="verTag">v0.17.8</span><span class="beta-tag">BETA</span></div>
+      <div class="t1-sub"><span class="badge" id="unitTag">BB</span><span class="badge" id="verTag">v0.17.9</span><span class="beta-tag">BETA</span></div>
     </div>
     <div class="brand-mid">
       <img class="brand-logo" src="assets/logo_wxsj.webp" alt="无限升级">
@@ -2518,7 +2518,7 @@ html.fx-off </style>
   <button class="modal-x" id="ocrClose" type="button" aria-label="关闭">✕</button>
   <div class="modal-title">识别结果 · 请确认</div>
   <div class="modal-body">
-    <div class="ocr-hint" id="ocrHint">自动识别结果请核对，<b>标红项需手填</b>（BETA）</div>
+    <div class="ocr-hint" id="ocrHint">自动识别结果请核对：<b>标红项需手填</b>；多图已合并；顶部原图缩略图可点开放大对照（BETA）</div>
     <div id="ocrBody"></div>
   </div>
   <div class="ocr-acts">
@@ -2534,25 +2534,29 @@ html.fx-off </style>
     <div class="oi-page" id="oiP1">
       <div class="oi-tip">上传「<b>已感悟挂机</b>」截图，可自动识别：</div>
       <ul class="oi-list">
-        <li>当前等级</li>
+        <li>当前等级 / 经验收益 + 收益单位 / 经验修正</li>
         <li>奥法（称号 + 阶数）</li>
-        <li>经验修正</li>
-        <li>经验收益 + 收益单位</li>
+        <li>属性面板、转生面板数值登记共享表</li>
       </ul>
       <img class="oi-img" src="assets/ocr_sample.webp" alt="识别区域示例">
       <div class="oi-warn">
         截图注意：关卡按钮切到 <b>最大收益</b>；属性面板露出 <b>经验修正</b> 那一行；
-        顶部名片的 <b>等级 / 奥法称号</b> 完整可见；不要裁剪。
+        顶部名片的 <b>等级 / 奥法称号</b> 完整可见；不要裁剪。<br>
+        <b>可一次选多张</b>：识别结果合并到同一个弹窗，弹窗顶部有<b>原图缩略图</b>，点开可放大核对。
       </div>
     </div>
     <div class="oi-page" id="oiP2" style="display:none">
-      <div class="oi-tip">另外还支持「<b>神力加点</b>」识别：</div>
+      <div class="oi-tip">另外支持「<b>神力加点</b>」（转生面板）识别：</div>
       <ul class="oi-list">
-        <li>上传转生面板 <b>最上方 + 最下方</b> 两张截图</li>
-        <li>识别每行当前百分比，自动更新属性规划原值</li>
-        <li>从相册选择时可 <b>一次选两张</b>；也可直接拍照</li>
+        <li>上传转生面板 <b>最上方 + 最下方</b> 两张（可一次多选）</li>
+        <li>自动合并识别 → 写入<b>属性规划原值</b>；缺的行会标出，可手动补</li>
+        <li>结果只弹<b>一个窗口</b>，顶部原图缩略图可点开核对</li>
+        <li>注意：总览「当前神力」= 等级³，<b>只传神力加点图不会变</b>，需再传主面板等级图</li>
       </ul>
-      <div class="oi-warn" id="oiP2Warn">点「永不提示」后，下次点相机将直接弹出「拍照 / 从相册选择」</div>
+      <div class="oi-warn" id="oiP2Warn">
+        点「永不提示」后：以后点相机<b>直接打开上次选择的来源</b>（相册 / 拍照），不再弹选择框。<span id="ocrPickModeNow"></span><br>
+        <button class="btn ghost xs" id="ocrPickReset" type="button" style="margin-top:8px">重新选择上传方式</button>
+      </div>
     </div>
   </div>
   <div class="oi-dots" id="oiDots"><i class="on"></i><i></i></div>
@@ -2565,7 +2569,7 @@ html.fx-off </style>
   <button class="modal-x" id="ocrPickClose" type="button" aria-label="关闭">✕</button>
   <div class="modal-title">上传截图</div>
   <div class="modal-body">
-    <div class="oi-tip">请选择图片来源（平板/手机上「从相册选择」可直接选照片，不会强制开摄像头）：</div>
+    <div class="oi-tip">请选择图片来源（会记住本次选择；以后点相机直接进入该来源。平板/手机「从相册选择」不会强制开摄像头）：</div>
   </div>
   <div class="ocr-acts" style="flex-direction:column;gap:8px">
     <button class="btn" id="ocrPickAlbum" type="button" style="width:100%">从相册选择</button>
@@ -5126,6 +5130,8 @@ var OCR = (function(){
     if(_pm) _pm.addEventListener('click',closePickChooser);
     if(_pa) _pa.addEventListener('click',pickAlbum);
     if(_pcam) _pcam.addEventListener('click',pickCamera);
+    var _rp=document.getElementById('ocrPickReset');
+    if(_rp) _rp.addEventListener('click',function(ev){ ev.preventDefault(); resetPickChoice(); });
     var _tc=document.getElementById('ocrTipClose'), _to=document.getElementById('ocrTipOk'),
         _tm=document.getElementById('ocrTipMask');
     if(_tc) _tc.addEventListener('click',closeTip);
@@ -5422,7 +5428,11 @@ var OCR = (function(){
     p1.style.display=(_oiPage===1)?'':'none';
     p2.style.display=(_oiPage===2)?'':'none';
     var w=document.getElementById('oiP2Warn');
-    if(w) w.style.display=_oiFromDoc?'none':'';
+    if(w) w.style.display='';                         /* 说明页也可见（含重置入口） */
+    var now=document.getElementById('ocrPickModeNow');
+    if(now) now.textContent=noTipOn()?('（当前记住：'+(ocrPickMode()==='camera'?'拍照':'相册')+'）'):'（尚未记住来源）';
+    var rb=document.getElementById('ocrPickReset');
+    if(rb) rb.style.display=noTipOn()?'':'none';
     if(_oiPage===1) main.textContent='下一步';
     else main.textContent=_oiFromDoc?'知道了':'永不提示';
     if(dots){ var its=dots.querySelectorAll('i'); for(var i=0;i<its.length;i++) its[i].className=(i===_oiPage-1)?'on':''; }
@@ -5444,6 +5454,13 @@ var OCR = (function(){
   function ocrPickMode(){
     var sv=getSave();
     return (sv&&sv.ui&&sv.ui.ocrPickMode==='camera')?'camera':'album';
+  }
+  function resetPickChoice(){
+    var sv=getSave();
+    if(sv&&sv.ui){ sv.ui.ocrNoTip=false; try{ delete sv.ui.ocrPickMode; }catch(e){ sv.ui.ocrPickMode=''; } }
+    if(C().saveAll) C().saveAll();
+    if(typeof cToast==='function') cToast('已重置：下次点相机会重新询问上传方式');
+    oiRender();
   }
   function rememberPick(mode){
     var sv=getSave();
@@ -8434,6 +8451,6 @@ document.querySelectorAll('.tocitem').forEach(function(a){
 
 })();
 </script>
-<div class="pubfoot" style="text-align:center;font-size:10.5px;color:#8a8070;padding:10px 12px 16px;line-height:1.7">项目作者：木东 · v0.17.8<br>数据来源：页面已写明来源的整理者与攻略作者</div>
+<div class="pubfoot" style="text-align:center;font-size:10.5px;color:#8a8070;padding:10px 12px 16px;line-height:1.7">项目作者：木东 · v0.17.9<br>数据来源：页面已写明来源的整理者与攻略作者</div>
 </body>
 </html>
