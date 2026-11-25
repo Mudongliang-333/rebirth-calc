@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#060b18">
-<title>无限升级 · 轮回计算器 v13.0「誓灭之境」 v0.17.16</title>
+<title>无限升级 · 轮回计算器 v13.0「誓灭之境」 v0.17.17</title>
 <link rel="icon" href="icon-192.png">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
@@ -1597,7 +1597,7 @@ html.fx-off #bossPanel summary:after,#bossPanel summary:before{content:none!impo
   <div class="top-row">
     <div class="t1-col">
       <div class="t1">轮回计算器</div>
-      <div class="t1-sub"><span class="badge" id="unitTag">BB</span><span class="badge" id="verTag">v0.17.16</span><span class="beta-tag">BETA</span></div>
+      <div class="t1-sub"><span class="badge" id="unitTag">BB</span><span class="badge" id="verTag">v0.17.17</span><span class="beta-tag">BETA</span></div>
     </div>
     <div class="brand-mid">
       <img class="brand-logo" src="assets/logo_wxsj.webp" alt="无限升级">
@@ -5033,7 +5033,7 @@ var OCR = (function(){
     var mask=document.getElementById('ocrMask'), box=document.getElementById('ocrModal'), body=document.getElementById('ocrBody');
     if(!body){ onOk(rows.filter(function(r){return r.checked!==false;})); return; }
     body.innerHTML='';
-    var _ver='v0.17.16';
+    var _ver='v0.17.17';
     try{
       var _hint=document.getElementById('ocrHint');
       var _engReady=!!(window.OCREngine&&window.OCREngine.ready&&window.OCREngine.ready());
@@ -5067,9 +5067,23 @@ var OCR = (function(){
       body.appendChild(cap);
     }
     if(!_crops.length && _imgs.length){
-      /* 不再展示整图缩略图；仅提示识别区域缺失 */
-      var gn=document.createElement('div'); gn.className='ocr-note'; gn.textContent='未获取到识别区域截图，请以识别结果为准或重新上传';
+      /* 兜底：自动定位/引擎失败时，至少把上传原图显示在上方供核对 */
+      _ocrPreviewStyle();
+      var pv2=document.createElement('div'); pv2.className='ocr-preview';
+      _imgs.forEach(function(src,ii){
+        if(!src) return;
+        var cell=document.createElement('div'); cell.className='ocr-crop';
+        var im=document.createElement('img'); im.src=src; im.title='上传原图'+(ii+1)+'（点击放大）';
+        im.addEventListener('click',function(){ _ocrShowBig(src); });
+        var cp=document.createElement('div'); cp.className='ocr-crop-cap'; cp.textContent='上传原图 '+(ii+1);
+        cell.appendChild(im); cell.appendChild(cp); pv2.appendChild(cell);
+      });
+      body.appendChild(pv2);
+      var gn=document.createElement('div'); gn.className='ocr-note'; gn.textContent='⚠ 未能自动定位识别区域，上方为上传原图；请刷新页面/重试，或改用 CloudBase 链接';
       body.appendChild(gn);
+    }else if(!_crops.length && !_imgs.length){
+      var gn2=document.createElement('div'); gn2.className='ocr-note'; gn2.textContent='⚠ 未获取到识别区域截图，请刷新页面后重试';
+      body.appendChild(gn2);
     }
     rows.forEach(function(r,i){
       if(r.note){
@@ -5113,7 +5127,7 @@ var OCR = (function(){
     var payload={
       screen: (window.screen&&screen.width)+'x'+(window.screen&&screen.height)+'@'+(window.devicePixelRatio||1),
       ua: (navigator.userAgent||'').slice(0,180),
-      ver: 'v0.17.16',
+      ver: 'v0.17.17',
       engine: _engState,
       url: (location.href||'').slice(0,160),
       rows: rows.slice(0,300),
@@ -5630,6 +5644,7 @@ var OCR = (function(){
     img=new Image();
     img.onload=function(){
       URL.revokeObjectURL(url);
+      try{ window.__OCR_IMAGES=[thumbData(img)].filter(Boolean); }catch(e){}
       var c=document.createElement('canvas'); c.width=img.width; c.height=img.height;
       var cx=c.getContext('2d'); cx.drawImage(img,0,0);
       var tf=null;
@@ -9052,6 +9067,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 })();
 </script>
 
-<div class="pubfoot" style="text-align:center;font-size:10.5px;color:#8a8070;padding:10px 12px 16px;line-height:1.7">项目作者：木东 · v0.17.16<br>数据来源：页面已写明来源的整理者与攻略作者</div>
+<div class="pubfoot" style="text-align:center;font-size:10.5px;color:#8a8070;padding:10px 12px 16px;line-height:1.7">项目作者：木东 · v0.17.17<br>数据来源：页面已写明来源的整理者与攻略作者</div>
 </body>
 </html>
