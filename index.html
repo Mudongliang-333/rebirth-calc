@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#060b18">
-<title>无限升级 · 轮回计算器 v13.0「誓灭之境」 v0.17.15</title>
+<title>无限升级 · 轮回计算器 v13.0「誓灭之境」 v0.17.16</title>
 <link rel="icon" href="icon-192.png">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
@@ -1597,7 +1597,7 @@ html.fx-off #bossPanel summary:after,#bossPanel summary:before{content:none!impo
   <div class="top-row">
     <div class="t1-col">
       <div class="t1">轮回计算器</div>
-      <div class="t1-sub"><span class="badge" id="unitTag">BB</span><span class="badge" id="verTag">v0.17.15</span><span class="beta-tag">BETA</span></div>
+      <div class="t1-sub"><span class="badge" id="unitTag">BB</span><span class="badge" id="verTag">v0.17.16</span><span class="beta-tag">BETA</span></div>
     </div>
     <div class="brand-mid">
       <img class="brand-logo" src="assets/logo_wxsj.webp" alt="无限升级">
@@ -4142,9 +4142,12 @@ init();
 <script>
 if ('serviceWorker' in navigator && (location.protocol === 'http:' || location.protocol === 'https:')) {
   window.addEventListener('load', function () {
-    navigator.serviceWorker.register('sw.js?v=0.16.8').then(function (reg) {
+    navigator.serviceWorker.register('sw.js?v=0.17.16').then(function (reg) {
       reg.update().catch(function () {});
     }).catch(function () {});
+    navigator.serviceWorker.addEventListener('controllerchange',function(){
+      if(window.__swReloaded) return; window.__swReloaded=1; location.reload();
+    });
   });
 }
 </script>
@@ -5030,6 +5033,20 @@ var OCR = (function(){
     var mask=document.getElementById('ocrMask'), box=document.getElementById('ocrModal'), body=document.getElementById('ocrBody');
     if(!body){ onOk(rows.filter(function(r){return r.checked!==false;})); return; }
     body.innerHTML='';
+    var _ver='v0.17.16';
+    try{
+      var _hint=document.getElementById('ocrHint');
+      var _engReady=!!(window.OCREngine&&window.OCREngine.ready&&window.OCREngine.ready());
+      if(_hint) _hint.innerHTML=_engReady
+        ? ('识别结果请核对：<b>红色项需手动填写</b>；顶部为本次识别区域，点击可放大对照 · 引擎 '+_ver+' 已加载')
+        : ('识别结果请核对：<b>红色项需手动填写</b>；顶部为本次识别区域，点击可放大对照 · <span style="color:#ff8a80">⚠ 识别引擎未加载，当前为旧版识别，请刷新页面后重试</span>');
+      if(!_engReady){
+        var _w=document.createElement('div'); _w.className='ocr-note';
+        _w.style.color='#ff8a80';
+        _w.textContent='⚠ 识别引擎未加载（当前结果来自旧版识别）。请关闭页面重新打开，或刷新后重试；若仍不行请换用 CloudBase 链接。';
+        body.appendChild(_w);
+      }
+    }catch(e){}
     var _crops=window.__OCR_CROPS||[];
     var _imgs=window.__OCR_IMAGES||[];
     if(_crops.length){
@@ -5091,14 +5108,19 @@ var OCR = (function(){
       var v=vv?vv.value:r.val;
       return cb&&cb.checked&&(v==null||String(v).trim()==='');
     }).map(function(r){ return r.label.split(' ')[0]; }).join(',');
+    var _engState='none';
+    try{ _engState=(window.OCREngine&&window.OCREngine.ready&&window.OCREngine.ready())?'ready':((window.OCREngine&&window.OCREngine.error&&window.OCREngine.error())||'loading'); }catch(e){}
     var payload={
       screen: (window.screen&&screen.width)+'x'+(window.screen&&screen.height)+'@'+(window.devicePixelRatio||1),
       ua: (navigator.userAgent||'').slice(0,180),
+      ver: 'v0.17.16',
+      engine: _engState,
+      url: (location.href||'').slice(0,160),
       rows: rows.slice(0,300),
       missing: miss||'-',
       ts: new Date().toISOString().slice(0,19)
     };
-    var txt='【识别反馈】\n机型: '+payload.screen+'\n缺失: '+payload.missing+'\n结果: '+payload.rows+'\n时间: '+payload.ts;
+    var txt='【识别反馈】\n版本: '+payload.ver+' · 引擎: '+payload.engine+'\n机型: '+payload.screen+'\n链接: '+payload.url+'\n缺失: '+payload.missing+'\n结果: '+payload.rows+'\n时间: '+payload.ts;
     var ta=document.getElementById('fbText'); if(ta) ta.value=txt;
     var m=document.getElementById('fbMask'), b=document.getElementById('fbModal');
     if(m) m.classList.add('show'); if(b) b.classList.add('show');
@@ -9030,6 +9052,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 })();
 </script>
 
-<div class="pubfoot" style="text-align:center;font-size:10.5px;color:#8a8070;padding:10px 12px 16px;line-height:1.7">项目作者：木东 · v0.17.15<br>数据来源：页面已写明来源的整理者与攻略作者</div>
+<div class="pubfoot" style="text-align:center;font-size:10.5px;color:#8a8070;padding:10px 12px 16px;line-height:1.7">项目作者：木东 · v0.17.16<br>数据来源：页面已写明来源的整理者与攻略作者</div>
 </body>
 </html>
