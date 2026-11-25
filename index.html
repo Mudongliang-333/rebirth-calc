@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#060b18">
-<title>无限升级 · 轮回计算器 v13.0「誓灭之境」 v0.17.14</title>
+<title>无限升级 · 轮回计算器 v13.0「誓灭之境」 v0.17.15</title>
 <link rel="icon" href="icon-192.png">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
@@ -1597,7 +1597,7 @@ html.fx-off #bossPanel summary:after,#bossPanel summary:before{content:none!impo
   <div class="top-row">
     <div class="t1-col">
       <div class="t1">轮回计算器</div>
-      <div class="t1-sub"><span class="badge" id="unitTag">BB</span><span class="badge" id="verTag">v0.17.14</span><span class="beta-tag">BETA</span></div>
+      <div class="t1-sub"><span class="badge" id="unitTag">BB</span><span class="badge" id="verTag">v0.17.15</span><span class="beta-tag">BETA</span></div>
     </div>
     <div class="brand-mid">
       <img class="brand-logo" src="assets/logo_wxsj.webp" alt="无限升级">
@@ -7927,7 +7927,7 @@ document.querySelectorAll('.tocitem').forEach(function(a){
    - 平台：iOS/iPadOS → Tesseract WASM；Android 优先原生 TextDetector，失败回退 Tesseract
 */
 (function(){
-  var BASE='/ocr_engine/';
+  var BASE=(function(){ try{ return new URL('ocr_engine/', document.baseURI||location.href).href; }catch(e){ return 'ocr_engine/'; } })();
   var st={promise:null,worker:null,prefetching:false,ready:false,error:null,platform:'desktop',hintShown:false,stage:'',userTriggered:false};
   /* 加载提示（仅用户点击触发时显示；空闲预取保持静默） */
   function ensureHint(){
@@ -8448,17 +8448,40 @@ document.querySelectorAll('.tocitem').forEach(function(a){
       /* 始终对右上卡片做一次高倍裁剪识别：等级行常被特效/遮挡干扰 */
       var lvCropJob=(function(){
         var boxes=[[0.55,0.03,0.45,0.17],[0.56,0.05,0.44,0.13],[0.58,0.07,0.40,0.10]];
+        var votes={}, order=[];
+        function add(v){
+          if(v==null) return;
+          v=String(v);
+          if(!/^\d{5,9}$/.test(v)) return;
+          if(!votes[v]){ votes[v]=0; order.push(v); }
+          votes[v]++;
+        }
+        function parseText(t){
+          var nt=norm(t), mm=nt.match(/等级(\d{5,9})/);
+          if(mm){ add(mm[1]); return; }
+          /* 等级标签没识别出来时：在卡片文字里找 6~9 位数字，排除方括号里的玩家ID */
+          var re=/\d{6,9}/g, m;
+          while((m=re.exec(nt))){
+            var i=m.index, prev=nt.charAt(i-1), next=nt.charAt(i+m[0].length);
+            if(prev==='[' || next===']') continue;
+            add(m[0]);
+          }
+        }
         var p=Promise.resolve();
         boxes.forEach(function(bx){
           p=p.then(function(){
-            if(lvCrop!=null) return;
-            return cropRecognize(image,bx,3).then(function(t){
-              var mm=norm(t).match(/等级(\d{5,9})/);
-              if(mm) lvCrop=parseInt(mm[1],10);
-            });
+            return cropRecognize(image,bx,3).then(parseText).catch(function(){});
           });
         });
-        return p;
+        return p.then(function(){
+          if(!order.length) return;
+          var best=null,bc=-1,bl=-1;
+          order.forEach(function(v){
+            var c=votes[v], len=v.length;
+            if(c>bc || (c===bc && ((len===7&&bl!==7) || (len===8&&bl<7) || (bl<6&&len>bl)))){ best=v; bc=c; bl=len; }
+          });
+          lvCrop=parseInt(best,10);
+        });
       })();
       if(aiLv!=null && oldLv!=null && aiLv!==oldLv){
         lvRetry=cropRecognize(image,[0.50,0.03,0.50,0.17],3).then(function(t){
@@ -9007,6 +9030,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 })();
 </script>
 
-<div class="pubfoot" style="text-align:center;font-size:10.5px;color:#8a8070;padding:10px 12px 16px;line-height:1.7">项目作者：木东 · v0.17.14<br>数据来源：页面已写明来源的整理者与攻略作者</div>
+<div class="pubfoot" style="text-align:center;font-size:10.5px;color:#8a8070;padding:10px 12px 16px;line-height:1.7">项目作者：木东 · v0.17.15<br>数据来源：页面已写明来源的整理者与攻略作者</div>
 </body>
 </html>
