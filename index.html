@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#060b18">
-<title>无限升级 · 轮回计算器 v13.0「誓灭之境」 v0.18.4</title>
+<title>无限升级 · 轮回计算器 v13.0「誓灭之境」 v0.18.5</title>
 <link rel="icon" href="icon-192.png">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
@@ -1598,7 +1598,7 @@ html.fx-off #bossPanel summary:after,#bossPanel summary:before{content:none!impo
   <div class="top-row">
     <div class="t1-col">
       <div class="t1">轮回计算器</div>
-      <div class="t1-sub"><span class="badge" id="unitTag">BB</span><span class="badge" id="verTag">v0.18.4</span><span class="beta-tag">BETA</span></div>
+      <div class="t1-sub"><span class="badge" id="unitTag">BB</span><span class="badge" id="verTag">v0.18.5</span><span class="beta-tag">BETA</span></div>
     </div>
     <div class="brand-mid">
       <img class="brand-logo" src="assets/logo_wxsj.webp" alt="无限升级">
@@ -2804,7 +2804,7 @@ function powLabel(v){return'1e'+Math.round(Math.log10(v));}
 function powUnit(){var idx=-1;for(var i=0;i<UNITS.length;i++){if(UNITS[i][0]===state.unit){idx=i;break;}}if(idx<0)idx=UNITS.length-2;idx=Math.max(0,idx-2);return UNITS[idx][0];}
 function powShort(v){if(!isFinite(v))return'—';var u=powUnit(),f=UNIT_MAP[u];return (v/f).toFixed(2)+' '+u;}
 /* 神力消耗：分段二次曲线（对齐 AAA 神力表 A 列 2~200000，27 段）
-   B(加成A) = coef * (A/2)^2，累计 C(A)=ΣB；单项消耗 = (C(T)-C(O)) * 1e9 */
+   B(加成A) = coef * (A/2)^2，累计 C(A)=ΣB；单项消耗 = (C(T)-C(O)) * 1e12 */
 var COST_BANDS=[[2,1e-7],[22,3e-7],[42,5e-7],[62,8e-7],[82,1.2e-6],[102,1.5e-6],[122,2e-6],[142,3.5e-6],[162,8e-6],[182,1.25e-5],[202,2e-5],[222,3e-5],[242,5e-5],[262,7.5e-5],[282,1.2e-4],[302,2.5e-4],[322,4.5e-4],[342,7.5e-4],[362,1e-3],[382,1.25e-3],[402,1.5e-3],[422,2e-3],[442,3e-3],[462,5e-3],[482,6e-3],[502,8e-3],[540,0.012]];
 function _Ss(x){return x*(x+1)*(2*x+1)/6;}
 function cumCost(A){
@@ -2819,7 +2819,7 @@ function cumCost(A){
   }
   return total;
 }
-function attrCost(o,t){ return (cumCost(t)-cumCost(o))*1e9; }
+function attrCost(o,t){ return (cumCost(t)-cumCost(o))*1e12; }
 function statCost(st){ if(!st) return 0; var o=st.old,t=st.target; if(st.key==='phys'){ o=o/1.25; t=t/1.25; } return attrCost(o,t); }
 
 /* ================= 核心计算 ================= */
@@ -2843,9 +2843,9 @@ function ratioFor(){
   return fallbackRatio();
 }
 function invStatTarget(oldV, wantCost){
-  /* 由预算反推目标值：二分 C(目标) = C(原值) + wantCost/1e9 */
+  /* 由预算反推目标值：二分 C(目标) = C(原值) + wantCost/1e12 */
   if(!(wantCost>0)) return oldV;
-  var need=cumCost(oldV) + wantCost/1e9;
+  var need=cumCost(oldV) + wantCost/1e12;
   var lo=Math.max(oldV,2), hi=Math.max(oldV+2, 200);
   var g=0;
   while(cumCost(hi)<need && g++<80) hi*=1.6;
@@ -5088,7 +5088,7 @@ var OCR = (function(){
     var mask=document.getElementById('ocrMask'), box=document.getElementById('ocrModal'), body=document.getElementById('ocrBody');
     if(!body){ onOk(rows.filter(function(r){return r.checked!==false;})); return; }
     body.innerHTML='';
-    var _ver='v0.18.4';
+    var _ver='v0.18.5';
     try{
       var _hint=document.getElementById('ocrHint');
       var _engReady=!!(window.OCREngine&&window.OCREngine.ready&&window.OCREngine.ready());
@@ -5182,7 +5182,7 @@ var OCR = (function(){
     var payload={
       screen: (window.screen&&screen.width)+'x'+(window.screen&&screen.height)+'@'+(window.devicePixelRatio||1),
       ua: (navigator.userAgent||'').slice(0,180),
-      ver: 'v0.18.4',
+      ver: 'v0.18.5',
       engine: _engState,
       url: (location.href||'').slice(0,160),
       rows: rows.slice(0,300),
@@ -9541,6 +9541,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 })();
 </script>
 
-<div class="pubfoot" style="text-align:center;font-size:10.5px;color:#8a8070;padding:10px 12px 16px;line-height:1.7">项目作者：木东 · v0.18.4<br>数据来源：页面已写明来源的整理者与攻略作者</div>
+<div class="pubfoot" style="text-align:center;font-size:10.5px;color:#8a8070;padding:10px 12px 16px;line-height:1.7">项目作者：木东 · v0.18.5<br>数据来源：页面已写明来源的整理者与攻略作者</div>
 </body>
 </html>
